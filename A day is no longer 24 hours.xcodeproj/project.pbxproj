@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5714F4A22AC8487900D55041 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* Observable.swift */; };
+		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
+		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
-		57C138442AC5496500277597 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138432AC5496500277597 /* ViewController.swift */; };
-		57C138472AC5496500277597 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C138452AC5496500277597 /* Main.storyboard */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
 		57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5714F4A12AC8487900D55041 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5714F4A32AC849B700D55041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5714F4A72AC84C0E00D55041 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		57C138432AC5496500277597 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		57C138462AC5496500277597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57C138482AC5496A00277597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C1384B2AC5496A00277597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57C1384D2AC5496A00277597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +39,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5714F4982AC8463200D55041 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		5714F4992AC8463A00D55041 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4A12AC8487900D55041 /* Observable.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5714F49A2AC8465600D55041 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5714F49B2AC8467400D55041 /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4A72AC84C0E00D55041 /* Constraints.swift */,
+			);
+			path = Constraints;
+			sourceTree = "<group>";
+		};
+		5714F49C2AC8469D00D55041 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5714F49D2AC8474300D55041 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5714F49E2AC8474900D55041 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		5714F49F2AC8477100D55041 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5714F4A02AC8479300D55041 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5714F49F2AC8477100D55041 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		57C138332AC5496500277597 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +125,16 @@
 		57C1383E2AC5496500277597 /* A day is no longer 24 hours */ = {
 			isa = PBXGroup;
 			children = (
+				5714F49D2AC8474300D55041 /* Base */,
+				5714F49B2AC8467400D55041 /* Constraints */,
+				5714F49C2AC8469D00D55041 /* Extension */,
+				5714F49A2AC8465600D55041 /* Network */,
+				5714F49E2AC8474900D55041 /* Repository */,
+				5714F4982AC8463200D55041 /* Scene */,
+				5714F4992AC8463A00D55041 /* Utility */,
+				5714F4A02AC8479300D55041 /* View */,
 				57C1383F2AC5496500277597 /* AppDelegate.swift */,
 				57C138412AC5496500277597 /* SceneDelegate.swift */,
-				57C138432AC5496500277597 /* ViewController.swift */,
-				57C138452AC5496500277597 /* Main.storyboard */,
 				57C138482AC5496A00277597 /* Assets.xcassets */,
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
@@ -127,7 +202,6 @@
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
-				57C138472AC5496500277597 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57C138442AC5496500277597 /* ViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
+				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
+				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
+				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +223,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		57C138452AC5496500277597 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				57C138462AC5496500277597 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +360,9 @@
 				INFOPLIST_FILE = "A day is no longer 24 hours/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +370,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.prodvssw.98.A-day-is-no-longer-24-hours";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,9 +391,9 @@
 				INFOPLIST_FILE = "A day is no longer 24 hours/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +401,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.prodvssw.98.A-day-is-no-longer-24-hours";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
