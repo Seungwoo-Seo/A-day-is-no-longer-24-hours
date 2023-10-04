@@ -10,22 +10,68 @@
 		5714F4A22AC8487900D55041 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* Observable.swift */; };
 		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
 		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
+		5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A92AC851D400D55041 /* ScheduleViewController.swift */; };
+		5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 5714F4AF2AC852D200D55041 /* FSCalendar */; };
+		5714F4B32AC852E800D55041 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5714F4B22AC852E800D55041 /* SnapKit */; };
+		5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4B42AC8531900D55041 /* ScheduleViewModel.swift */; };
+		5714F4B82AC8594F00D55041 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4B72AC8594F00D55041 /* ScheduleModel.swift */; };
+		5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4BB2AC85FF700D55041 /* DetailTodoCell.swift */; };
+		5714F4C02AC8609100D55041 /* SimpleTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4BF2AC8609100D55041 /* SimpleTodoHeader.swift */; };
+		5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4C12AC860B000D55041 /* DetailTodoHeader.swift */; };
+		5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4C32AC860E900D55041 /* DetailTodoFooter.swift */; };
+		5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4C52AC8620300D55041 /* BaseCollectionReusableView.swift */; };
+		5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4C72AC8651F00D55041 /* BaseCollectionViewCell.swift */; };
+		5714F4CA2AC8668000D55041 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4C92AC8668000D55041 /* LineView.swift */; };
+		5714F4CC2AC866A000D55041 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4CB2AC866A000D55041 /* BaseView.swift */; };
+		5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4CF2AC867E400D55041 /* TimeLabel.swift */; };
+		5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D12AC867ED00D55041 /* BaseLabel.swift */; };
+		5714F4D42AC86C9E00D55041 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D32AC86C9E00D55041 /* TitleLabel.swift */; };
+		5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D62AC90EF000D55041 /* StateButton.swift */; };
+		5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D82AC90F0E00D55041 /* BaseButton.swift */; };
+		5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DD2AC9142900D55041 /* CircleImageView.swift */; };
+		5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DF2AC9143F00D55041 /* BaseImageView.swift */; };
+		5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* Identifiable.swift */; };
+		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
 		57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */; };
+		925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5714F4A12AC8487900D55041 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		5714F4A32AC849B700D55041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5714F4A72AC84C0E00D55041 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		5714F4A92AC851D400D55041 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		5714F4B42AC8531900D55041 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		5714F4B72AC8594F00D55041 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		5714F4BB2AC85FF700D55041 /* DetailTodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTodoCell.swift; sourceTree = "<group>"; };
+		5714F4BF2AC8609100D55041 /* SimpleTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoHeader.swift; sourceTree = "<group>"; };
+		5714F4C12AC860B000D55041 /* DetailTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTodoHeader.swift; sourceTree = "<group>"; };
+		5714F4C32AC860E900D55041 /* DetailTodoFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTodoFooter.swift; sourceTree = "<group>"; };
+		5714F4C52AC8620300D55041 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		5714F4C72AC8651F00D55041 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		5714F4C92AC8668000D55041 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		5714F4CB2AC866A000D55041 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		5714F4CF2AC867E400D55041 /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
+		5714F4D12AC867ED00D55041 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		5714F4D32AC86C9E00D55041 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		5714F4D62AC90EF000D55041 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
+		5714F4D82AC90F0E00D55041 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		5714F4DD2AC9142900D55041 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		5714F4DF2AC9143F00D55041 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
+		5714F4E32AC9266A00D55041 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		57C138482AC5496A00277597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C1384B2AC5496A00277597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57C1384D2AC5496A00277597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
+		DBD42A7EE31B10218A333749 /* Pods-A day is no longer 24 hours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.release.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,15 +79,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5714F4B32AC852E800D55041 /* SnapKit in Frameworks */,
+				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
+				5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2745AC5FC5A8CEBE82A61A31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5714F4982AC8463200D55041 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				5714F4AB2AC851D900D55041 /* Schedule */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -80,6 +138,13 @@
 			isa = PBXGroup;
 			children = (
 				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+				5714F4C52AC8620300D55041 /* BaseCollectionReusableView.swift */,
+				5714F4C72AC8651F00D55041 /* BaseCollectionViewCell.swift */,
+				5714F4CB2AC866A000D55041 /* BaseView.swift */,
+				5714F4D12AC867ED00D55041 /* BaseLabel.swift */,
+				5714F4D82AC90F0E00D55041 /* BaseButton.swift */,
+				5714F4DF2AC9143F00D55041 /* BaseImageView.swift */,
+				5714F4E32AC9266A00D55041 /* Identifiable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -94,16 +159,108 @@
 		5714F49F2AC8477100D55041 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5714F4BB2AC85FF700D55041 /* DetailTodoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		5714F4A02AC8479300D55041 /* View */ = {
+		5714F4A02AC8479300D55041 /* View+ */ = {
 			isa = PBXGroup;
 			children = (
+				5714F4D52AC90ED800D55041 /* Button */,
 				5714F49F2AC8477100D55041 /* Cell */,
+				5714F4BE2AC8600E00D55041 /* Footer */,
+				5714F4BD2AC8600900D55041 /* Header */,
+				5714F4DC2AC9141400D55041 /* ImageView */,
+				5714F4CD2AC8678700D55041 /* Label */,
+				5714F4CE2AC867BC00D55041 /* View */,
+			);
+			path = "View+";
+			sourceTree = "<group>";
+		};
+		5714F4AB2AC851D900D55041 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4B62AC8594200D55041 /* Model */,
+				5714F4AC2AC851E000D55041 /* View */,
+				5714F4AD2AC851ED00D55041 /* ViewModel */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		5714F4AC2AC851E000D55041 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4A92AC851D400D55041 /* ScheduleViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5714F4AD2AC851ED00D55041 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4B42AC8531900D55041 /* ScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5714F4B62AC8594200D55041 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4B72AC8594F00D55041 /* ScheduleModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5714F4BD2AC8600900D55041 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4BF2AC8609100D55041 /* SimpleTodoHeader.swift */,
+				5714F4C12AC860B000D55041 /* DetailTodoHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		5714F4BE2AC8600E00D55041 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4C32AC860E900D55041 /* DetailTodoFooter.swift */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		5714F4CD2AC8678700D55041 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4CF2AC867E400D55041 /* TimeLabel.swift */,
+				5714F4D32AC86C9E00D55041 /* TitleLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		5714F4CE2AC867BC00D55041 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4C92AC8668000D55041 /* LineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5714F4D52AC90ED800D55041 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4D62AC90EF000D55041 /* StateButton.swift */,
+				5714F4E52AC9BB9900D55041 /* ExpandButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		5714F4DC2AC9141400D55041 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				5714F4DD2AC9142900D55041 /* CircleImageView.swift */,
+			);
+			path = ImageView;
 			sourceTree = "<group>";
 		};
 		57C138332AC5496500277597 = {
@@ -111,6 +268,8 @@
 			children = (
 				57C1383E2AC5496500277597 /* A day is no longer 24 hours */,
 				57C1383D2AC5496500277597 /* Products */,
+				602B847BCC1AA997A3962614 /* Pods */,
+				2745AC5FC5A8CEBE82A61A31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,7 +291,7 @@
 				5714F49E2AC8474900D55041 /* Repository */,
 				5714F4982AC8463200D55041 /* Scene */,
 				5714F4992AC8463A00D55041 /* Utility */,
-				5714F4A02AC8479300D55041 /* View */,
+				5714F4A02AC8479300D55041 /* View+ */,
 				57C1383F2AC5496500277597 /* AppDelegate.swift */,
 				57C138412AC5496500277597 /* SceneDelegate.swift */,
 				57C138482AC5496A00277597 /* Assets.xcassets */,
@@ -142,6 +301,15 @@
 			path = "A day is no longer 24 hours";
 			sourceTree = "<group>";
 		};
+		602B847BCC1AA997A3962614 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */,
+				DBD42A7EE31B10218A333749 /* Pods-A day is no longer 24 hours.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,15 +317,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57C138502AC5496A00277597 /* Build configuration list for PBXNativeTarget "A day is no longer 24 hours" */;
 			buildPhases = (
+				4B7CF07F8D6BACA58BBAB6C9 /* [CP] Check Pods Manifest.lock */,
 				57C138382AC5496500277597 /* Sources */,
 				57C138392AC5496500277597 /* Frameworks */,
 				57C1383A2AC5496500277597 /* Resources */,
+				6641AB3A70F8881F092EDE85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "A day is no longer 24 hours";
+			packageProductDependencies = (
+				5714F4AF2AC852D200D55041 /* FSCalendar */,
+				5714F4B22AC852E800D55041 /* SnapKit */,
+			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
 			productType = "com.apple.product-type.application";
@@ -186,6 +360,10 @@
 				Base,
 			);
 			mainGroup = 57C138332AC5496500277597;
+			packageReferences = (
+				5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,16 +385,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4B7CF07F8D6BACA58BBAB6C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-A day is no longer 24 hours-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6641AB3A70F8881F092EDE85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57C138382AC5496500277597 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
+				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
+				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
+				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
+				5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */,
+				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
+				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
+				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
+				5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */,
+				5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */,
+				5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */,
+				5714F4CA2AC8668000D55041 /* LineView.swift in Sources */,
+				5714F4B82AC8594F00D55041 /* ScheduleModel.swift in Sources */,
+				5714F4C02AC8609100D55041 /* SimpleTodoHeader.swift in Sources */,
+				5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */,
+				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
+				5714F4D42AC86C9E00D55041 /* TitleLabel.swift in Sources */,
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
+				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
+				5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */,
+				5714F4CC2AC866A000D55041 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +590,7 @@
 		};
 		57C138512AC5496A00277597 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -381,6 +622,7 @@
 		};
 		57C138522AC5496A00277597 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBD42A7EE31B10218A333749 /* Pods-A day is no longer 24 hours.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -432,6 +674,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5714F4AF2AC852D200D55041 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		5714F4B22AC852E800D55041 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 57C138342AC5496500277597 /* Project object */;
 }
