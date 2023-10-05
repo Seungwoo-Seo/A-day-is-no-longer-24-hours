@@ -11,11 +11,25 @@ import UIKit
 
 final class ScheduleViewController: BaseViewController {
     // MARK: - View
-    lazy var calendar = {
+    private let titleLabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        return label
+    }()
+    private lazy var titleBarButtonItem = UIBarButtonItem(customView: titleLabel)
+    private lazy var addBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(didTapAddBarButtonItem))
+        button.tintColor = Constraints.Color.white
+        return button
+    }()
+    private lazy var calendarView = {
         let view = FSCalendar(frame: .zero)
         view.dataSource = self
         view.delegate = self
         view.backgroundColor = Constraints.Color.black
+        view.scope = .week
+        view.headerHeight = 0
         view.locale = Locale(identifier: "ko_KR")
         view.appearance.headerDateFormat = "YYYY년 MM월"
         view.appearance.headerMinimumDissolvedAlpha = 0
@@ -26,7 +40,7 @@ final class ScheduleViewController: BaseViewController {
         view.appearance.titleDefaultColor = Constraints.Color.white
         return view
     }()
-    lazy var collectionView = {
+    private lazy var collectionView = {
         let view = UICollectionView(
             frame: .zero,
             collectionViewLayout: self.collectionViewLayout()
@@ -36,7 +50,7 @@ final class ScheduleViewController: BaseViewController {
         view.backgroundColor = Constraints.Color.black
         return view
     }()
-    let floatyButton = {
+    private let floatyButton = {
         let button = Floaty()
         button.plusColor = Constraints.Color.black
         button.buttonColor = Constraints.Color.white
@@ -58,6 +72,12 @@ final class ScheduleViewController: BaseViewController {
 
         configureDataSource()
 
+        // bind
+        viewModel.currentMonth.bind { [weak self] (currentMonth) in
+            guard let self else {return}
+            self.titleLabel.text = currentMonth
+        }
+
         viewModel.todoSectionList.bind { [weak self] (todoSectionList) in
             guard let self else {return}
             var snapshot = NSDiffableDataSourceSnapshot<TodoSection, Todo>()
@@ -65,6 +85,9 @@ final class ScheduleViewController: BaseViewController {
             self.snapshot = snapshot
             self.dataSource.apply(snapshot)
         }
+
+        // initial input
+        viewModel.currentMonth.value = viewModel.currentPage(date: calendarView.currentPage)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
@@ -100,12 +123,6 @@ final class ScheduleViewController: BaseViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        calendar.setScope(.week, animated: false)
-    }
-
     // MARK: - Initial Setting
     override func initialAttributes() {
         super.initialAttributes()
@@ -116,21 +133,29 @@ final class ScheduleViewController: BaseViewController {
     override func initialHierarchy() {
         super.initialHierarchy()
 
-        [calendar, collectionView].forEach { view.addSubview($0) }
+        navigationItem.leftBarButtonItem = titleBarButtonItem
+        navigationItem.rightBarButtonItem = addBarButtonItem
+        [calendarView, collectionView].forEach { view.addSubview($0) }
     }
 
     override func initialLayout() {
         super.initialLayout()
 
-        calendar.snp.makeConstraints { make in
+        calendarView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(300)
         }
 
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom)
+            make.top.equalTo(calendarView.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+
+    // MARK: - Event
+    @objc
+    private func didTapAddBarButtonItem(_ sender: UIBarButtonItem) {
+
     }
 
 }
@@ -152,6 +177,22 @@ extension ScheduleViewController: FSCalendarDelegate {
             make.height.equalTo(bounds.height)
         }
         view.layoutIfNeeded()
+    }
+
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        switch calendar.scope {
+        case .month:
+            viewModel.currentMonth.value = viewModel.currentPage(
+                date: calendarView.currentPage,
+                isMonth: true
+            )
+        case .week:
+            viewModel.currentMonth.value = viewModel.currentPage(
+                date: calendarView.currentPage
+            )
+        @unknown default:
+            fatalError("calendar scope case 추가됌")
+        }
     }
 
 }
@@ -182,6 +223,7 @@ extension ScheduleViewController: UICollectionViewDelegate {
 
 }
 
+// MARK: - DetailTodoHeaderProtocol
 extension ScheduleViewController: DetailTodoHeaderProtocol {
 
     func didTapExpandButton(_ sender: ExpandButton) {
