@@ -17,11 +17,20 @@ struct TodoSection: Hashable {
     let category: String
     let title: String?
 
+    var todoList: [Todo] = []
+
+    var identifier: String {
+        return startTime + endTime
+    }
+
     private let _id = UUID()
 }
 
 struct Todo: Hashable {
     let title: String
+    // 해당 Todo가 어떤 TodoSection에 포함되는지
+    let sectionIdentifier: String
+
     private let _id = UUID()
 }
 

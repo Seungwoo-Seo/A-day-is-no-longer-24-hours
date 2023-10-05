@@ -50,6 +50,7 @@ final class ScheduleViewController: BaseViewController {
 
     // MARK: - DataSource
     var dataSource: UICollectionViewDiffableDataSource<TodoSection, Todo>!
+    var snapshot: NSDiffableDataSourceSnapshot<TodoSection, Todo>!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -57,28 +58,38 @@ final class ScheduleViewController: BaseViewController {
 
         configureDataSource()
 
-
-
-
         viewModel.todoSectionList.bind { [weak self] (todoSectionList) in
             guard let self else {return}
             var snapshot = NSDiffableDataSourceSnapshot<TodoSection, Todo>()
             snapshot.appendSections(todoSectionList)
+            self.snapshot = snapshot
             self.dataSource.apply(snapshot)
         }
 
-//        apply()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
             self.viewModel.todoSectionList.value.append(section)
-//            self.secondApply()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-            let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제")
+            let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제", todoList: [
+                Todo(title: "Test", sectionIdentifier: "12:0018:00"),
+                Todo(title: "Test1", sectionIdentifier: "12:0018:00"),
+                Todo(title: "Test2", sectionIdentifier: "12:0018:00"),
+                Todo(title: "Test3", sectionIdentifier: "12:0018:00")
+            ])
             let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "식사", title: nil)
             let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "운동", title: nil)
-            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐")
+            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐", todoList: [
+                Todo(title: "네트워크 작업", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
+                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00")
+            ])
 
             [
                 section,
@@ -105,7 +116,7 @@ final class ScheduleViewController: BaseViewController {
     override func initialHierarchy() {
         super.initialHierarchy()
 
-        [calendar, collectionView, floatyButton].forEach { view.addSubview($0) }
+        [calendar, collectionView].forEach { view.addSubview($0) }
     }
 
     override func initialLayout() {
@@ -120,45 +131,6 @@ final class ScheduleViewController: BaseViewController {
             make.top.equalTo(calendar.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-
-    func apply() {
-        var snapshot = NSDiffableDataSourceSnapshot<TodoSection, Todo>()
-        let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
-        viewModel.todoSectionList.value.append(section)
-        snapshot.appendSections(viewModel.todoSectionList.value)
-
-        dataSource.apply(snapshot)
-    }
-
-    func secondApply() {
-        var snapshot = NSDiffableDataSourceSnapshot<TodoSection, Todo>()
-        let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제")
-        let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "식사", title: nil)
-        let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "운동", title: nil)
-        let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐")
-
-        [
-            section,
-            section1,
-            section2,
-            section3
-        ].forEach { viewModel.todoSectionList.value.append($0) }
-
-        snapshot.appendSections(viewModel.todoSectionList.value)
-        snapshot.appendItems(
-            [
-                Todo(title: "네트워크 작업"),
-                Todo(title: "MVVM 패턴 공부하기"),
-                Todo(title: "MVVM 패턴 공부하기"),
-                Todo(title: "MVVM 패턴 공부하기"),
-                Todo(title: "MVVM 패턴 공부하기"),
-                Todo(title: "MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 "),
-                Todo(title: "MVVM 패턴 공부하기"),
-                Todo(title: "MVVM 패턴 공부하기")
-            ]
-        )
-        dataSource.apply(snapshot)
     }
 
 }
@@ -207,6 +179,34 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
 
 // MARK: - UICollectionViewDelegate
 extension ScheduleViewController: UICollectionViewDelegate {
+
+}
+
+extension ScheduleViewController: DetailTodoHeaderProtocol {
+
+    func didTapExpandButton(_ sender: ExpandButton) {
+        if sender.isSelected {
+            if sender.identifier == "12:0018:00" {
+                snapshot.deleteItems(viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!.todoList)
+            } else {
+                snapshot.deleteItems(viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!.todoList)
+            }
+        } else {
+            if sender.identifier == "12:0018:00" {
+                snapshot.appendItems(
+                    viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!.todoList,
+                    toSection: viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!
+                )
+            } else {
+                snapshot.appendItems(
+                    viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!.todoList,
+                    toSection: viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!
+                )
+            }
+        }
+        dataSource.apply(snapshot)
+        sender.isSelected.toggle()
+    }
 
 }
 
@@ -322,7 +322,7 @@ private extension ScheduleViewController {
         ) { [weak self] (supplementaryView, elementKind, indexPath) in
             guard let self else {return}
             let todoSection = self.viewModel.getTodoSection(section: indexPath.section)
-            supplementaryView.configure(todoSection)
+            supplementaryView.configure(self, todoSection: todoSection)
         }
 
         let detailFooterRegistration = UICollectionView.SupplementaryRegistration<DetailTodoFooter>(

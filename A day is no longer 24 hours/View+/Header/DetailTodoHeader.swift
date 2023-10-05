@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DetailTodoHeaderProtocol: AnyObject {
+    func didTapExpandButton(_ sender: ExpandButton)
+}
+
 final class DetailTodoHeader: BaseCollectionReusableView {
     // MARK: - View
     private let startTimeLabel = TimeLabel(style: .standard)
@@ -14,15 +18,23 @@ final class DetailTodoHeader: BaseCollectionReusableView {
     private let timeLineView = LineView(style: .timeLine)
     private let startHorizontalView = LineView(style: .separator)
     private let startTitleLabel = TitleLabel(style: .start)
-    private let expandButton = ExpandButton()
+    let expandButton = ExpandButton()
+
+    // MARK: - Delegate
+    weak var delegate: DetailTodoHeaderProtocol?
 
     // MARK: - Configure
-    func configure(_ todoSection: TodoSection) {
+    func configure(
+        _ delegate: DetailTodoHeaderProtocol?,
+        todoSection: TodoSection
+    ) {
+        self.delegate = delegate
         startTimeLabel.text = todoSection.startTime
         startTitleLabel.setTitle(
             category: todoSection.category,
             title: todoSection.title
         )
+        expandButton.identifier = todoSection.identifier
     }
 
     // MARK: - Initial Setting
@@ -32,8 +44,9 @@ final class DetailTodoHeader: BaseCollectionReusableView {
         expandButton.addTarget(self, action: #selector(didTapExpandButton), for: .touchUpInside)
     }
 
-    @objc func didTapExpandButton(_ sender: ExpandButton) {
-        sender.isSelected.toggle()
+    @objc
+    func didTapExpandButton(_ sender: ExpandButton) {
+        delegate?.didTapExpandButton(sender)
     }
 
     override func initialHierarchy() {
