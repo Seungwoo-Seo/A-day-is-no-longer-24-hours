@@ -36,6 +36,12 @@
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
 		57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */; };
+		57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */; };
+		57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */; };
+		57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */; };
+		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
+		57F822422AD06B240005CBC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822412AD06B240005CBC6 /* Realm */; };
+		57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822432AD06B240005CBC6 /* RealmSwift */; };
 		925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +75,10 @@
 		57C138482AC5496A00277597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C1384B2AC5496A00277597 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57C1384D2AC5496A00277597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewController.swift; sourceTree = "<group>"; };
+		57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewModel.swift; sourceTree = "<group>"; };
+		57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIYCalendarCell.swift; sourceTree = "<group>"; };
+		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
 		DBD42A7EE31B10218A333749 /* Pods-A day is no longer 24 hours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.release.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +91,8 @@
 			files = (
 				5714F4B32AC852E800D55041 /* SnapKit in Frameworks */,
 				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
+				57F822422AD06B240005CBC6 /* Realm in Frameworks */,
+				57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */,
 				5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				5714F4AB2AC851D900D55041 /* Schedule */,
+				57C714022AD2DAEB00DF57D2 /* DateBranch */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				5714F4BB2AC85FF700D55041 /* DetailTodoCell.swift */,
+				57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -296,9 +310,35 @@
 				57C138412AC5496500277597 /* SceneDelegate.swift */,
 				57C138482AC5496A00277597 /* Assets.xcassets */,
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
+				57F822362ACEE6DC0005CBC6 /* Preview.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
 			);
 			path = "A day is no longer 24 hours";
+			sourceTree = "<group>";
+		};
+		57C714022AD2DAEB00DF57D2 /* DateBranch */ = {
+			isa = PBXGroup;
+			children = (
+				57C714032AD2DB1F00DF57D2 /* View */,
+				57C714042AD2DB2800DF57D2 /* ViewModel */,
+			);
+			path = DateBranch;
+			sourceTree = "<group>";
+		};
+		57C714032AD2DB1F00DF57D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57C714042AD2DB2800DF57D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		602B847BCC1AA997A3962614 /* Pods */ = {
@@ -331,6 +371,8 @@
 			packageProductDependencies = (
 				5714F4AF2AC852D200D55041 /* FSCalendar */,
 				5714F4B22AC852E800D55041 /* SnapKit */,
+				57F822412AD06B240005CBC6 /* Realm */,
+				57F822432AD06B240005CBC6 /* RealmSwift */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -363,6 +405,7 @@
 			packageReferences = (
 				5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -380,6 +423,7 @@
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
+				57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +480,7 @@
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
+				57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */,
 				5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */,
 				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
@@ -443,6 +488,7 @@
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
+				57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */,
 				5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */,
 				5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */,
 				5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */,
@@ -452,6 +498,7 @@
 				5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */,
 				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
 				5714F4D42AC86C9E00D55041 /* TitleLabel.swift in Sources */,
+				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
 				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
@@ -524,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -578,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -692,6 +739,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.43.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -704,6 +759,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		57F822412AD06B240005CBC6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		57F822432AD06B240005CBC6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

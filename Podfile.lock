@@ -1,16 +1,28 @@
 PODS:
   - Floaty (4.2.0)
+  - Pageboy (4.0.2)
+  - Tabman (3.0.1):
+    - Pageboy (~> 4.0.2)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Floaty (~> 4.2.0)
+  - Tabman (~> 3.0)
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - Floaty
+    - Pageboy
+    - Tabman
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
+  Pageboy: 34ff11e8d1041b81769d5bcde9b19a0cb7218bd9
+  Tabman: a5880789298f81d3f2cdd6510b54ae637cfd8e09
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 4be375f17feb94a9feff7fc0884dfaa39165d557
+PODFILE CHECKSUM: e5d04cec4927904e00cae7d9f340e71a6942d5fb
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.13.0

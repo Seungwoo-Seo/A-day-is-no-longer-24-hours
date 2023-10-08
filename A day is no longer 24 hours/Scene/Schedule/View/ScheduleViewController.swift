@@ -5,7 +5,6 @@
 //  Created by 서승우 on 2023/09/30.
 //
 
-import Floaty
 import FSCalendar
 import UIKit
 
@@ -18,8 +17,13 @@ final class ScheduleViewController: BaseViewController {
         return label
     }()
     private lazy var titleBarButtonItem = UIBarButtonItem(customView: titleLabel)
-    private lazy var addBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(didTapAddBarButtonItem))
+    private lazy var addTodoBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: UIImage(systemName: "plus"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapAddTodoBarButtonItem)
+        )
         button.tintColor = Constraints.Color.white
         return button
     }()
@@ -31,13 +35,11 @@ final class ScheduleViewController: BaseViewController {
         view.scope = .week
         view.headerHeight = 0
         view.locale = Locale(identifier: "ko_KR")
-        view.appearance.headerDateFormat = "YYYY년 MM월"
-        view.appearance.headerMinimumDissolvedAlpha = 0
-        view.appearance.headerTitleColor = .white
         view.appearance.todayColor = Constraints.Color.clear
         view.appearance.titleTodayColor = Constraints.Color.todayColor
         view.appearance.weekdayTextColor = Constraints.Color.white
         view.appearance.titleDefaultColor = Constraints.Color.white
+        view.select(view.today)
         return view
     }()
     private lazy var collectionView = {
@@ -50,14 +52,28 @@ final class ScheduleViewController: BaseViewController {
         view.backgroundColor = Constraints.Color.black
         return view
     }()
-    private let floatyButton = {
-        let button = Floaty()
-        button.plusColor = Constraints.Color.black
-        button.buttonColor = Constraints.Color.white
-        button.addItem("Hello, World1", icon: UIImage(systemName: "heart")!)
-        button.addItem("Hello, World2", icon: UIImage(systemName: "heart")!)
+    private lazy var dateBranchButton = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = .white
+        config.title = "분기처리"
+        let button = UIButton(configuration: config)
+        button.configurationUpdateHandler = { button in
+            switch button.state {
+            case .selected:
+                print("selected")
+            default:
+                print("normal")
+            }
+        }
+        button.addTarget(self, action: #selector(didTapDateBranchButton), for: .touchUpInside)
         return button
     }()
+
+    @objc func didTapDateBranchButton(_ sender: UIButton) {
+        let vc = DateBranchViewController()
+        
+        present(vc, animated: true)
+    }
 
     // MARK: - ViewModel
     let viewModel = ScheduleViewModel()
@@ -88,45 +104,11 @@ final class ScheduleViewController: BaseViewController {
 
         // initial input
         viewModel.currentMonth.value = viewModel.currentPage(date: calendarView.currentPage)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
-            self.viewModel.todoSectionList.value.append(section)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-            let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제", todoList: [
-                Todo(title: "Test", sectionIdentifier: "12:0018:00"),
-                Todo(title: "Test1", sectionIdentifier: "12:0018:00"),
-                Todo(title: "Test2", sectionIdentifier: "12:0018:00"),
-                Todo(title: "Test3", sectionIdentifier: "12:0018:00")
-            ])
-            let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "식사", title: nil)
-            let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "운동", title: nil)
-            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐", todoList: [
-                Todo(title: "네트워크 작업", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기 MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00"),
-                Todo(title: "MVVM 패턴 공부하기", sectionIdentifier: "20:0022:00")
-            ])
-
-            [
-                section,
-                section1,
-                section2,
-                section3
-            ].forEach { self.viewModel.todoSectionList.value.append($0) }
-        }
     }
 
     // MARK: - Initial Setting
     override func initialAttributes() {
         super.initialAttributes()
-
 
     }
 
@@ -134,8 +116,8 @@ final class ScheduleViewController: BaseViewController {
         super.initialHierarchy()
 
         navigationItem.leftBarButtonItem = titleBarButtonItem
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        [calendarView, collectionView].forEach { view.addSubview($0) }
+        navigationItem.rightBarButtonItem = addTodoBarButtonItem
+        [calendarView, collectionView, dateBranchButton].forEach { view.addSubview($0) }
     }
 
     override func initialLayout() {
@@ -150,12 +132,16 @@ final class ScheduleViewController: BaseViewController {
             make.top.equalTo(calendarView.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+
+        dateBranchButton.snp.makeConstraints { make in
+            make.center.equalTo(collectionView)
+        }
     }
 
     // MARK: - Event
     @objc
-    private func didTapAddBarButtonItem(_ sender: UIBarButtonItem) {
-
+    private func didTapAddTodoBarButtonItem(_ sender: UIBarButtonItem) {
+        presentActionSheet()
     }
 
 }
@@ -195,6 +181,26 @@ extension ScheduleViewController: FSCalendarDelegate {
         }
     }
 
+    func calendar(
+        _ calendar: FSCalendar,
+        didSelect date: Date,
+        at monthPosition: FSCalendarMonthPosition
+    ) {
+        // 한국 시간으로 변경 필요
+        let format = DateFormatter()
+        format.locale = Locale(identifier: "ko_KR")
+        format.dateFormat = "yyyyMMdd"
+        let tapDate = format.string(from: date) // 년월일 이니까 Unique 하다.
+        print("탭한 날은 -> \(tapDate)")
+
+        // 탭 했을 때 해당 날짜가 분기처리 되었는지 확인하고
+
+        // 만약 분기 처리가 되어 있다면 Tabman을 이용한 분기처리와 TimeLine, addTodoBarButtomItem을 보여주고
+        // flotyButton을 숨긴다.
+
+        // 되어 있지 않다면 Tabman, TimeLineView, addTodoBarButtonItem을 숨기고 flotyButton을 보여준다.
+    }
+
 }
 
 // MARK: - FSCalendarDelegateAppearance
@@ -205,7 +211,7 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
         appearance: FSCalendarAppearance,
         fillSelectionColorFor date: Date
     ) -> UIColor? {
-        return Constraints.Color.white
+        return calendar.today == date ? Constraints.Color.todayColor : Constraints.Color.white
     }
 
     func calendar(
@@ -409,6 +415,24 @@ private extension ScheduleViewController {
             }
         }
 
+    }
+
+}
+
+// MARK: - Action
+private extension ScheduleViewController {
+
+    func goToToday() {
+        calendarView.select(calendarView.today)
+    }
+
+    func presentActionSheet() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let simple = UIAlertAction(title: "간단한 Todo", style: .default)
+        let detail = UIAlertAction(title: "자세한 Todo", style: .default)
+        [cancel, simple, detail].forEach { alert.addAction($0) }
+        present(alert, animated: true)
     }
 
 }
