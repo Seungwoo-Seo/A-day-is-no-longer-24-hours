@@ -32,6 +32,8 @@
 		5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DF2AC9143F00D55041 /* BaseImageView.swift */; };
 		5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* Identifiable.swift */; };
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
+		575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */; };
+		575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelPickerView.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
@@ -39,6 +41,12 @@
 		57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */; };
 		57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */; };
 		57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */; };
+		57C7140B2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */; };
+		57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */; };
+		57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */; };
+		57ECC6E92AD7D7BA009E22BE /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */; };
+		57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */; };
+		57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */; };
 		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
 		57F822422AD06B240005CBC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822412AD06B240005CBC6 /* Realm */; };
 		57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822432AD06B240005CBC6 /* RealmSwift */; };
@@ -69,6 +77,8 @@
 		5714F4DF2AC9143F00D55041 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
 		5714F4E32AC9266A00D55041 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
+		575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatePickerView.swift; sourceTree = "<group>"; };
+		575BA9672AD435200058FDC2 /* LabelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerView.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +88,10 @@
 		57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewController.swift; sourceTree = "<group>"; };
 		57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewModel.swift; sourceTree = "<group>"; };
 		57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIYCalendarCell.swift; sourceTree = "<group>"; };
+		57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTimePickerView.swift; sourceTree = "<group>"; };
+		57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
+		57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewController.swift; sourceTree = "<group>"; };
+		57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewModel.swift; sourceTree = "<group>"; };
 		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +108,8 @@
 				57F822422AD06B240005CBC6 /* Realm in Frameworks */,
 				57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */,
 				5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */,
+				57C7140B2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift in Frameworks */,
+				57ECC6E92AD7D7BA009E22BE /* HGCircularSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +129,7 @@
 			children = (
 				5714F4AB2AC851D900D55041 /* Schedule */,
 				57C714022AD2DAEB00DF57D2 /* DateBranch */,
+				57ECC6EC2AD7D901009E22BE /* SleepTime */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -256,6 +273,10 @@
 			isa = PBXGroup;
 			children = (
 				5714F4C92AC8668000D55041 /* LineView.swift */,
+				575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */,
+				575BA9672AD435200058FDC2 /* LabelPickerView.swift */,
+				57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */,
+				57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +362,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		57ECC6EC2AD7D901009E22BE /* SleepTime */ = {
+			isa = PBXGroup;
+			children = (
+				57ECC6ED2AD7D90C009E22BE /* View */,
+				57ECC6EE2AD7D913009E22BE /* ViewModel */,
+			);
+			path = SleepTime;
+			sourceTree = "<group>";
+		};
+		57ECC6ED2AD7D90C009E22BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57ECC6EE2AD7D913009E22BE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		602B847BCC1AA997A3962614 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +419,8 @@
 				5714F4B22AC852E800D55041 /* SnapKit */,
 				57F822412AD06B240005CBC6 /* Realm */,
 				57F822432AD06B240005CBC6 /* RealmSwift */,
+				57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */,
+				57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -406,6 +454,8 @@
 				5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -477,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
+				57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */,
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
@@ -485,18 +536,23 @@
 				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
+				57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
 				57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */,
 				5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */,
 				5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */,
+				575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */,
 				5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */,
 				5714F4CA2AC8668000D55041 /* LineView.swift in Sources */,
 				5714F4B82AC8594F00D55041 /* ScheduleModel.swift in Sources */,
+				575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */,
 				5714F4C02AC8609100D55041 /* SimpleTodoHeader.swift in Sources */,
 				5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */,
+				57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */,
 				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
+				57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */,
 				5714F4D42AC86C9E00D55041 /* TitleLabel.swift in Sources */,
 				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
@@ -739,6 +795,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -759,6 +831,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
+			productName = HGCircularSlider;
 		};
 		57F822412AD06B240005CBC6 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

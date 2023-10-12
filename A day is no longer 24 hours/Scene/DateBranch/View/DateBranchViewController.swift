@@ -9,33 +9,6 @@ import FSCalendar
 import UIKit
 import TextFieldEffects
 
-extension CALayer {
-    func addBorder(_ arr_edge: [UIRectEdge], color: UIColor, width: CGFloat) {
-        for edge in arr_edge {
-            let border = CALayer()
-            switch edge {
-            case UIRectEdge.top:
-                border.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: width)
-                break
-            case UIRectEdge.bottom:
-                border.frame = CGRect.init(x: 0, y: frame.height - width, width: frame.width, height: width)
-                break
-            case UIRectEdge.left:
-                border.frame = CGRect.init(x: 0, y: 0, width: width, height: frame.height)
-                break
-            case UIRectEdge.right:
-                border.frame = CGRect.init(x: frame.width - width, y: 0, width: width, height: frame.height)
-                break
-            default:
-                break
-            }
-            border.backgroundColor = color.cgColor;
-            self.addSublayer(border)
-        }
-    }
-}
-
-
 final class DateBranchViewController: BaseViewController {
     fileprivate let gregorian = Calendar(identifier: .gregorian)
     fileprivate let formatter: DateFormatter = {
@@ -44,18 +17,12 @@ final class DateBranchViewController: BaseViewController {
         return formatter
     }()
 
-    private let scrollView = {
-        let view = UIScrollView()
-        return view
-    }()
-    private let contentView = {
-        let view = UIView()
-        return view
-    }()
-    let calendarLabel = {
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let calendarLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.textColor = .white
+        label.font = Constraints.Font.Insensitive.systemFont_24_semibold
+        label.textColor = Constraints.Color.white
         label.text = "날짜를 선택해주세요 🗓"
         return label
     }()
@@ -80,56 +47,41 @@ final class DateBranchViewController: BaseViewController {
         return view
     }()
 
-    let sleepStartTimeLabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.textColor = .white
-        label.text = "수면 시간 😴"
-        return label
-    }()
-
-    let textField1 = {
-        let view = UITextField()
-        view.borderStyle = .roundedRect
+    private let pickerStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.distribution = .fillProportionally
+        view.alignment = .fill
+        view.spacing = 48
         return view
     }()
+    private let bedTimeLabelTimePickerView = LabelDatePickerView(title: "언제 잘건가요? 😴")
+    private lazy var wakeUpTimeLabelTimePickerView = TimeSettingView(title: "얼마나 잘건가요? 🐔", delegate: self)
+    private let dateBranchLabelPickerView = LabelPickerView(title: "하루를 어떻게 나눌건가요? ✂️")
 
-    let sleepEndTimeLabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.textColor = .white
-        label.text = "기상 시간 🐔"
-        return label
-    }()
 
-    let textField2 = {
-        let view = UITextField()
-        view.borderStyle = .roundedRect
-        return view
-    }()
 
-    let dateBranchLabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.textColor = .white
-        label.text = "하루를 며칠로 나누시겠습니까? 📐"
-        return label
-    }()
+    @objc func valueChanged(_ picker: UIDatePicker) {
+        let t = picker.calendar.dateComponents(in: .current, from: picker.date)
+        viewModel.bedTimeComponents.value = t
 
-    let textField3 = {
-        let view = UITextField()
-        view.borderStyle = .roundedRect
-        return view
-    }()
+        let hoursToAdd = 7
+        let minutesToAdd = 25
 
-    private lazy var applyButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseForegroundColor = .black
-        config.background.backgroundColor = .white
-        config.title = "적용하기"
-        let button = UIButton(configuration: config)
-        return button
-    }()
+        let futureTime = picker.calendar.date(byAdding: .hour, value: hoursToAdd, to: picker.date)!
+        let finalTime = picker.calendar.date(byAdding: .minute, value: minutesToAdd, to: futureTime)!
+
+        let format = DateFormatter()
+        format.locale = Locale(identifier: "ko_KR")
+        format.dateFormat = "HH mm"
+        print(format.string(from: finalTime))
+    }
+
+    @objc func valueChanged1(_ picker: UIDatePicker) {
+        let t = picker.calendar.dateComponents(in: .current, from: picker.date)
+        viewModel.wakeUpTimeComponents.value = t
+//        viewModel.wakeUpTimeCalendar.value = picker.calendar
+    }
 
 
     // MARK: - ViewModel
@@ -139,19 +91,80 @@ final class DateBranchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .black
-        view.layer.addBorder([.top], color: .white, width: 1)
+        bedTimeLabelTimePickerView.datePicker.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
+//        wakeUpTimeLabelTimePickerView.datePicker.addTarget(self, action: #selector(valueChanged1), for: .valueChanged)
+
+        // Output
+        viewModel.dateList.bind { [weak self] (dateList) in
+            guard let self else {return}
+            self.viewModel.dateListVaildation(dateList)
+        }
+
+        viewModel.dateListIsVaildate.bind { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.calendarView.layer.borderColor = UIColor.green.cgColor
+            } else {
+                self.calendarView.layer.borderColor = UIColor.darkGray.cgColor
+            }
+        }
+
+        viewModel.bedTimeComponents.bind { [weak self] _ in
+            guard let self else {return}
+            self.viewModel.sleepTimeVaildation()
+        }
+
+        viewModel.wakeUpTimeComponents.bind { [weak self] _ in
+            guard let self else {return}
+            self.viewModel.sleepTimeVaildation()
+        }
+
+//        viewModel.sleepTimeIsVaildate.bind { [weak self] (bool) in
+//            guard let self else {return}
+//
+//            if bool {
+////                self.bedTimeLabelTimePickerView.picker.layer.borderColor = UIColor.green.cgColor
+////                self.wakeUpTimeLabelTimePickerView.picker.layer.borderColor = UIColor.green.cgColor
+//
+//
+////                self.viewModel.dateBranchKindList.value
+//                print("---------------")
+//                self.viewModel.datedustks()
+//                print("---------------")
+//
+//                self.dateBranchLabelPickerView.picker.reloadAllComponents()
+//
+//                // TODO: - 수정 필요
+//                self.dateBranchLabelPickerView.isHidden = false
+//                self.view.layoutIfNeeded()
+//                let desiredContentOffsetY = self.dateBranchLabelPickerView.frame.origin.y
+//                self.scrollView.setContentOffset(CGPoint(x: 0, y: desiredContentOffsetY), animated: true)
+//
+//            } else {
+//
+//                print("---------------")
+//                self.viewModel.datedustks()
+//                print("---------------")
+////                self.bedTimeLabelTimePickerView.picker.layer.borderColor = UIColor.red.cgColor
+////                self.wakeUpTimeLabelTimePickerView.picker.layer.borderColor = UIColor.red.cgColor
+//
+//                self.dateBranchLabelPickerView.isHidden = true
+//            }
+//        }
 
 
 
+        // Input
+    }
 
-//        let applyBarButtonItem = UIBarButtonItem(title: "적용하기", style: .plain, target: self, action: #selector(didTapApplyBarButtonItem))
-//        navigationItem.title = "test"
-//        navigationItem.rightBarButtonItem = applyBarButtonItem
-        calendarView.layer.borderColor = UIColor.darkGray.cgColor
-        calendarView.layer.borderWidth = 1
-        calendarView.layer.cornerRadius = 8
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            self.dateBranchLabelPickerView.isHidden = false
+//            let desiredContentOffsetY = self.dateBranchLabelPickerView.frame.origin.y
+//            self.scrollView.setContentOffset(CGPoint(x: 0, y: desiredContentOffsetY), animated: true)
+//        }
     }
 
     @objc func didTapApplyBarButtonItem() {
@@ -163,6 +176,21 @@ final class DateBranchViewController: BaseViewController {
     }
 
     // MARK: - Initial Setting
+    override func initialAttributes() {
+        super.initialAttributes()
+
+        view.backgroundColor = .black
+        let applyBarButtonItem = UIBarButtonItem(title: "적용하기", style: .plain, target: self, action: #selector(didTapApplyBarButtonItem))
+        applyBarButtonItem.isEnabled = false
+        navigationItem.rightBarButtonItem = applyBarButtonItem
+        calendarView.layer.borderColor = UIColor.darkGray.cgColor
+        calendarView.layer.borderWidth = 1
+        calendarView.layer.cornerRadius = 8
+
+        dateBranchLabelPickerView.isHidden = true
+
+    }
+
     override func initialHierarchy() {
         super.initialHierarchy()
 
@@ -171,20 +199,14 @@ final class DateBranchViewController: BaseViewController {
         [
             calendarLabel,
             calendarView,
-
-            sleepStartTimeLabel,
-            textField1,
-
-            sleepEndTimeLabel,
-            textField2,
-
-            dateBranchLabel,
-            textField3,
-
-            applyButton
+            pickerStackView
         ].forEach { contentView.addSubview($0) }
 
-
+        [
+            bedTimeLabelTimePickerView,
+            wakeUpTimeLabelTimePickerView,
+            dateBranchLabelPickerView
+        ].forEach { pickerStackView.addArrangedSubview($0) }
     }
 
     override func initialLayout() {
@@ -210,44 +232,10 @@ final class DateBranchViewController: BaseViewController {
             make.height.equalTo(300)
         }
 
-        sleepStartTimeLabel.snp.makeConstraints { make in
+        pickerStackView.snp.makeConstraints { make in
             make.top.equalTo(calendarView.snp.bottom).offset(48)
             make.horizontalEdges.equalToSuperview().inset(8)
-        }
-
-        textField1.snp.makeConstraints { make in
-            make.top.equalTo(sleepStartTimeLabel.snp.bottom).offset(8)
-            make.horizontalEdges.equalToSuperview().inset(8)
-            make.height.equalTo(44)
-        }
-
-        sleepEndTimeLabel.snp.makeConstraints { make in
-            make.top.equalTo(textField1.snp.bottom).offset(48)
-            make.horizontalEdges.equalToSuperview().inset(8)
-        }
-
-        textField2.snp.makeConstraints { make in
-            make.top.equalTo(sleepEndTimeLabel.snp.bottom).offset(8)
-            make.horizontalEdges.equalToSuperview().inset(8)
-            make.height.equalTo(44)
-        }
-
-        dateBranchLabel.snp.makeConstraints { make in
-            make.top.equalTo(textField2.snp.bottom).offset(48)
-            make.horizontalEdges.equalToSuperview().inset(8)
-        }
-
-        textField3.snp.makeConstraints { make in
-            make.top.equalTo(dateBranchLabel.snp.bottom).offset(8)
-            make.horizontalEdges.equalToSuperview().inset(8)
-            make.height.equalTo(44)
-        }
-
-        applyButton.snp.makeConstraints { make in
-            make.top.equalTo(textField3.snp.bottom).offset(32)
-            make.horizontalEdges.equalToSuperview().inset(8)
-            make.height.equalTo(44)
-            make.bottom.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(48)
         }
     }
 
@@ -303,6 +291,10 @@ extension DateBranchViewController: FSCalendarDelegate {
         at monthPosition: FSCalendarMonthPosition
     ) {
         configureVisibleCells()
+
+        viewModel.dateList.value.removeAll {
+            $0 == date
+        }
     }
 
     func calendar(
@@ -317,6 +309,8 @@ extension DateBranchViewController: FSCalendarDelegate {
         let tapDate = format.string(from: date) // 년월일 이니까 Unique 하다.
         print("탭한 날은 -> \(tapDate)")
         configureVisibleCells()
+
+        viewModel.dateList.value.append(date)
 
         // 탭 했을 때 해당 날짜가 분기처리 되었는지 확인하고
 
@@ -345,6 +339,52 @@ extension DateBranchViewController: FSCalendarDelegateAppearance {
         titleSelectionColorFor date: Date
     ) -> UIColor? {
         return Constraints.Color.black
+    }
+
+}
+
+// MARK: - UIPickerViewDataSource
+extension DateBranchViewController: UIPickerViewDataSource {
+
+    // 여기도 유동적으로 들어가야해 왜냐면
+    // 분기는 하루 생활시간에서 "시"의 갯수보다 많을 수 없다
+    // 즉, 취침시간이 6시간이라고 가정했을 때
+    // 생활 시간은 18시간이고
+    // 이 하루의 최대 분기는 18개가 최대
+    func numberOfComponents(
+        in pickerView: UIPickerView
+    ) -> Int {
+        return viewModel.numberOfComponents
+    }
+
+    func pickerView(
+        _ pickerView: UIPickerView,
+        numberOfRowsInComponent component: Int
+    ) -> Int {
+        return 1//viewModel.numberOfRowsInComponent
+    }
+
+    func pickerView(
+        _ pickerView: UIPickerView,
+        titleForRow row: Int,
+        forComponent component: Int
+    ) -> String? {
+        return viewModel.titleForRow(row)
+    }
+}
+
+extension DateBranchViewController: UIPickerViewDelegate {
+
+}
+
+extension DateBranchViewController: TimeSettingViewDelegate {
+
+    func didSelectRow(_ stringValue: String, isHour: Bool) {
+        if isHour {
+            print("hour -> ", stringValue)
+        } else {
+            print("minute -> ", stringValue)
+        }
     }
 
 }

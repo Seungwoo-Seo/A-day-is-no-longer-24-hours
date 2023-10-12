@@ -10,6 +10,24 @@
       }
     },
     {
+      "identity" : "hgcircularslider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HamzaGhazouani/HGCircularSlider",
+      "state" : {
+        "revision" : "2b98462d32bf7211851aa73537dbaba5dd80229e",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
+      "state" : {
+        "revision" : "abdf4e49e2178f6fb46fd71f8d87866140feda7c",
+        "version" : "6.5.15"
+      }
+    },
+    {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",

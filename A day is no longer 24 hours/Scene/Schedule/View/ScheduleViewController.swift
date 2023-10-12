@@ -70,8 +70,8 @@ final class ScheduleViewController: BaseViewController {
     }()
 
     @objc func didTapDateBranchButton(_ sender: UIButton) {
-        let vc = DateBranchViewController()
-        
+        let vc = UINavigationController(rootViewController: DateBranchViewController())
+//        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
 
@@ -104,6 +104,39 @@ final class ScheduleViewController: BaseViewController {
 
         // initial input
         viewModel.currentMonth.value = viewModel.currentPage(date: calendarView.currentPage)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
+            self.viewModel.todoSectionList.value.append(section)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제", todoList: [
+                Todo(title: "첫번째 씬", sectionIdentifier: ""),
+                Todo(title: "두번째 씬", sectionIdentifier: ""),
+                Todo(title: "세번째 씬", sectionIdentifier: ""),
+                Todo(title: "네번째 씬", sectionIdentifier: "")
+            ])
+            let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "식사", title: nil)
+            let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "운동", title: nil)
+            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐", todoList: [
+                Todo(title: "네트워크", sectionIdentifier: ""),
+                Todo(title: "MVVM", sectionIdentifier: ""),
+                Todo(title: "MVC", sectionIdentifier: ""),
+                Todo(title: "라이브러리", sectionIdentifier: ""),
+                Todo(title: "라이브러리", sectionIdentifier: ""),
+                Todo(title: "라이브러리", sectionIdentifier: ""),
+                Todo(title: "라이브러리", sectionIdentifier: ""),
+                Todo(title: "라이브러리", sectionIdentifier: "")
+            ])
+
+            [
+                section,
+                section1,
+                section2,
+                section3
+            ].forEach { self.viewModel.todoSectionList.value.append($0) }
+        }
     }
 
     // MARK: - Initial Setting
