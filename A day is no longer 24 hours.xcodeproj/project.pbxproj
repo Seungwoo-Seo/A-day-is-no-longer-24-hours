@@ -49,6 +49,7 @@
 		57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */; };
 		57F616AE2AD856F8007C7C4C /* DateDivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DateDivideViewController.swift */; };
 		57F616B32AD85753007C7C4C /* DateDivideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */; };
+		57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */; };
 		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
 		57F822422AD06B240005CBC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822412AD06B240005CBC6 /* Realm */; };
 		57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822432AD06B240005CBC6 /* RealmSwift */; };
@@ -96,6 +97,7 @@
 		57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewModel.swift; sourceTree = "<group>"; };
 		57F616AD2AD856F8007C7C4C /* DateDivideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDivideViewController.swift; sourceTree = "<group>"; };
 		57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDivideViewModel.swift; sourceTree = "<group>"; };
+		57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
 		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		5714F49E2AC8474900D55041 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
+				57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */,
 				57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */,
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
