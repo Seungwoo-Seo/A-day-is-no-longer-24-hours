@@ -21,6 +21,7 @@ final class Observable<T> {
     }
 
     func bind(_ closure: @escaping ((T) -> ())) {
+        closure(value)
         listener = closure
     }
 

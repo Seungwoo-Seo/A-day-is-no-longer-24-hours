@@ -131,10 +131,10 @@
 		5714F4982AC8463200D55041 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				5714F4AB2AC851D900D55041 /* Schedule */,
-				57C714022AD2DAEB00DF57D2 /* DateBranch */,
 				57ECC6EC2AD7D901009E22BE /* SleepTime */,
 				57F616AF2AD8573D007C7C4C /* DateDivide */,
+				5714F4AB2AC851D900D55041 /* Schedule */,
+				57C714022AD2DAEB00DF57D2 /* DateBranch */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
