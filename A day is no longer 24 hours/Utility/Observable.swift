@@ -20,8 +20,13 @@ final class Observable<T> {
         self.value = value
     }
 
-    func bind(_ closure: @escaping ((T) -> ())) {
-        closure(value)
+    func bind(
+        subscribeNow: Bool = true,
+        _ closure: @escaping ((T) -> ())
+    ) {
+        if subscribeNow {
+            closure(value)
+        }
         listener = closure
     }
 

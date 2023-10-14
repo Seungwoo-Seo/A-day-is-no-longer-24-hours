@@ -15,8 +15,15 @@ final class SleepTimeViewModel {
     /// 수면 시간
     let sleepTime: Observable<Date>
     /// 수면 시간 유효성
-    let sleepTimeValidity: Observable<Bool> // Bool에서 enum으로 변경 가능성 있음 => ex 좋다 4~8시간, 작다 1>, 크다 20<, 좀 많다 9<
+    // 처음에 유효한 시간을 설정해서 보내니까 true
+    let sleepTimeValidity = Observable(true) // Bool에서 enum으로 변경 가능성 있음 => ex 좋다 4~8시간, 작다 1>, 크다 20<, 좀 많다 9<
+    /// 생활 시간
+    let lifeTime: Observable<Int>
 
+    /// "다음으로" 버튼 탭 이벤트
+    let nextButtonTapped = Observable(false)
+
+    // MARK: - Init
     init() {
         let startPointValue = TimeInterval(1 * 60 * 60)
         let endPointValue = TimeInterval(7 * 60 * 60)
@@ -29,8 +36,20 @@ final class SleepTimeViewModel {
         self.bedTime = Observable(bedTime)
         self.wakeUpTime = Observable(wakeUpTime)
         self.sleepTime = Observable(sleepTime)
-        // 처음에 유효한 시간을 설정해서 보내니까 true
-        self.sleepTimeValidity = Observable(true)
+
+        // 전달 받은 수면시간(Date)을 분으로 바꾸고
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: TimeZone(abbreviation: "UTC")!, from: sleepTime)
+        let hour = components.hour ?? 0
+        let minute = components.minute ?? 0
+        let sleepTimeToMinute = hour * 60 + minute
+
+        // 하루를 분으로 바꿔서
+        let dayToMinute = 24 * 60
+
+        let lifeTime = dayToMinute - sleepTimeToMinute
+        print("tㅐㅇ활 시간", lifeTime)
+        self.lifeTime = Observable(lifeTime)
     }
     
 }
@@ -61,9 +80,9 @@ extension SleepTimeViewModel {
         wakeUpTime.value = Date(
             timeIntervalSinceReferenceDate: wakeUpTimePoint
         )
-        self.sleepTime.value = sleepTimeDate
+        sleepTime.value = sleepTimeDate
 
-        // MARK: - 성공: 음수 양수 생각할 필요없이 시와 분을 뽑아서 전부 분으로 바꿔서 1200(=8시간)분, 60(=1시간)분으로 조건문 처리
+        // MARK: - 성공: 음수 양수 생각할 필요없이 시와 분을 뽑아서 전부 분으로 바꿔서 1200(=20시간)분, 60(=1시간)분으로 조건문 처리
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents(in: TimeZone(abbreviation: "UTC")!, from: sleepTimeDate)
         let hour = components.hour ?? 0

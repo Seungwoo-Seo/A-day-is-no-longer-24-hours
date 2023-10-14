@@ -10,14 +10,19 @@ import UIKit
 
 final class SleepTimeViewController: BaseViewController {
     // MARK: - View
-    private lazy var nextBarButtomItem = {
-        let buttonItem = UIBarButtonItem(
-            title: "다음으로 >",
-            style: .plain,
-            target: self,
-            action: #selector(didTapNextBarButtonItem)
+    private lazy var nextButtom = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = Constraints.Color.systemBlue
+        config.background.backgroundColor = Constraints.Color.clear
+        config.title = "다음으로"
+        let button = UIButton(configuration: config)
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        button.addTarget(
+            self,
+            action: #selector(didTapNextButton),
+            for: .touchUpInside
         )
-        return buttonItem
+        return button
     }()
     private let descriptionLabel = {
         let label = UILabel()
@@ -161,13 +166,59 @@ final class SleepTimeViewController: BaseViewController {
     }()
 
     // MARK: - ViewModel
-    private let viewModel = SleepTimeViewModel()
+    private let viewModel: SleepTimeViewModel
+
+    // MARK: - Init
+    private init(_ viewModel: SleepTimeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    convenience init(viewModel: SleepTimeViewModel) {
+        self.init(viewModel)
+
+        viewModel.bedTime.bind { [weak self] (bedTime) in
+            guard let self else {return}
+            self.dateFormatter.dateFormat = "a HH:mm"
+            self.bedTimeLabel.text = self.dateFormatter.string(from: bedTime)
+        }
+
+        viewModel.wakeUpTime.bind { [weak self] (wakeUpTime) in
+            guard let self else {return}
+            self.dateFormatter.dateFormat = "a HH:mm"
+            self.wakeUpTimeLabel.text = self.dateFormatter.string(from: wakeUpTime)
+        }
+
+        viewModel.sleepTime.bind { [weak self] (sleepTime) in
+            guard let self else {return}
+            self.dateFormatter.dateFormat = "H 시간 m 분"
+            self.sleepTimeLabel.text = self.dateFormatter.string(from: sleepTime)
+        }
+
+        viewModel.sleepTimeValidity.bind { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.nextButtom.isEnabled = true
+                self.rangeCircularSlider.trackFillColor = Constraints.Color.white
+                self.sleepTimeValidityLabel.textColor = Constraints.Color.white
+                self.sleepTimeValidityLabel.text = "적절한 수면 시간을 정해보세요!"
+            } else {
+                self.nextButtom.isEnabled = false
+                self.rangeCircularSlider.trackFillColor = Constraints.Color.red
+                self.sleepTimeValidityLabel.textColor = Constraints.Color.red
+                self.sleepTimeValidityLabel.text = "수면 시간이 너무 작거나 너무 큽니다."
+            }
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bind()
     }
 
     // MARK: - Initial Setting
@@ -180,9 +231,8 @@ final class SleepTimeViewController: BaseViewController {
     override func initialHierarchy() {
         super.initialHierarchy()
 
-        navigationItem.rightBarButtonItem = nextBarButtomItem
-
         [
+            nextButtom,
             descriptionLabel,
             rangeCircularSlider,
             clockImageView,
@@ -222,9 +272,15 @@ final class SleepTimeViewController: BaseViewController {
 
         let offset = 16
         let inset = 16
+        nextButtom.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalToSuperview()
+        }
+
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(offset)
+            make.top.equalTo(nextButtom.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
+            make.bottom.equalTo(containerStackView.snp.top).offset(-offset)
         }
 
         rangeCircularSlider.snp.makeConstraints { make in
@@ -251,56 +307,16 @@ final class SleepTimeViewController: BaseViewController {
         containerStackView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(inset+4)
             make.bottom.equalTo(rangeCircularSlider.snp.top).inset(inset)
-            make.top.greaterThanOrEqualTo(descriptionLabel.snp.bottom)
-        }
-    }
-
-    // MARK: - Bind
-    private func bind() {
-
-        viewModel.bedTime.bind { [weak self] (bedTime) in
-            guard let self else {return}
-            self.dateFormatter.dateFormat = "a HH:mm"
-            self.bedTimeLabel.text = self.dateFormatter.string(from: bedTime)
-        }
-
-        viewModel.wakeUpTime.bind { [weak self] (wakeUpTime) in
-            guard let self else {return}
-            self.dateFormatter.dateFormat = "a HH:mm"
-            self.wakeUpTimeLabel.text = self.dateFormatter.string(from: wakeUpTime)
-        }
-
-        viewModel.sleepTime.bind { [weak self] (sleepTime) in
-            guard let self else {return}
-            self.dateFormatter.dateFormat = "H 시간 m 분"
-            self.sleepTimeLabel.text = self.dateFormatter.string(from: sleepTime)
-        }
-
-        viewModel.sleepTimeValidity.bind { [weak self] (bool) in
-            guard let self else {return}
-            if bool {
-                self.nextBarButtomItem.isEnabled = true
-                self.rangeCircularSlider.trackFillColor = Constraints.Color.white
-                self.sleepTimeValidityLabel.textColor = Constraints.Color.white
-                self.sleepTimeValidityLabel.text = "적절한 수면 시간을 정해보세요!"
-            } else {
-                self.nextBarButtomItem.isEnabled = false
-                self.rangeCircularSlider.trackFillColor = Constraints.Color.red
-                self.sleepTimeValidityLabel.textColor = Constraints.Color.red
-                self.sleepTimeValidityLabel.text = "수면 시간이 너무 작거나 너무 큽니다."
-            }
         }
     }
 
     // MARK: - Event
     @objc
-    private func didTapNextBarButtonItem(
-        _ sender: UIBarButtonItem
+    private func didTapNextButton(
+        _ sender: UIButton
     ) {
-        let vc = DateDivideViewController()
-        navigationController?.pushViewController(
-            vc, animated: true
-        )
+        // 애초에 nextButton은 활성화가 되어 있어야 tap
+        viewModel.nextButtonTapped.value.toggle()
     }
 
     @objc

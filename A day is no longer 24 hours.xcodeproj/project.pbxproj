@@ -47,9 +47,11 @@
 		57ECC6E92AD7D7BA009E22BE /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */; };
 		57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */; };
 		57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */; };
-		57F616AE2AD856F8007C7C4C /* DateDivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DateDivideViewController.swift */; };
+		57F616AE2AD856F8007C7C4C /* DayDivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */; };
 		57F616B32AD85753007C7C4C /* DateDivideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */; };
 		57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */; };
+		57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */; };
+		57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */; };
 		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
 		57F822422AD06B240005CBC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822412AD06B240005CBC6 /* Realm */; };
 		57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822432AD06B240005CBC6 /* RealmSwift */; };
@@ -95,9 +97,11 @@
 		57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewController.swift; sourceTree = "<group>"; };
 		57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewModel.swift; sourceTree = "<group>"; };
-		57F616AD2AD856F8007C7C4C /* DateDivideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDivideViewController.swift; sourceTree = "<group>"; };
+		57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideViewController.swift; sourceTree = "<group>"; };
 		57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDivideViewModel.swift; sourceTree = "<group>"; };
 		57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
+		57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabViewController.swift; sourceTree = "<group>"; };
+		57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 		5714F4982AC8463200D55041 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				57F616BA2ADB09C1007C7C4C /* Onboarding */,
 				57ECC6EC2AD7D901009E22BE /* SleepTime */,
 				57F616AF2AD8573D007C7C4C /* DateDivide */,
 				5714F4AB2AC851D900D55041 /* Schedule */,
@@ -407,7 +412,7 @@
 		57F616B02AD85743007C7C4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				57F616AD2AD856F8007C7C4C /* DateDivideViewController.swift */,
+				57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +421,31 @@
 			isa = PBXGroup;
 			children = (
 				57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		57F616BA2ADB09C1007C7C4C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				57F616BB2ADB09D7007C7C4C /* View */,
+				57F616BC2ADB09E5007C7C4C /* ViewModel */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		57F616BB2ADB09D7007C7C4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57F616BC2ADB09E5007C7C4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -565,7 +595,8 @@
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
-				57F616AE2AD856F8007C7C4C /* DateDivideViewController.swift in Sources */,
+				57F616AE2AD856F8007C7C4C /* DayDivideViewController.swift in Sources */,
+				57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */,
 				57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */,
 				57F616B32AD85753007C7C4C /* DateDivideViewModel.swift in Sources */,
 				5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */,
@@ -577,6 +608,7 @@
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
 				57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */,
+				57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */,
 				5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */,
 				5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */,
 				575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */,

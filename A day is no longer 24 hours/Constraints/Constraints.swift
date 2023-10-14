@@ -15,6 +15,7 @@ enum Constraints {
         static let white = UIColor.white
         static let green = UIColor.green
         static let red = UIColor.red
+        static let darkGray = UIColor.darkGray
         static let lightGray_alpha012 = UIColor.lightGray.withAlphaComponent(0.12)
         static let systemBlue = UIColor.systemBlue
         /// 금색
