@@ -15,10 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
+        let fileURL = try! FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print(fileURL)
+
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = OnboardingTabViewController(
             viewModel: OnboardingViewModel()
-        )//UINavigationController(rootViewController: OnboardingTabViewController())
+        )
         window?.makeKeyAndVisible()
     }
 

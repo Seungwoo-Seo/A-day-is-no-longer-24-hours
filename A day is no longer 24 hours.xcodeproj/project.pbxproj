@@ -11,8 +11,6 @@
 		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
 		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
 		5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A92AC851D400D55041 /* ScheduleViewController.swift */; };
-		5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 5714F4AF2AC852D200D55041 /* FSCalendar */; };
-		5714F4B32AC852E800D55041 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5714F4B22AC852E800D55041 /* SnapKit */; };
 		5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4B42AC8531900D55041 /* ScheduleViewModel.swift */; };
 		5714F4B82AC8594F00D55041 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4B72AC8594F00D55041 /* ScheduleModel.swift */; };
 		5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4BB2AC85FF700D55041 /* DetailTodoCell.swift */; };
@@ -41,10 +39,8 @@
 		57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */; };
 		57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */; };
 		57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */; };
-		57C7140B2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */; };
 		57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */; };
 		57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */; };
-		57ECC6E92AD7D7BA009E22BE /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */; };
 		57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */; };
 		57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */; };
 		57F616AE2AD856F8007C7C4C /* DayDivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */; };
@@ -52,9 +48,13 @@
 		57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */; };
 		57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */; };
 		57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */; };
+		57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616BE2ADC1A28007C7C4C /* HGCircularSlider */; };
+		57F616C22ADC1A4B007C7C4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616C12ADC1A4B007C7C4C /* SnapKit */; };
+		57F616C52ADC1A5A007C7C4C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616C42ADC1A5A007C7C4C /* IQKeyboardManagerSwift */; };
+		57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616C72ADC1A8C007C7C4C /* FSCalendar */; };
+		57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616CA2ADC1B81007C7C4C /* Realm */; };
+		57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616CC2ADC1B81007C7C4C /* RealmSwift */; };
 		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
-		57F822422AD06B240005CBC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822412AD06B240005CBC6 /* Realm */; };
-		57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F822432AD06B240005CBC6 /* RealmSwift */; };
 		925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,13 +113,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5714F4B32AC852E800D55041 /* SnapKit in Frameworks */,
+				57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */,
+				57F616C22ADC1A4B007C7C4C /* SnapKit in Frameworks */,
+				57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */,
+				57F616C52ADC1A5A007C7C4C /* IQKeyboardManagerSwift in Frameworks */,
 				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
-				57F822422AD06B240005CBC6 /* Realm in Frameworks */,
-				57F822442AD06B240005CBC6 /* RealmSwift in Frameworks */,
-				5714F4B02AC852D200D55041 /* FSCalendar in Frameworks */,
-				57C7140B2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift in Frameworks */,
-				57ECC6E92AD7D7BA009E22BE /* HGCircularSlider in Frameworks */,
+				57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */,
+				57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,12 +478,12 @@
 			);
 			name = "A day is no longer 24 hours";
 			packageProductDependencies = (
-				5714F4AF2AC852D200D55041 /* FSCalendar */,
-				5714F4B22AC852E800D55041 /* SnapKit */,
-				57F822412AD06B240005CBC6 /* Realm */,
-				57F822432AD06B240005CBC6 /* RealmSwift */,
-				57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */,
-				57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */,
+				57F616BE2ADC1A28007C7C4C /* HGCircularSlider */,
+				57F616C12ADC1A4B007C7C4C /* SnapKit */,
+				57F616C42ADC1A5A007C7C4C /* IQKeyboardManagerSwift */,
+				57F616C72ADC1A8C007C7C4C /* FSCalendar */,
+				57F616CA2ADC1B81007C7C4C /* Realm */,
+				57F616CC2ADC1B81007C7C4C /* RealmSwift */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -514,11 +514,11 @@
 			);
 			mainGroup = 57C138332AC5496500277597;
 			packageReferences = (
-				5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
+				57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */,
+				57F616C02ADC1A4B007C7C4C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				57F616C32ADC1A5A007C7C4C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -847,31 +847,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
+		57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
 			requirement = {
@@ -879,7 +855,31 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		57F616C02ADC1A4B007C7C4C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		57F616C32ADC1A5A007C7C4C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -890,34 +890,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5714F4AF2AC852D200D55041 /* FSCalendar */ = {
+		57F616BE2ADC1A28007C7C4C /* HGCircularSlider */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5714F4AE2AC852D200D55041 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
-		};
-		5714F4B22AC852E800D55041 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5714F4B12AC852E800D55041 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		57C7140A2AD3F7FF00DF57D2 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57C714092AD3F7FE00DF57D2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
-		57ECC6E82AD7D7BA009E22BE /* HGCircularSlider */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57ECC6E72AD7D7BA009E22BE /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
+			package = 57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
 			productName = HGCircularSlider;
 		};
-		57F822412AD06B240005CBC6 /* Realm */ = {
+		57F616C12ADC1A4B007C7C4C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 57F616C02ADC1A4B007C7C4C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		57F616C42ADC1A5A007C7C4C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F616C32ADC1A5A007C7C4C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		57F616C72ADC1A8C007C7C4C /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		57F616CA2ADC1B81007C7C4C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		57F822432AD06B240005CBC6 /* RealmSwift */ = {
+		57F616CC2ADC1B81007C7C4C /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57F822402AD06B240005CBC6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

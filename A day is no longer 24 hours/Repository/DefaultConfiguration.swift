@@ -12,20 +12,28 @@ import Foundation
 ///
 /// 오직, 단 하나의 recode를 가지고 있어야한다.
 final class DefaultConfiguration: Object {
-    /// 취침 시간
+    /// 취침 시각
     @Persisted var bedTime: Date
-    /// 기상 시간
+    /// 기상 시각
     @Persisted var wakeUpTime: Date
-    /// 수면 시간
-    @Persisted var sleepTime: Date
+    /// 수면 시간, "분"으로 변환한 값
+    @Persisted var sleepHourToMinute: Int
+    /// 생활 시간, "분"으로 변환한 값
+    @Persisted var lifeHourToMinute: Int
     /// 하루를 나눈 값
     @Persisted var dividedValue: Int
 
-    convenience init(bedTime: Date, wakeUpTime: Date, sleepTime: Date, dividedValue: Int) {
+    convenience init(
+        bedTime: Date,
+        wakeUpTime: Date,
+        sleepHourToMinute: Int,
+        lifeHourToMinute: Int,
+        dividedValue: Int
+    ) {
         self.init()
         self.bedTime = bedTime
         self.wakeUpTime = wakeUpTime
-        self.sleepTime = sleepTime
+        self.sleepHourToMinute = sleepHourToMinute
         self.dividedValue = dividedValue
     }
 }

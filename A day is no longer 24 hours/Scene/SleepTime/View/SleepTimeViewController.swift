@@ -138,16 +138,15 @@ final class SleepTimeViewController: BaseViewController {
     private let clockImageView = UIImageView(
         image: UIImage(named: "clock")
     )
-    private let sleepTimeLabel = {
+    private let sleepHourAndMinuteLabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = Constraints.Color.white
         label.font = Constraints.Font.Insensitive.systemFont_24_semibold
         return label
     }()
-    private let sleepTimeValidityLabel = {
+    private let sleepHourToMinuteValidityLabel = {
         let label = UILabel()
-//        label.text = "이렇게 시간을 지정하면 수면 목표를 충족합니다."
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = Constraints.Color.white
@@ -189,24 +188,23 @@ final class SleepTimeViewController: BaseViewController {
             self.wakeUpTimeLabel.text = self.dateFormatter.string(from: wakeUpTime)
         }
 
-        viewModel.sleepTime.bind { [weak self] (sleepTime) in
+        viewModel.sleepHourToMinuteFormatString.bind { [weak self] (sleepHourToMinuteFormatString) in
             guard let self else {return}
-            self.dateFormatter.dateFormat = "H 시간 m 분"
-            self.sleepTimeLabel.text = self.dateFormatter.string(from: sleepTime)
+            self.sleepHourAndMinuteLabel.text = sleepHourToMinuteFormatString
         }
 
-        viewModel.sleepTimeValidity.bind { [weak self] (bool) in
+        viewModel.sleepHourToMinuteValidity.bind { [weak self] (bool) in
             guard let self else {return}
             if bool {
                 self.nextButtom.isEnabled = true
                 self.rangeCircularSlider.trackFillColor = Constraints.Color.white
-                self.sleepTimeValidityLabel.textColor = Constraints.Color.white
-                self.sleepTimeValidityLabel.text = "적절한 수면 시간을 정해보세요!"
+                self.sleepHourToMinuteValidityLabel.textColor = Constraints.Color.white
+                self.sleepHourToMinuteValidityLabel.text = "적절한 수면 시간을 정해보세요!"
             } else {
                 self.nextButtom.isEnabled = false
                 self.rangeCircularSlider.trackFillColor = Constraints.Color.red
-                self.sleepTimeValidityLabel.textColor = Constraints.Color.red
-                self.sleepTimeValidityLabel.text = "수면 시간이 너무 작거나 너무 큽니다."
+                self.sleepHourToMinuteValidityLabel.textColor = Constraints.Color.red
+                self.sleepHourToMinuteValidityLabel.text = "수면 시간이 너무 작거나 너무 큽니다."
             }
         }
     }
@@ -236,8 +234,8 @@ final class SleepTimeViewController: BaseViewController {
             descriptionLabel,
             rangeCircularSlider,
             clockImageView,
-            sleepTimeLabel,
-            sleepTimeValidityLabel,
+            sleepHourAndMinuteLabel,
+            sleepHourToMinuteValidityLabel,
             containerStackView
         ].forEach { view.addSubview($0) }
 
@@ -293,13 +291,13 @@ final class SleepTimeViewController: BaseViewController {
             make.size.equalTo(190)
         }
 
-        sleepTimeLabel.snp.makeConstraints { make in
+        sleepHourAndMinuteLabel.snp.makeConstraints { make in
             make.top.equalTo(rangeCircularSlider.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
         }
 
-        sleepTimeValidityLabel.snp.makeConstraints { make in
-            make.top.equalTo(sleepTimeLabel.snp.bottom).offset(offset/2)
+        sleepHourToMinuteValidityLabel.snp.makeConstraints { make in
+            make.top.equalTo(sleepHourAndMinuteLabel.snp.bottom).offset(offset/2)
             make.horizontalEdges.equalToSuperview().inset(inset)
             make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide).inset(inset)
         }
@@ -323,6 +321,7 @@ final class SleepTimeViewController: BaseViewController {
     private func valueChangedRangeCircularSlider(
         _ sender: RangeCircularSlider
     ) {
+        // TODO: 비즈니스 로직들인데 여기서 직접 사용하는게 맘에 안든다. 근데 메서드 따로 만들어서 했는데 왜 안되는지 모르겠음 - 1
         viewModel.adjustValue(
             value: &sender.startPointValue
         )

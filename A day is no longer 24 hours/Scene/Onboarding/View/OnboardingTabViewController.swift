@@ -12,8 +12,12 @@ final class OnboardingTabViewController: PageboyViewController {
     // MARK: - View
     private let viewControllers: [UIViewController]
 
+    // MARK: - ViewModel
+    private let viewModel: OnboardingViewModel
+
     // MARK: - Init
     private init(_ viewModel: OnboardingViewModel) {
+        self.viewModel = viewModel
         self.viewControllers = [
             SleepTimeViewController(viewModel: viewModel.sleepTimeViewModel),
             DateDivideViewController(viewModel: viewModel.dateDivideViewModel)
@@ -23,10 +27,6 @@ final class OnboardingTabViewController: PageboyViewController {
 
     convenience init(viewModel: OnboardingViewModel) {
         self.init(viewModel)
-
-        viewModel.lifeTime.bind { _ in
-            self.scrollToPage(.next, animated: true)
-        }
 
         viewModel.sleepTimeViewModel.nextButtonTapped.bind(
             subscribeNow: false
@@ -40,6 +40,17 @@ final class OnboardingTabViewController: PageboyViewController {
         ) { [weak self] _ in
             guard let self else {return}
             self.scrollToPage(.previous, animated: true)
+        }
+
+        viewModel.createDefaultConfigurationTableValidity.bind(
+            subscribeNow: false
+        ) { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.windowResetByScheduleViewController()
+            } else {
+                self.presentErrorAlert()
+            }
         }
     }
 
@@ -76,6 +87,30 @@ extension OnboardingTabViewController: PageboyViewControllerDataSource {
         for pageboyViewController: PageboyViewController
     ) -> PageboyViewController.Page? {
         return nil
+    }
+
+}
+
+private extension OnboardingTabViewController {
+
+    func presentErrorAlert() {
+        let alert = UIAlertController(
+            title: "현재 하루를 나눌 수 없습니다.",
+            message: nil,
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+
+    func windowResetByScheduleViewController() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        sceneDelegate?.window?.rootViewController = UINavigationController(
+            rootViewController: ScheduleViewController()
+        )
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
 
 }

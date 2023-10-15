@@ -50,14 +50,6 @@ final class DateDivideViewController: BaseViewController {
         view.clipsToBounds = true
         return view
     }()
-    private lazy var dateDivideSelectButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseForegroundColor = Constraints.Color.black
-        config.background.backgroundColor = Constraints.Color.white
-        let button = UIButton(configuration: config)
-        button.addTarget(self, action: #selector(didTapDayDivideSelectButton), for: .touchUpInside)
-        return button
-    }()
     private let bottomAdviceLabel = {
         let label = UILabel()
         label.text = "사용자의 생활시간을 알고리즘을 통해 가장 최적화된 일수로 자동 분할했습니다."
@@ -65,6 +57,14 @@ final class DateDivideViewController: BaseViewController {
         label.font = Constraints.Font.Insensitive.systemFont_17_semibold
         label.numberOfLines = 0
         return label
+    }()
+    private lazy var divideAndStartButton = {
+        var config = UIButton.Configuration.filled()
+        config.baseForegroundColor = Constraints.Color.black
+        config.background.backgroundColor = Constraints.Color.white
+        let button = UIButton(configuration: config)
+        button.addTarget(self, action: #selector(didTapDivideAndStartButton), for: .touchUpInside)
+        return button
     }()
 
     // MARK: - ViewModel
@@ -79,16 +79,18 @@ final class DateDivideViewController: BaseViewController {
     convenience init(viewModel: DateDivideViewModel) {
         self.init(viewModel)
 
-        viewModel.dayDivideValueList.bind(
+        viewModel.divideValueList.bind(
             subscribeNow: false
-        ) { list in
+        ) { [weak self] (list) in
+            guard let self else {return}
             self.dateDividePickerView.reloadAllComponents()
             self.dateDividePickerView.selectRow(0, inComponent: 0, animated: true)
-            self.viewModel.dayDivideValue.value = list.first ?? 1
+            self.viewModel.currentDivideValue.value = list.first ?? 1
         }
 
-        viewModel.dayDivideValue.bind { value in
-            self.dateDivideSelectButton.configuration?.title = "\(value)일로 나누기"
+        viewModel.currentDivideValue.bind { [weak self] (value) in
+            guard let self else {return}
+            self.divideAndStartButton.configuration?.title = "\(value)일로 나누고 시작하기"
         }
     }
 
@@ -118,7 +120,7 @@ final class DateDivideViewController: BaseViewController {
             descriptionLabel,
             topAdviceLabel,
             bottomAdviceLabel,
-            dateDivideSelectButton
+            divideAndStartButton
         ].forEach { view.addSubview($0) }
     }
 
@@ -154,7 +156,7 @@ final class DateDivideViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview().inset(inset)
         }
 
-        dateDivideSelectButton.snp.makeConstraints { make in
+        divideAndStartButton.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(bottomAdviceLabel.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(inset*2)
@@ -169,8 +171,8 @@ final class DateDivideViewController: BaseViewController {
     }
 
     @objc
-    private func didTapDayDivideSelectButton() {
-        viewModel.dateDivideSelectButtonTapped.value.toggle()
+    private func didTapDivideAndStartButton() {
+        viewModel.divideAndStartButtonTapped.value.toggle()
     }
 }
 
