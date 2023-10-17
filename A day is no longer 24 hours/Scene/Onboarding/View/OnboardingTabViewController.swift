@@ -10,25 +10,19 @@ import UIKit
 
 final class OnboardingTabViewController: PageboyViewController {
     // MARK: - View
-    private let viewControllers: [UIViewController]
+    private lazy var viewControllers = [
+        DefaultTimeConfigViewController(viewModel: viewModel.defaultTimeConfigViewModel),
+        DefaultDivideConfigViewController(viewModel: viewModel.dateDivideViewModel)
+    ]
 
     // MARK: - ViewModel
-    private let viewModel: OnboardingViewModel
+    private let viewModel = OnboardingViewModel()
 
     // MARK: - Init
-    private init(_ viewModel: OnboardingViewModel) {
-        self.viewModel = viewModel
-        self.viewControllers = [
-            SleepTimeViewController(viewModel: viewModel.sleepTimeViewModel),
-            DateDivideViewController(viewModel: viewModel.dateDivideViewModel)
-        ]
+    init() {
         super.init(nibName: nil, bundle: nil)
-    }
 
-    convenience init(viewModel: OnboardingViewModel) {
-        self.init(viewModel)
-
-        viewModel.sleepTimeViewModel.nextButtonTapped.bind(
+        viewModel.defaultTimeConfigViewModel.nextButtonTapped.bind(
             subscribeNow: false
         ) { [weak self] _ in
             guard let self else {return}
@@ -42,7 +36,7 @@ final class OnboardingTabViewController: PageboyViewController {
             self.scrollToPage(.previous, animated: true)
         }
 
-        viewModel.createDefaultConfigurationTableValidity.bind(
+        viewModel.createDefaultDayConfigurationTableValidity.bind(
             subscribeNow: false
         ) { [weak self] (bool) in
             guard let self else {return}
@@ -52,6 +46,7 @@ final class OnboardingTabViewController: PageboyViewController {
                 self.presentErrorAlert()
             }
         }
+
     }
 
     required init?(coder aDecoder: NSCoder) {

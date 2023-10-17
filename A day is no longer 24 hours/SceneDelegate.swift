@@ -19,9 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print(fileURL)
 
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnboardingTabViewController(
-            viewModel: OnboardingViewModel()
-        )
+        window?.rootViewController = OnboardingTabViewController()
         window?.makeKeyAndVisible()
     }
 

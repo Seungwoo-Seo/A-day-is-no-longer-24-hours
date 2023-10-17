@@ -10,74 +10,59 @@ import Foundation
 
 final class OnboardingViewModel {
     // MARK: Sub ViewModel
-    let sleepTimeViewModel: SleepTimeViewModel
-    let dateDivideViewModel: DateDivideViewModel
+    let defaultTimeConfigViewModel = DefaultTimeConfigViewModel()
+    let dateDivideViewModel = DefaultDivideCofigViewModel()
 
     // MARK: - Just Scene
     /// createDefaultConfigurationTable 메서드의 유효성
-    let createDefaultConfigurationTableValidity: Observable<Bool>
+    let createDefaultDayConfigurationTableValidity = Observable(false)
 
     // MARK: - Realm
     let realm = try! Realm()
 
     // MARK: - Init
-    private init(
-        sleepTimeViewModel: SleepTimeViewModel,
-        dateDivideViewModel: DateDivideViewModel,
-        createDefaultConfigurationTableValidity: Observable<Bool>
-    ) {
-        self.sleepTimeViewModel = sleepTimeViewModel
-        self.dateDivideViewModel = dateDivideViewModel
-        self.createDefaultConfigurationTableValidity = createDefaultConfigurationTableValidity
-    }
-
-    convenience init() {
-        self.init(
-            sleepTimeViewModel: SleepTimeViewModel(),
-            dateDivideViewModel: DateDivideViewModel(),
-            createDefaultConfigurationTableValidity: Observable(false)
-        )
-
-        sleepTimeViewModel.lifeHourToMinute.bind { [weak self] (lifeHourToMinute) in
+    init() {
+        defaultTimeConfigViewModel.howMuchLivingTime.bind { [weak self] (lifeHourToMinute) in
             guard let self else {return}
-            self.dateDivideViewModel.lifeHourToMinute.value = lifeHourToMinute
+            self.dateDivideViewModel.howMuchLivingTime.value = lifeHourToMinute
         }
 
         dateDivideViewModel.divideAndStartButtonTapped.bind(
             subscribeNow: false
         ) { [weak self] _ in
             guard let self else {return}
-            self.createDefaultConfigurationTable()
+            self.createDefaultDayConfigurationTable()
         }
     }
-
+    
 }
 
 private extension OnboardingViewModel {
 
-    func createDefaultConfigurationTable() {
-        let bedTime = sleepTimeViewModel.bedTime.value
-        let wakeUpTime = sleepTimeViewModel.wakeUpTime.value
-        let sleepHourToMinute = sleepTimeViewModel.sleepHourToMinute.value
-        let lifeHourToMinute = dateDivideViewModel.lifeHourToMinute.value
-        let dayDivideValue = dateDivideViewModel.currentDivideValue.value
+    func createDefaultDayConfigurationTable() {
+        let whenIsBedTime = defaultTimeConfigViewModel.whenIsBedTime.value
+        let whenIsWakeUpTime = defaultTimeConfigViewModel.whenIsWakeUpTime.value
+        let howMuchSleepTime = defaultTimeConfigViewModel.howMuchSleepTime.value
+        let howMuchLivingTime = dateDivideViewModel.howMuchLivingTime.value
 
-        let defaultConfiguration = DefaultConfiguration(
-            bedTime: bedTime,
-            wakeUpTime: wakeUpTime,
-            sleepHourToMinute: sleepHourToMinute,
-            lifeHourToMinute: lifeHourToMinute,
-            dividedValue: dayDivideValue
+        let dividedValue = dateDivideViewModel.currentDivideValue.value
+
+        let defaultDayConfig = DefaultDayConfiguration(
+            whenIsBedTime: whenIsBedTime,
+            whenIsWakeUpTime: whenIsWakeUpTime,
+            howMuchSleepTime: howMuchSleepTime,
+            howMuchLivingTime: howMuchLivingTime,
+            dividedValue: dividedValue
         )
 
         do {
             try realm.write {
-                realm.add(defaultConfiguration)
-                createDefaultConfigurationTableValidity.value = true
+                realm.add(defaultDayConfig)
+                createDefaultDayConfigurationTableValidity.value = true
                 print("add 성공")
             }
         } catch {
-            createDefaultConfigurationTableValidity.value = false
+            createDefaultDayConfigurationTableValidity.value = false
             print("add 실패")
         }
         print("add 다음 찍혀야함")

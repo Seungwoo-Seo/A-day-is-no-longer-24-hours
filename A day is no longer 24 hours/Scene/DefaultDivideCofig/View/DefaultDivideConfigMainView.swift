@@ -1,27 +1,21 @@
 //
-//  DayDivideViewController.swift
+//  DefaultDivideConfigMainView.swift
 //  A day is no longer 24 hours
 //
-//  Created by 서승우 on 2023/10/13.
+//  Created by 서승우 on 2023/10/17.
 //
 
-import TextFieldEffects
 import UIKit
 
-final class DateDivideViewController: BaseViewController {
+final class DefaultDivideConfigMainView: BaseView {
     // MARK: - View
-    private lazy var prevButton = {
+    lazy var prevButton = {
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = Constraints.Color.systemBlue
         config.background.backgroundColor = Constraints.Color.clear
         config.title = "이전으로"
         let button = UIButton(configuration: config)
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        button.addTarget(
-            self,
-            action: #selector(didTapPrevButton),
-            for: .touchUpInside
-        )
         return button
     }()
     private let descriptionLabel = {
@@ -40,10 +34,8 @@ final class DateDivideViewController: BaseViewController {
         label.numberOfLines = 0
         return label
     }()
-    private lazy var dateDividePickerView = {
+    lazy var dateDividePickerView = {
         let view = UIPickerView()
-        view.dataSource = self
-        view.delegate = self
         view.backgroundColor = Constraints.Color.lightGray_alpha012
         view.tintColor = Constraints.Color.white
         view.layer.cornerRadius = 8
@@ -58,58 +50,13 @@ final class DateDivideViewController: BaseViewController {
         label.numberOfLines = 0
         return label
     }()
-    private lazy var divideAndStartButton = {
+    lazy var divideAndStartButton = {
         var config = UIButton.Configuration.filled()
         config.baseForegroundColor = Constraints.Color.black
         config.background.backgroundColor = Constraints.Color.white
         let button = UIButton(configuration: config)
-        button.addTarget(self, action: #selector(didTapDivideAndStartButton), for: .touchUpInside)
         return button
     }()
-
-    // MARK: - ViewModel
-    private let viewModel: DateDivideViewModel
-
-    // MARK: - Init
-    private init(_ viewModel: DateDivideViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    convenience init(viewModel: DateDivideViewModel) {
-        self.init(viewModel)
-
-        viewModel.divideValueList.bind(
-            subscribeNow: false
-        ) { [weak self] (list) in
-            guard let self else {return}
-            self.dateDividePickerView.reloadAllComponents()
-            self.dateDividePickerView.selectRow(0, inComponent: 0, animated: true)
-            self.viewModel.currentDivideValue.value = list.first ?? 1
-        }
-
-        viewModel.currentDivideValue.bind { [weak self] (value) in
-            guard let self else {return}
-            self.divideAndStartButton.configuration?.title = "\(value)일로 나누고 시작하기"
-        }
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    // MARK: - Initial Setting
-    override func initialAttributes() {
-        super.initialAttributes()
-
-        view.backgroundColor = Constraints.Color.black
-    }
 
     override func initialHierarchy() {
         super.initialHierarchy()
@@ -121,7 +68,8 @@ final class DateDivideViewController: BaseViewController {
             topAdviceLabel,
             bottomAdviceLabel,
             divideAndStartButton
-        ].forEach { view.addSubview($0) }
+        ].forEach { addSubview($0) }
+
     }
 
     override func initialLayout() {
@@ -130,7 +78,7 @@ final class DateDivideViewController: BaseViewController {
         let offset = 16
         let inset = 8
         prevButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide)
             make.leading.equalToSuperview()
         }
 
@@ -159,58 +107,10 @@ final class DateDivideViewController: BaseViewController {
         divideAndStartButton.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(bottomAdviceLabel.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(inset*2)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(inset*2)
             make.height.equalTo(44)
         }
     }
-
-    // MARK: - Event
-    @objc
-    private func didTapPrevButton() {
-        viewModel.prevButtonTapped.value.toggle()
-    }
-
-    @objc
-    private func didTapDivideAndStartButton() {
-        viewModel.divideAndStartButtonTapped.value.toggle()
-    }
-}
-
-// MARK: - UIPickerViewDataSource
-extension DateDivideViewController: UIPickerViewDataSource {
-
-    func numberOfComponents(
-        in pickerView: UIPickerView
-    ) -> Int {
-        return viewModel.numberOfComponents
-    }
-
-    func pickerView(
-        _ pickerView: UIPickerView,
-        numberOfRowsInComponent component: Int
-    ) -> Int {
-        return viewModel.numberOfRowsInComponent
-    }
-
-}
-
-// MARK: - UIPickerViewDelegate
-extension DateDivideViewController: UIPickerViewDelegate {
-
-    func pickerView(
-        _ pickerView: UIPickerView,
-        attributedTitleForRow row: Int,
-        forComponent component: Int
-    ) -> NSAttributedString? {
-        return viewModel.attributedTitleForRow(row)
-    }
-
-    func pickerView(
-        _ pickerView: UIPickerView,
-        didSelectRow row: Int,
-        inComponent component: Int
-    ) {
-        viewModel.didSelectRow(row)
-    }
+    
 
 }

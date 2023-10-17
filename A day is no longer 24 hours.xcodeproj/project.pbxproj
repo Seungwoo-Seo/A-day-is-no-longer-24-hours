@@ -32,6 +32,7 @@
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */; };
 		575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelPickerView.swift */; };
+		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
@@ -41,11 +42,12 @@
 		57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */; };
 		57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */; };
 		57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */; };
-		57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */; };
-		57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */; };
-		57F616AE2AD856F8007C7C4C /* DayDivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */; };
-		57F616B32AD85753007C7C4C /* DateDivideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */; };
-		57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */; };
+		57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */; };
+		57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */; };
+		57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F170C92ADE6260008B20C7 /* DefaultTimeConfigMainView.swift */; };
+		57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift */; };
+		57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B22AD85753007C7C4C /* DefaultDivideCofigViewModel.swift */; };
+		57F616B52AD9B3E8007C7C4C /* DefaultDayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B42AD9B3E8007C7C4C /* DefaultDayConfiguration.swift */; };
 		57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */; };
 		57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */; };
 		57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616BE2ADC1A28007C7C4C /* HGCircularSlider */; };
@@ -84,6 +86,7 @@
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatePickerView.swift; sourceTree = "<group>"; };
 		575BA9672AD435200058FDC2 /* LabelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerView.swift; sourceTree = "<group>"; };
+		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,11 +98,12 @@
 		57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIYCalendarCell.swift; sourceTree = "<group>"; };
 		57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTimePickerView.swift; sourceTree = "<group>"; };
 		57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
-		57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewController.swift; sourceTree = "<group>"; };
-		57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeViewModel.swift; sourceTree = "<group>"; };
-		57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideViewController.swift; sourceTree = "<group>"; };
-		57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDivideViewModel.swift; sourceTree = "<group>"; };
-		57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
+		57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewController.swift; sourceTree = "<group>"; };
+		57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewModel.swift; sourceTree = "<group>"; };
+		57F170C92ADE6260008B20C7 /* DefaultTimeConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigMainView.swift; sourceTree = "<group>"; };
+		57F616AD2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigViewController.swift; sourceTree = "<group>"; };
+		57F616B22AD85753007C7C4C /* DefaultDivideCofigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideCofigViewModel.swift; sourceTree = "<group>"; };
+		57F616B42AD9B3E8007C7C4C /* DefaultDayConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDayConfiguration.swift; sourceTree = "<group>"; };
 		57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabViewController.swift; sourceTree = "<group>"; };
 		57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
@@ -138,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				57F616BA2ADB09C1007C7C4C /* Onboarding */,
-				57ECC6EC2AD7D901009E22BE /* SleepTime */,
-				57F616AF2AD8573D007C7C4C /* DateDivide */,
+				57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */,
+				57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */,
 				5714F4AB2AC851D900D55041 /* Schedule */,
 				57C714022AD2DAEB00DF57D2 /* DateBranch */,
 			);
@@ -194,7 +198,7 @@
 		5714F49E2AC8474900D55041 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				57F616B42AD9B3E8007C7C4C /* DefaultConfiguration.swift */,
+				57F616B42AD9B3E8007C7C4C /* DefaultDayConfiguration.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -375,19 +379,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		57ECC6EC2AD7D901009E22BE /* SleepTime */ = {
+		57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */ = {
 			isa = PBXGroup;
 			children = (
 				57ECC6ED2AD7D90C009E22BE /* View */,
 				57ECC6EE2AD7D913009E22BE /* ViewModel */,
 			);
-			path = SleepTime;
+			path = DefaultTimeConfig;
 			sourceTree = "<group>";
 		};
 		57ECC6ED2AD7D90C009E22BE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				57ECC6EA2AD7D8EA009E22BE /* SleepTimeViewController.swift */,
+				57F170C92ADE6260008B20C7 /* DefaultTimeConfigMainView.swift */,
+				57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,24 +400,25 @@
 		57ECC6EE2AD7D913009E22BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				57ECC6EF2AD7D922009E22BE /* SleepTimeViewModel.swift */,
+				57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		57F616AF2AD8573D007C7C4C /* DateDivide */ = {
+		57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */ = {
 			isa = PBXGroup;
 			children = (
 				57F616B02AD85743007C7C4C /* View */,
 				57F616B12AD85749007C7C4C /* ViewModel */,
 			);
-			path = DateDivide;
+			path = DefaultDivideCofig;
 			sourceTree = "<group>";
 		};
 		57F616B02AD85743007C7C4C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				57F616AD2AD856F8007C7C4C /* DayDivideViewController.swift */,
+				578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */,
+				57F616AD2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,7 +426,7 @@
 		57F616B12AD85749007C7C4C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				57F616B22AD85753007C7C4C /* DateDivideViewModel.swift */,
+				57F616B22AD85753007C7C4C /* DefaultDivideCofigViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -590,20 +596,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
-				57F616B52AD9B3E8007C7C4C /* DefaultConfiguration.swift in Sources */,
-				57ECC6F02AD7D922009E22BE /* SleepTimeViewModel.swift in Sources */,
+				57F616B52AD9B3E8007C7C4C /* DefaultDayConfiguration.swift in Sources */,
+				57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */,
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
-				57F616AE2AD856F8007C7C4C /* DayDivideViewController.swift in Sources */,
+				57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */,
 				57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */,
 				57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */,
-				57F616B32AD85753007C7C4C /* DateDivideViewModel.swift in Sources */,
+				57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */,
+				57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */,
 				5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */,
 				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
-				57ECC6EB2AD7D8EA009E22BE /* SleepTimeViewController.swift in Sources */,
+				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
@@ -622,6 +629,7 @@
 				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
 				57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */,
 				5714F4D42AC86C9E00D55041 /* TitleLabel.swift in Sources */,
+				578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */,
 				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
