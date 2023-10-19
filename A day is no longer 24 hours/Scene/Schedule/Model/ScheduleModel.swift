@@ -35,6 +35,8 @@ struct Todo: Hashable {
 }
 
 enum TodoKind {
-    case detail
+    case startStandard
     case simple
+    case detail
+    case endStandard
 }

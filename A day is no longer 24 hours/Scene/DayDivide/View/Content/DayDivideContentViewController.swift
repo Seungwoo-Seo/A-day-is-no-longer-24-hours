@@ -54,6 +54,11 @@ final class DayDivideContentViewController: BaseViewController {
             self.snapshot = snapshot
             self.dataSource.apply(snapshot)
         }
+
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            let section =  TodoSection(kind: .startStandard, startTime: "06:00", endTime: "", category: "기상", title: nil)
+            self.viewModel.todoSectionList.value.append(section)
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
@@ -113,12 +118,49 @@ private extension DayDivideContentViewController {
             guard let self else {return nil}
             let section = self.viewModel.getTodoSection(section: sectionIndex)
             switch section.kind {
+            case .startStandard: return self.startStandardSection()
             case .simple: return self.simpleSection()
             case .detail: return self.detailSection()
+            case .endStandard: return nil
             }
         }
 
         return layout
+    }
+
+    func startStandardSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(0)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(0)
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: StartStandardTodoHeader.identifier,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+
+        return section
     }
 
     func simpleSection() -> NSCollectionLayoutSection {
@@ -204,6 +246,14 @@ private extension DayDivideContentViewController {
 private extension DayDivideContentViewController {
 
     func configureDataSource() {
+        let startStandardHeaderRegistration = UICollectionView.SupplementaryRegistration<StartStandardTodoHeader>(
+            elementKind: StartStandardTodoHeader.identifier
+        ) { [weak self] (supplementaryView, elementKind, indexPath) in
+            guard let self else {return}
+            let standardSection = self.viewModel.getTodoSection(section: indexPath.section)
+            supplementaryView.configure(standardSection)
+        }
+
         let simpleHeaderRegistration = UICollectionView.SupplementaryRegistration<SimpleTodoHeader>(
             elementKind: SimpleTodoHeader.identifier
         ) { [weak self] (supplementaryView, elementKind, indexPath) in
@@ -243,12 +293,16 @@ private extension DayDivideContentViewController {
         }
 
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            if kind == SimpleTodoHeader.identifier {
+            if kind == StartStandardTodoHeader.identifier {
+                return collectionView.dequeueConfiguredReusableSupplementary(
+                    using: startStandardHeaderRegistration,
+                    for: indexPath
+                )
+            } else if kind == SimpleTodoHeader.identifier {
                 return collectionView.dequeueConfiguredReusableSupplementary(
                     using: simpleHeaderRegistration,
                     for: indexPath
                 )
-
             } else if kind == DetailTodoHeader.identifier {
                 return collectionView.dequeueConfiguredReusableSupplementary(
                     using: detailHeaderRegistration,
