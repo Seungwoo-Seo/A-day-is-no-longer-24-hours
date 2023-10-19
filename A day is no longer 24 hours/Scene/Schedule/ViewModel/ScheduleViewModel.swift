@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
 
 final class ScheduleViewModel {
+    // MARK: - ViewModel
+    let dayDivideContainerViewModel = DayDivideContainerViewModel()
+
 
     var currentMonth = Observable<String>("")
-    var todoSectionList = Observable<[TodoSection]>([])
+
+    let realm = try! Realm()
 
 }
 
@@ -30,15 +35,6 @@ extension ScheduleViewModel {
             }
             return format.string(from: currentDate)
         }
-    }
-
-}
-
-// MARK: - 비즈니스: CollectionView
-extension ScheduleViewModel {
-
-    func getTodoSection(section: Int) -> TodoSection {
-        return todoSectionList.value[section]
     }
 
 }

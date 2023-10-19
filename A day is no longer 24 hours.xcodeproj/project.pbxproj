@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570FE7142AE0AD4100ECE726 /* DayDivideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */; };
 		5714F4A22AC8487900D55041 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* Observable.swift */; };
 		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
 		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
@@ -32,7 +33,10 @@
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */; };
 		575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelPickerView.swift */; };
+		576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */; };
 		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
+		578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */; };
+		578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
@@ -61,6 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewController.swift; sourceTree = "<group>"; };
 		5714F4A12AC8487900D55041 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		5714F4A32AC849B700D55041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5714F4A72AC84C0E00D55041 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
@@ -86,7 +91,10 @@
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatePickerView.swift; sourceTree = "<group>"; };
 		575BA9672AD435200058FDC2 /* LabelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerView.swift; sourceTree = "<group>"; };
+		576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewModel.swift; sourceTree = "<group>"; };
 		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
+		578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideCotainerViewController.swift; sourceTree = "<group>"; };
+		578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContainerViewModel.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +153,7 @@
 				57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */,
 				57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */,
 				5714F4AB2AC851D900D55041 /* Schedule */,
+				578907AD2ADEABD700FF5274 /* DayDivide */,
 				57C714022AD2DAEB00DF57D2 /* DateBranch */,
 			);
 			path = Scene;
@@ -313,6 +322,65 @@
 				5714F4DD2AC9142900D55041 /* CircleImageView.swift */,
 			);
 			path = ImageView;
+			sourceTree = "<group>";
+		};
+		578907AD2ADEABD700FF5274 /* DayDivide */ = {
+			isa = PBXGroup;
+			children = (
+				578907AE2ADEABED00FF5274 /* View */,
+				578907B22ADEAC2400FF5274 /* ViewModel */,
+			);
+			path = DayDivide;
+			sourceTree = "<group>";
+		};
+		578907AE2ADEABED00FF5274 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				578907AF2ADEABF500FF5274 /* Container */,
+				578907B12ADEAC0B00FF5274 /* Content */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		578907AF2ADEABF500FF5274 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		578907B12ADEAC0B00FF5274 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		578907B22ADEAC2400FF5274 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				578907B32ADEAC2E00FF5274 /* Container */,
+				578907B42ADEAC3400FF5274 /* Content */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		578907B32ADEAC2E00FF5274 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		578907B42ADEAC3400FF5274 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		57C138332AC5496500277597 = {
@@ -607,8 +675,11 @@
 				57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */,
 				57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */,
 				5714F4D02AC867E400D55041 /* TimeLabel.swift in Sources */,
+				570FE7142AE0AD4100ECE726 /* DayDivideContentViewController.swift in Sources */,
 				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
+				576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */,
+				578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
@@ -636,6 +707,7 @@
 				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
 				5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */,
 				5714F4CC2AC866A000D55041 /* BaseView.swift in Sources */,
+				578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
