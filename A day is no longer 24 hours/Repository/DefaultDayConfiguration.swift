@@ -5,8 +5,8 @@
 //  Created by 서승우 on 2023/10/14.
 //
 
-import RealmSwift
 import Foundation
+import RealmSwift
 
 /// 하루를 나눌 때 기본적으로 적용될 값들을 가지고 있는 Table
 ///

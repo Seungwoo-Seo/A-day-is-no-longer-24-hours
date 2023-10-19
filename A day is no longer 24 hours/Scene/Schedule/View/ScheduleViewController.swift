@@ -6,6 +6,7 @@
 //
 
 import FSCalendar
+import RealmSwift
 import UIKit
 
 final class ScheduleViewController: BaseViewController {
@@ -35,6 +36,9 @@ final class ScheduleViewController: BaseViewController {
         view.scope = .week
         view.headerHeight = 0
         view.locale = Locale(identifier: "ko_KR")
+        view.appearance.borderRadius = 8
+        view.appearance.titleWeekendColor = .red
+        view.appearance.selectionColor = Constraints.Color.white
         view.appearance.todayColor = Constraints.Color.clear
         view.appearance.titleTodayColor = Constraints.Color.todayColor
         view.appearance.weekdayTextColor = Constraints.Color.white
@@ -48,6 +52,10 @@ final class ScheduleViewController: BaseViewController {
 
     // MARK: - ViewModel
     let viewModel = ScheduleViewModel()
+
+
+    let realm = try! Realm()
+
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -89,7 +97,7 @@ final class ScheduleViewController: BaseViewController {
         }
 
         dayDivideView.view.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.bottom)
+            make.top.equalTo(calendarView.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -121,7 +129,9 @@ extension ScheduleViewController: FSCalendarDelegate {
         view.layoutIfNeeded()
     }
 
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+    func calendarCurrentPageDidChange(
+        _ calendar: FSCalendar
+    ) {
         switch calendar.scope {
         case .month:
             viewModel.currentMonth.value = viewModel.currentPage(
@@ -165,7 +175,7 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
         appearance: FSCalendarAppearance,
         fillSelectionColorFor date: Date
     ) -> UIColor? {
-        return calendar.today == date ? Constraints.Color.todayColor : Constraints.Color.white
+        return Constraints.Color.white
     }
 
     func calendar(
@@ -188,10 +198,28 @@ private extension ScheduleViewController {
     func presentActionSheet() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let simple = UIAlertAction(title: "간단한 Todo", style: .default)
+        let simple = UIAlertAction(title: "간단한 Todo", style: .default) { [weak self] _ in
+            guard let self else {return}
+            self.pushToDayDividedSelectViewController()
+        }
         let detail = UIAlertAction(title: "자세한 Todo", style: .default)
         [cancel, simple, detail].forEach { alert.addAction($0) }
         present(alert, animated: true)
+    }
+
+    // MARK: - 여기선 걍 선택한 날짜만 넘기면 될꺼 같은데
+    func pushToDayDividedSelectViewController() {
+        guard let selectedDate = calendarView.selectedDate else {print("calendarView selectedDate 없음"); return}
+        let viewModel = DayDividedSelectViewModel(
+            selectedDate: selectedDate
+        )
+        let vc = DayDividedSelectViewController(
+            viewModel: viewModel
+        )
+        navigationController?.pushViewController(
+            vc,
+            animated: true
+        )
     }
 
 }

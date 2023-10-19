@@ -118,53 +118,6 @@ final class DateBranchViewController: BaseViewController {
             guard let self else {return}
             self.viewModel.sleepTimeVaildation()
         }
-
-//        viewModel.sleepTimeIsVaildate.bind { [weak self] (bool) in
-//            guard let self else {return}
-//
-//            if bool {
-////                self.bedTimeLabelTimePickerView.picker.layer.borderColor = UIColor.green.cgColor
-////                self.wakeUpTimeLabelTimePickerView.picker.layer.borderColor = UIColor.green.cgColor
-//
-//
-////                self.viewModel.dateBranchKindList.value
-//                print("---------------")
-//                self.viewModel.datedustks()
-//                print("---------------")
-//
-//                self.dateBranchLabelPickerView.picker.reloadAllComponents()
-//
-//                // TODO: - 수정 필요
-//                self.dateBranchLabelPickerView.isHidden = false
-//                self.view.layoutIfNeeded()
-//                let desiredContentOffsetY = self.dateBranchLabelPickerView.frame.origin.y
-//                self.scrollView.setContentOffset(CGPoint(x: 0, y: desiredContentOffsetY), animated: true)
-//
-//            } else {
-//
-//                print("---------------")
-//                self.viewModel.datedustks()
-//                print("---------------")
-////                self.bedTimeLabelTimePickerView.picker.layer.borderColor = UIColor.red.cgColor
-////                self.wakeUpTimeLabelTimePickerView.picker.layer.borderColor = UIColor.red.cgColor
-//
-//                self.dateBranchLabelPickerView.isHidden = true
-//            }
-//        }
-
-
-
-        // Input
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//            self.dateBranchLabelPickerView.isHidden = false
-//            let desiredContentOffsetY = self.dateBranchLabelPickerView.frame.origin.y
-//            self.scrollView.setContentOffset(CGPoint(x: 0, y: desiredContentOffsetY), animated: true)
-//        }
     }
 
     @objc func didTapApplyBarButtonItem() {

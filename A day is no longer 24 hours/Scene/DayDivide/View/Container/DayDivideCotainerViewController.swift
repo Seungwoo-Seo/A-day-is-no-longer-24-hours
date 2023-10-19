@@ -37,12 +37,21 @@ final class DayDivideCotainerViewController: TabmanViewController {
         // Create bar
         let bar = TMBar.ButtonBar()
         bar.delegate = self
+
         bar.layout.contentMode = .intrinsic
         bar.layout.alignment = .centerDistributed
 
+        bar.backgroundView.style = .flat(color: Constraints.Color.black)
 
-        bar.layout.transitionStyle = .snap // Customize
-        // Add to view
+        bar.buttons.customize { (button) in
+            button.tintColor = Constraints.Color.darkGray
+            button.selectedTintColor = Constraints.Color.white
+        }
+
+        bar.indicator.weight = .custom(value: 0)
+
+        bar.layout.transitionStyle = .snap
+
         addBar(bar, dataSource: self, at: .top)
 
         bind()
@@ -82,7 +91,7 @@ extension DayDivideCotainerViewController: PageboyViewControllerDataSource {
 extension DayDivideCotainerViewController: TMBarDataSource {
 
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
-        let title = "Page \(index)"
+        let title = "Day \(index + 1)"
         return TMBarItem(title: title)
     }
 
