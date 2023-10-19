@@ -1,5 +1,5 @@
 //
-//  StartStandardTodoHeader.swift
+//  EndStandardTodoHeader.swift
 //  A day is no longer 24 hours
 //
 //  Created by 서승우 on 2023/10/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StartStandardTodoHeader: BaseCollectionReusableView {
+final class EndStandardTodoHeader: BaseCollectionReusableView {
     // MARK: - View
     private let timeLabel = TimeLabel(style: .standard)
     private let circleImageView = CircleImageView(style: .eyewash)
@@ -18,7 +18,7 @@ final class StartStandardTodoHeader: BaseCollectionReusableView {
 
     // MARK: - Configure
     func configure(_ todoSection: TodoSection) {
-        timeLabel.text = todoSection.startTime
+        timeLabel.text = todoSection.endTime
         titleLabel.setTitle(
             category: todoSection.category,
             title: todoSection.title
@@ -75,3 +75,4 @@ final class StartStandardTodoHeader: BaseCollectionReusableView {
     }
 
 }
+

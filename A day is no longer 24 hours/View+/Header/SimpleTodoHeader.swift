@@ -90,18 +90,19 @@ final class SimpleTodoHeader: BaseCollectionReusableView {
 
         startHorizontalView.snp.makeConstraints { make in
             make.height.equalTo(1)
+            make.width.equalTo(16)
             make.centerY.equalTo(startTimeLabel)
             make.leading.equalTo(timeLineView.snp.trailing)
-            make.trailing.equalTo(startTitleLabel.snp.leading).offset(-4)
         }
 
         startTitleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(timeLineView.snp.trailing).offset(20)
+            make.leading.equalTo(startHorizontalView.snp.trailing).offset(4)
             make.centerY.equalTo(startTimeLabel)
         }
 
         stateButton.snp.makeConstraints { make in
             make.leading.equalTo(startTitleLabel.snp.trailing)
+            make.trailing.lessThanOrEqualToSuperview()
             make.centerY.equalTo(startTimeLabel)
         }
 

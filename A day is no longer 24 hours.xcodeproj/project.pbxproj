@@ -32,6 +32,7 @@
 		5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* Identifiable.swift */; };
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		573490282AE0F40600CA1A9D /* StartStandardTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */; };
+		5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573490292AE10C1E00CA1A9D /* EndStandardTodoHeader.swift */; };
 		575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */; };
 		575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelPickerView.swift */; };
 		576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */; };
@@ -91,6 +92,7 @@
 		5714F4E32AC9266A00D55041 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStandardTodoHeader.swift; sourceTree = "<group>"; };
+		573490292AE10C1E00CA1A9D /* EndStandardTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStandardTodoHeader.swift; sourceTree = "<group>"; };
 		575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatePickerView.swift; sourceTree = "<group>"; };
 		575BA9672AD435200058FDC2 /* LabelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerView.swift; sourceTree = "<group>"; };
 		576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewModel.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				5714F4BF2AC8609100D55041 /* SimpleTodoHeader.swift */,
 				5714F4C12AC860B000D55041 /* DetailTodoHeader.swift */,
 				573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */,
+				573490292AE10C1E00CA1A9D /* EndStandardTodoHeader.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
 				576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */,
 				578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */,
+				5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,

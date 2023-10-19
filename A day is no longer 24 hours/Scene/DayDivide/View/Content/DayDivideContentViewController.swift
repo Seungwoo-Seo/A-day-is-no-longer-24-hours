@@ -56,12 +56,13 @@ final class DayDivideContentViewController: BaseViewController {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            let section =  TodoSection(kind: .startStandard, startTime: "06:00", endTime: "", category: "기상", title: nil)
+            let section =  TodoSection(kind: .startStandard, startTime: "06:00", endTime: "", category: "DayN 시작", title: nil)
+
             self.viewModel.todoSectionList.value.append(section)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "식사", title: nil)
+            let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "아침식사", title: nil)
             self.viewModel.todoSectionList.value.append(section)
         }
 
@@ -72,9 +73,9 @@ final class DayDivideContentViewController: BaseViewController {
                 Todo(title: "세번째 씬", sectionIdentifier: ""),
                 Todo(title: "네번째 씬", sectionIdentifier: "")
             ])
-            let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "식사", title: nil)
-            let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "운동", title: nil)
-            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "공부", title: "클린 아키텍쳐", todoList: [
+            let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "32회차 리펙토링 및 반복 학습", title: nil)
+            let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "달리고 달리고 존나 달리고 달리고 달려 달리기", title: nil)
+            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "아키텍처 공부", title: "클린 아키텍쳐", todoList: [
                 Todo(title: "네트워크", sectionIdentifier: ""),
                 Todo(title: "MVVM", sectionIdentifier: ""),
                 Todo(title: "MVC", sectionIdentifier: ""),
@@ -91,6 +92,12 @@ final class DayDivideContentViewController: BaseViewController {
                 section2,
                 section3
             ].forEach { self.viewModel.todoSectionList.value.append($0) }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
+            let section =  TodoSection(kind: .endStandard, startTime: "", endTime: "24:00", category: "DayN 마감", title: nil)
+
+            self.viewModel.todoSectionList.value.append(section)
         }
     }
 
@@ -121,7 +128,7 @@ private extension DayDivideContentViewController {
             case .startStandard: return self.startStandardSection()
             case .simple: return self.simpleSection()
             case .detail: return self.detailSection()
-            case .endStandard: return nil
+            case .endStandard: return self.endStandardSection()
             }
         }
 
@@ -240,6 +247,41 @@ private extension DayDivideContentViewController {
         return section
     }
 
+    func endStandardSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(0)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(0)
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: EndStandardTodoHeader.identifier,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+
+        return section
+    }
+
 }
 
 // MARK: - CollectionViewDataSource
@@ -278,6 +320,14 @@ private extension DayDivideContentViewController {
             supplementaryView.configure(todoSection)
         }
 
+        let endStandardHeaderRegistration = UICollectionView.SupplementaryRegistration<EndStandardTodoHeader>(
+            elementKind: EndStandardTodoHeader.identifier
+        ) { [weak self] (supplementaryView, elementKind, indexPath) in
+            guard let self else {return}
+            let standardSection = self.viewModel.getTodoSection(section: indexPath.section)
+            supplementaryView.configure(standardSection)
+        }
+
         let detailTodoCellRegistration = UICollectionView.CellRegistration<DetailTodoCell, Todo> { cell, indexPath, itemIdentifier in
             cell.configure(itemIdentifier)
         }
@@ -306,6 +356,11 @@ private extension DayDivideContentViewController {
             } else if kind == DetailTodoHeader.identifier {
                 return collectionView.dequeueConfiguredReusableSupplementary(
                     using: detailHeaderRegistration,
+                    for: indexPath
+                )
+            } else if kind == EndStandardTodoHeader.identifier {
+                return collectionView.dequeueConfiguredReusableSupplementary(
+                    using: endStandardHeaderRegistration,
                     for: indexPath
                 )
             } else {

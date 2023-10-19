@@ -57,13 +57,13 @@ final class DetailTodoFooter: BaseCollectionReusableView {
 
         endHorizontalView.snp.makeConstraints { make in
             make.height.equalTo(1)
+            make.width.equalTo(16)
             make.centerY.equalTo(endTimeLabel)
             make.leading.equalTo(timeLineView.snp.trailing)
-            make.trailing.equalTo(endTitleLabel.snp.leading).offset(-4)
         }
 
         endTitleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(timeLineView.snp.trailing).offset(20)
+            make.leading.equalTo(endHorizontalView.snp.trailing).offset(4)
             make.centerY.equalTo(endTimeLabel)
         }
     }
