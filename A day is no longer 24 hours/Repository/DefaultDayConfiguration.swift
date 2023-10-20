@@ -22,6 +22,8 @@ final class DefaultDayConfiguration: Object {
     @Persisted var howMuchLivingTime: Int
     /// 하루를 나눈 값
     @Persisted var dividedValue: Int
+    /// 나눠진 하루들
+    @Persisted var dividedDayList = List<DividedDay>()
 
     convenience init(
         whenIsBedTime: Int,
@@ -37,4 +39,36 @@ final class DefaultDayConfiguration: Object {
         self.howMuchLivingTime = howMuchLivingTime
         self.dividedValue = dividedValue
     }
+}
+
+final class DividedDay: EmbeddedObject {
+    /// 나눠진 하루 식별자, 0부터 시작
+    @Persisted var day: Int
+    /// 나눠진 하루의 시작시간
+    @Persisted var whenIsStartTime: Int
+    /// 나눠진 하루의 종료 시각
+    @Persisted var whenIsEndTime: Int
+    /// 나눠진 하루의 생활 시간
+    @Persisted var howMuchLivingTime: Int
+
+    convenience init(day: Int, whenIsStartTime: Int, whenIsEndTime: Int, howMuchLivingTime: Int) {
+        self.init()
+        self.day = day
+        self.whenIsStartTime = whenIsStartTime
+        self.whenIsEndTime = whenIsEndTime
+        self.howMuchLivingTime = howMuchLivingTime
+    }
+
+    /// 나눠진 해당 하루에서 사용하는 "시" 배열
+    var whenIsUseHourList: [Int] {
+        let startHour = whenIsStartTime / 60
+        let endHour = whenIsEndTime / 60
+        return [Int](startHour...endHour)
+    }
+
+    var livingHourSplitList: [Int] {
+        let livingHour = howMuchLivingTime / 60
+        return [Int](0...livingHour)
+    }
+
 }

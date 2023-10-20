@@ -6,48 +6,17 @@
 //
 
 import Foundation
-import RealmSwift
 
 final class DayDividedSelectViewModel {
 
-    let selectedDate: Observable<Date>
-
     // MARK: - bind from DayDividedSelectViewController
-    let divideValue = Observable(1)
+    let dividedValue: Observable<Int?> = Observable(nil)
 
-    // MARK: - Realm
-    let realm = try! Realm()
+    // MARK: - bind from TodoAddContainerViewController
+    let nextButtonTapped = Observable(false)
 
-
-    // MARK: - Init
-    init(selectedDate: Date) {
-        self.selectedDate = Observable(selectedDate)
-        bind()
-    }
-
-    private func bind() {
-        selectedDate.bind { [weak self] (date) in
-            guard let self else {return}
-            self.updateDivideValue(date: date)
-        }
-    }
-
-    private func updateDivideValue(date: Date) {
-        // 해당 날짜를 사용하고 있는 날짜인지 확인하기 위해서 UseDay Table에 검색하고
-        if let divideValue = realm.objects(UseDay.self).where({ $0.date == date }).first?.divideValue {
-            // 있다면 최초 생성 아님
-            self.divideValue.value = divideValue
-
-        } else {
-            // UseDay Table에 없다면 최초 생성인거고
-            guard let dividedValue = realm.objects(DefaultDayConfiguration.self).first?.dividedValue else {
-                print("DayDividedSelectViewModel에 test메서드 내부 ===> dividedValue 없음")
-                return
-            }
-
-            self.divideValue.value = dividedValue
-        }
-    }
+    /// 선택한 나눈 날
+    var selectedDiviedDay = 0
 
 }
 
@@ -59,7 +28,7 @@ extension DayDividedSelectViewModel {
     }
 
     var numberOfRowsInComponent: Int {
-        return divideValue.value
+        return dividedValue.value ?? 0
     }
 }
 
@@ -76,7 +45,7 @@ extension DayDividedSelectViewModel {
 
     func didSelectRow(_ row: Int) {
         print("row --> \(row)")
-//        currentDivideValue.value = divideValueList.value[row]
+        selectedDiviedDay = row
     }
 
 }

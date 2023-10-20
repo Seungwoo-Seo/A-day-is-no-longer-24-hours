@@ -36,8 +36,10 @@
 		573C688D2AE158A80039217C /* UseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C688C2AE158A80039217C /* UseDay.swift */; };
 		573C688F2AE163680039217C /* DayDividedSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C688E2AE163680039217C /* DayDividedSelectViewController.swift */; };
 		573C68942AE163C30039217C /* DayDividedSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C68932AE163C30039217C /* DayDividedSelectViewModel.swift */; };
+		573C68962AE18E160039217C /* TodoTimeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C68952AE18E160039217C /* TodoTimeSettingsViewController.swift */; };
+		573C689A2AE18E3C0039217C /* TodoTimeSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C68992AE18E3C0039217C /* TodoTimeSettingViewModel.swift */; };
 		575BA9662AD434DA0058FDC2 /* LabelDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */; };
-		575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelPickerView.swift */; };
+		575BA9682AD435200058FDC2 /* LabelTextFieldPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BA9672AD435200058FDC2 /* LabelTextFieldPickerView.swift */; };
 		576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */; };
 		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
 		578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */; };
@@ -53,6 +55,9 @@
 		57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */; };
 		57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */; };
 		57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */; };
+		57EF5B4B2AE25A370059ECC4 /* TodoTimeSettingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B4A2AE25A370059ECC4 /* TodoTimeSettingMainView.swift */; };
+		57EF5B4E2AE2683F0059ECC4 /* TodoAddContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B4D2AE2683E0059ECC4 /* TodoAddContainerViewController.swift */; };
+		57EF5B512AE268FB0059ECC4 /* TodoAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B502AE268FB0059ECC4 /* TodoAddViewModel.swift */; };
 		57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F170C92ADE6260008B20C7 /* DefaultTimeConfigMainView.swift */; };
 		57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616AD2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift */; };
 		57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F616B22AD85753007C7C4C /* DefaultDivideCofigViewModel.swift */; };
@@ -99,8 +104,10 @@
 		573C688C2AE158A80039217C /* UseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseDay.swift; sourceTree = "<group>"; };
 		573C688E2AE163680039217C /* DayDividedSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDividedSelectViewController.swift; sourceTree = "<group>"; };
 		573C68932AE163C30039217C /* DayDividedSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDividedSelectViewModel.swift; sourceTree = "<group>"; };
+		573C68952AE18E160039217C /* TodoTimeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTimeSettingsViewController.swift; sourceTree = "<group>"; };
+		573C68992AE18E3C0039217C /* TodoTimeSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTimeSettingViewModel.swift; sourceTree = "<group>"; };
 		575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatePickerView.swift; sourceTree = "<group>"; };
-		575BA9672AD435200058FDC2 /* LabelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPickerView.swift; sourceTree = "<group>"; };
+		575BA9672AD435200058FDC2 /* LabelTextFieldPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextFieldPickerView.swift; sourceTree = "<group>"; };
 		576B10B82AE0B2390000C577 /* DayDivideContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewModel.swift; sourceTree = "<group>"; };
 		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
 		578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideCotainerViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +125,9 @@
 		57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewController.swift; sourceTree = "<group>"; };
 		57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewModel.swift; sourceTree = "<group>"; };
+		57EF5B4A2AE25A370059ECC4 /* TodoTimeSettingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTimeSettingMainView.swift; sourceTree = "<group>"; };
+		57EF5B4D2AE2683E0059ECC4 /* TodoAddContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddContainerViewController.swift; sourceTree = "<group>"; };
+		57EF5B502AE268FB0059ECC4 /* TodoAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddViewModel.swift; sourceTree = "<group>"; };
 		57F170C92ADE6260008B20C7 /* DefaultTimeConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigMainView.swift; sourceTree = "<group>"; };
 		57F616AD2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigViewController.swift; sourceTree = "<group>"; };
 		57F616B22AD85753007C7C4C /* DefaultDivideCofigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideCofigViewModel.swift; sourceTree = "<group>"; };
@@ -165,7 +175,9 @@
 				5714F4AB2AC851D900D55041 /* Schedule */,
 				578907AD2ADEABD700FF5274 /* DayDivide */,
 				57C714022AD2DAEB00DF57D2 /* DateBranch */,
+				57EF5B4C2AE268240059ECC4 /* TodoAdd */,
 				573C68902AE1639A0039217C /* DayDividedSelect */,
+				573C68972AE18E190039217C /* TodoTimeSetting */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -314,7 +326,7 @@
 			children = (
 				5714F4C92AC8668000D55041 /* LineView.swift */,
 				575BA9652AD434DA0058FDC2 /* LabelDatePickerView.swift */,
-				575BA9672AD435200058FDC2 /* LabelPickerView.swift */,
+				575BA9672AD435200058FDC2 /* LabelTextFieldPickerView.swift */,
 				57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */,
 				57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */,
 			);
@@ -359,6 +371,32 @@
 			isa = PBXGroup;
 			children = (
 				573C68932AE163C30039217C /* DayDividedSelectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		573C68972AE18E190039217C /* TodoTimeSetting */ = {
+			isa = PBXGroup;
+			children = (
+				573C68982AE18E230039217C /* View */,
+				573C689B2AE18E400039217C /* ViewModel */,
+			);
+			path = TodoTimeSetting;
+			sourceTree = "<group>";
+		};
+		573C68982AE18E230039217C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57EF5B4A2AE25A370059ECC4 /* TodoTimeSettingMainView.swift */,
+				573C68952AE18E160039217C /* TodoTimeSettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		573C689B2AE18E400039217C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				573C68992AE18E3C0039217C /* TodoTimeSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -508,6 +546,31 @@
 			isa = PBXGroup;
 			children = (
 				57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		57EF5B4C2AE268240059ECC4 /* TodoAdd */ = {
+			isa = PBXGroup;
+			children = (
+				57EF5B4F2AE268EC0059ECC4 /* View */,
+				57EF5B522AE268FE0059ECC4 /* ViewModel */,
+			);
+			path = TodoAdd;
+			sourceTree = "<group>";
+		};
+		57EF5B4F2AE268EC0059ECC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57EF5B4D2AE2683E0059ECC4 /* TodoAddContainerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57EF5B522AE268FE0059ECC4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57EF5B502AE268FB0059ECC4 /* TodoAddViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -703,9 +766,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
+				57EF5B512AE268FB0059ECC4 /* TodoAddViewModel.swift in Sources */,
 				57F616B52AD9B3E8007C7C4C /* DefaultDayConfiguration.swift in Sources */,
 				57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */,
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
+				57EF5B4B2AE25A370059ECC4 /* TodoTimeSettingMainView.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
 				57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */,
@@ -718,6 +783,7 @@
 				570FE7142AE0AD4100ECE726 /* DayDivideContentViewController.swift in Sources */,
 				5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */,
 				5714F4C82AC8651F00D55041 /* BaseCollectionViewCell.swift in Sources */,
+				573C689A2AE18E3C0039217C /* TodoTimeSettingViewModel.swift in Sources */,
 				576B10B92AE0B2390000C577 /* DayDivideContentViewModel.swift in Sources */,
 				578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */,
 				5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */,
@@ -730,7 +796,7 @@
 				57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */,
 				5714F4C62AC8620300D55041 /* BaseCollectionReusableView.swift in Sources */,
 				5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */,
-				575BA9682AD435200058FDC2 /* LabelPickerView.swift in Sources */,
+				575BA9682AD435200058FDC2 /* LabelTextFieldPickerView.swift in Sources */,
 				5714F4B52AC8531900D55041 /* ScheduleViewModel.swift in Sources */,
 				5714F4CA2AC8668000D55041 /* LineView.swift in Sources */,
 				5714F4B82AC8594F00D55041 /* ScheduleModel.swift in Sources */,
@@ -748,7 +814,9 @@
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
 				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
+				57EF5B4E2AE2683F0059ECC4 /* TodoAddContainerViewController.swift in Sources */,
 				5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */,
+				573C68962AE18E160039217C /* TodoTimeSettingsViewController.swift in Sources */,
 				5714F4CC2AC866A000D55041 /* BaseView.swift in Sources */,
 				578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */,
 				573C688D2AE158A80039217C /* UseDay.swift in Sources */,

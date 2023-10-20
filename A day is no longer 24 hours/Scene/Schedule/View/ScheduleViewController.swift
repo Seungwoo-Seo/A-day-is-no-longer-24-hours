@@ -200,7 +200,7 @@ private extension ScheduleViewController {
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let simple = UIAlertAction(title: "간단한 Todo", style: .default) { [weak self] _ in
             guard let self else {return}
-            self.pushToDayDividedSelectViewController()
+            self.pushToTodoAddContainerViewController()
         }
         let detail = UIAlertAction(title: "자세한 Todo", style: .default)
         [cancel, simple, detail].forEach { alert.addAction($0) }
@@ -208,18 +208,17 @@ private extension ScheduleViewController {
     }
 
     // MARK: - 여기선 걍 선택한 날짜만 넘기면 될꺼 같은데
-    func pushToDayDividedSelectViewController() {
+    func pushToTodoAddContainerViewController() {
         guard let selectedDate = calendarView.selectedDate else {print("calendarView selectedDate 없음"); return}
-        let viewModel = DayDividedSelectViewModel(
-            selectedDate: selectedDate
+
+        let viewModel = TodoAddViewModel(
+            selectedDate: Observable(selectedDate)
         )
-        let vc = DayDividedSelectViewController(
+        let vc = TodoAddContainerViewController(
             viewModel: viewModel
         )
-        navigationController?.pushViewController(
-            vc,
-            animated: true
-        )
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 
 }

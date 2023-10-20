@@ -9,10 +9,29 @@ import UIKit
 
 final class DayDividedSelectViewController: BaseViewController {
     // MARK: - View
+    lazy var prevButton = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = Constraints.Color.systemBlue
+        config.background.backgroundColor = Constraints.Color.clear
+        config.title = "이전으로"
+        let button = UIButton(configuration: config)
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return button
+    }()
+    lazy var nextButtom = {
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = Constraints.Color.systemBlue
+        config.background.backgroundColor = Constraints.Color.clear
+        config.title = "다음으로"
+        let button = UIButton(configuration: config)
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return button
+    }()
     private let descriptionLabel = {
         let label = UILabel()
         label.text = "Todo를 추가할 Day를 선택해주세요."
         label.textColor = Constraints.Color.white
+        label.textAlignment = .center
         label.font = Constraints.Font.Insensitive.systemFont_24_semibold
         label.numberOfLines = 0
         return label
@@ -36,7 +55,8 @@ final class DayDividedSelectViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
 
-        self.viewModel.divideValue.bind { _ in
+        self.viewModel.dividedValue.bind { [weak self] (dividedValue) in
+            guard let self, let _ = dividedValue else {return}
             self.dayDividedPickerView.reloadAllComponents()
         }
     }
@@ -50,12 +70,20 @@ final class DayDividedSelectViewController: BaseViewController {
         super.initialAttributes()
 
         view.backgroundColor = Constraints.Color.black
+        nextButtom.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+    }
+
+    @objc func didTapNextButton(_ sender: UIButton) {
+        print(#function)
+        viewModel.nextButtonTapped.value.toggle()
     }
 
     override func initialHierarchy() {
         super.initialHierarchy()
 
         [
+            prevButton,
+            nextButtom,
             descriptionLabel,
             dayDividedPickerView
         ].forEach { view.addSubview($0) }
@@ -66,13 +94,24 @@ final class DayDividedSelectViewController: BaseViewController {
 
         let offset = 16
         let inset = 8
+        prevButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview()
+        }
+
+        nextButtom.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalToSuperview()
+        }
+
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(offset)
+            make.top.equalTo(nextButtom.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
+            make.bottom.equalTo(dayDividedPickerView.snp.top).offset(-offset)
         }
 
         dayDividedPickerView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(offset)
+            make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(inset)
         }
     }
