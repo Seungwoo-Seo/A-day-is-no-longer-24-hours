@@ -8,7 +8,7 @@
 import UIKit
 
 final class ExpandButton: BaseButtton {
-    var identifier: String?
+    var identifier: Int?
 
     override func initialAttributes() {
         super.initialAttributes()

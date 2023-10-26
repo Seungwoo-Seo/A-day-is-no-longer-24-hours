@@ -29,17 +29,9 @@ final class DayDivideContentViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    deinit {
-        print(#function)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - DataSource
-    var dataSource: UICollectionViewDiffableDataSource<TodoSection, Todo>!
-    var snapshot: NSDiffableDataSourceSnapshot<TodoSection, Todo>!
+    var dataSource: UICollectionViewDiffableDataSource<TodoStruct, DetailTodoStruct>!
+    var snapshot: NSDiffableDataSourceSnapshot<TodoStruct, DetailTodoStruct>!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -47,58 +39,19 @@ final class DayDivideContentViewController: BaseViewController {
 
         configureDataSource()
 
-        viewModel.todoSectionList.bind { [weak self] (todoSectionList) in
+        viewModel.todoStructList.bind { [weak self] (todoStructList) in
             guard let self else {return}
-            var snapshot = NSDiffableDataSourceSnapshot<TodoSection, Todo>()
-            snapshot.appendSections(todoSectionList)
+            var snapshot = NSDiffableDataSourceSnapshot<TodoStruct, DetailTodoStruct>()
+            snapshot.appendSections(todoStructList)
             self.snapshot = snapshot
             self.dataSource.apply(snapshot)
         }
+    }
 
-//        DispatchQueue.main.asyncAfter(deadline: .now()) {
-//            let section =  TodoSection(kind: .startStandard, startTime: "06:00", endTime: "", category: "DayN 시작", title: nil)
-//
-//            self.viewModel.todoSectionList.value.append(section)
-//        }
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            let section = TodoSection(kind: .simple, startTime: "08:00", endTime: "09:00", category: "아침식사", title: nil)
-//            self.viewModel.todoSectionList.value.append(section)
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-//            let section = TodoSection(kind: .detail, startTime: "12:00", endTime: "18:00", category: "업무", title: "새싹 과제", todoList: [
-//                Todo(title: "첫번째 씬", sectionIdentifier: ""),
-//                Todo(title: "두번째 씬", sectionIdentifier: ""),
-//                Todo(title: "세번째 씬", sectionIdentifier: ""),
-//                Todo(title: "네번째 씬", sectionIdentifier: "")
-//            ])
-//            let section1 = TodoSection(kind: .simple, startTime: "18:00", endTime: "19:00", category: "32회차 리펙토링 및 반복 학습", title: nil)
-//            let section2 = TodoSection(kind: .simple, startTime: "19:00", endTime: "20:00", category: "달리고 달리고 존나 달리고 달리고 달려 달리기", title: nil)
-//            let section3 = TodoSection(kind: .detail, startTime: "20:00", endTime: "22:00", category: "아키텍처 공부", title: "클린 아키텍쳐", todoList: [
-//                Todo(title: "네트워크", sectionIdentifier: ""),
-//                Todo(title: "MVVM", sectionIdentifier: ""),
-//                Todo(title: "MVC", sectionIdentifier: ""),
-//                Todo(title: "라이브러리", sectionIdentifier: ""),
-//                Todo(title: "라이브러리", sectionIdentifier: ""),
-//                Todo(title: "라이브러리", sectionIdentifier: ""),
-//                Todo(title: "라이브러리", sectionIdentifier: ""),
-//                Todo(title: "라이브러리", sectionIdentifier: "")
-//            ])
-//
-//            [
-//                section,
-//                section1,
-//                section2,
-//                section3
-//            ].forEach { self.viewModel.todoSectionList.value.append($0) }
-//        }
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
-//            let section =  TodoSection(kind: .endStandard, startTime: "", endTime: "24:00", category: "DayN 마감", title: nil)
-//
-//            self.viewModel.todoSectionList.value.append(section)
-//        }
+    override func initialAttributes() {
+        super.initialAttributes()
+        
+        view.backgroundColor = Constraints.Color.black
     }
 
     override func initialHierarchy() {
@@ -300,16 +253,16 @@ private extension DayDivideContentViewController {
             elementKind: SimpleTodoHeader.identifier
         ) { [weak self] (supplementaryView, elementKind, indexPath) in
             guard let self else {return}
-            let todoSection = self.viewModel.getTodoSection(section: indexPath.section)
-            supplementaryView.configure(todoSection)
+            let todo = self.viewModel.getTodoSection(section: indexPath.section)
+            supplementaryView.configure(self, todo: todo)
         }
 
         let detailHeaderRegistration = UICollectionView.SupplementaryRegistration<DetailTodoHeader>(
             elementKind: DetailTodoHeader.identifier
         ) { [weak self] (supplementaryView, elementKind, indexPath) in
             guard let self else {return}
-            let todoSection = self.viewModel.getTodoSection(section: indexPath.section)
-            supplementaryView.configure(self, todoSection: todoSection)
+            let todo = self.viewModel.getTodoSection(section: indexPath.section)
+            supplementaryView.configure(self, todo: todo)
         }
 
         let detailFooterRegistration = UICollectionView.SupplementaryRegistration<DetailTodoFooter>(
@@ -328,7 +281,7 @@ private extension DayDivideContentViewController {
             supplementaryView.configure(standardSection)
         }
 
-        let detailTodoCellRegistration = UICollectionView.CellRegistration<DetailTodoCell, Todo> { cell, indexPath, itemIdentifier in
+        let detailTodoCellRegistration = UICollectionView.CellRegistration<DetailTodoCell, DetailTodoStruct> { cell, indexPath, itemIdentifier in
             cell.configure(itemIdentifier)
         }
 
@@ -375,31 +328,57 @@ private extension DayDivideContentViewController {
 
 }
 
+// MARK: - SimpleTodoHeaderProtocol
+extension DayDivideContentViewController: SimpleTodoHeaderProtocol {
+
+    func didTapSimpleTodoHeader(_ todo: TodoStruct) {
+        presentAlert { [weak self] in
+            guard let self else {return}
+            self.viewModel.didTapSimpleTodoHeader(todo)
+        }
+    }
+
+}
+
 // MARK: - DetailTodoHeaderProtocol
 extension DayDivideContentViewController: DetailTodoHeaderProtocol {
 
-    func didTapExpandButton(_ sender: ExpandButton) {
-        if sender.isSelected {
-            if sender.identifier == "12:0018:00" {
-                snapshot.deleteItems(viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!.todoList)
-            } else {
-                snapshot.deleteItems(viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!.todoList)
-            }
-        } else {
-            if sender.identifier == "12:0018:00" {
-                snapshot.appendItems(
-                    viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!.todoList,
-                    toSection: viewModel.todoSectionList.value.filter{ $0.identifier == "12:0018:00" }.first!
-                )
-            } else {
-                snapshot.appendItems(
-                    viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!.todoList,
-                    toSection: viewModel.todoSectionList.value.filter{ $0.identifier == "20:0022:00" }.first!
-                )
-            }
+    func didTapDetailTodoHeader(_ todo: TodoStruct) {
+        presentAlert { [weak self] in
+            guard let self else {return}
+            self.viewModel.didTapDetailTodoHeader(todo)
         }
-        dataSource.apply(snapshot)
+    }
+
+    func didTapExpandButton(_ sender: ExpandButton) {
+        viewModel.test(
+            isSelected: sender.isSelected,
+            identifier: sender.identifier,
+            append: {
+                self.snapshot.appendItems($0, toSection: $1)
+                self.dataSource.apply(self.snapshot)
+            },
+            delete: {
+                self.snapshot.deleteItems($0)
+                self.dataSource.apply(self.snapshot)
+            }
+        )
+
         sender.isSelected.toggle()
+    }
+
+}
+
+private extension DayDivideContentViewController {
+
+    func presentAlert(completion: @escaping () -> ()) {
+        let alert = UIAlertController(title: "삭제하시겠습니까?", message: nil, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "아니오", style: .cancel)
+        let confirm = UIAlertAction(title: "네", style: .default) { _ in
+            completion()
+        }
+        [cancel, confirm].forEach { alert.addAction($0) }
+        present(alert, animated: true)
     }
 
 }

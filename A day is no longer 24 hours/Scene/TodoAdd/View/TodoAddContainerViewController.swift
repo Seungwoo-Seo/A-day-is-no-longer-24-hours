@@ -17,10 +17,50 @@ final class TodoAddContainerViewController: PageboyViewController {
     init(viewModel: TodoAddViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bind()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func bind() {
+        viewModel.dayDividedSelectViewModel.prevButtonTapped.bind(
+            subscribeNow: false
+        ) { [weak self] _ in
+            guard let self else {return}
+            self.dismiss(animated: true)
+        }
+
+        viewModel.dayDividedSelectViewModel.nextButtonTapped.bind(subscribeNow: false) { [weak self] _ in
+            guard let self else {return}
+            self.scrollToPage(.next, animated: true)
+        }
+
+        viewModel.todoTimeSettingViewModel.prevButtonTapped.bind(
+            subscribeNow: false
+        ) { [weak self] _ in
+            guard let self else {return}
+            self.scrollToPage(.previous, animated: true)
+        }
+
+        viewModel.todoTimeSettingViewModel.nextButtonTapped.bind(
+            subscribeNow: false
+        ) { [weak self] _ in
+            guard let self else {return}
+            self.scrollToPage(.next, animated: true)
+        }
+
+        viewModel.todoContentWritingViewModel.prevButtonTapped.bind(subscribeNow: false) { [weak self] (bool) in
+            guard let self else {return}
+            self.scrollToPage(.previous, animated: true)
+        }
+
+
+        viewModel.isDone.bind { [weak self] (bool) in
+            guard let self else {return}
+            self.dismiss(animated: true)
+        }
     }
 
     // MARK: - Life Cycle
@@ -29,13 +69,6 @@ final class TodoAddContainerViewController: PageboyViewController {
 
         dataSource = self
         isScrollEnabled = false
-
-        viewModel.scrollToPage.bind(
-            subscribeNow: false
-        ) { [weak self] _ in
-            guard let self else {return}
-            self.scrollToPage(.next, animated: true)
-        }
     }
 }
 

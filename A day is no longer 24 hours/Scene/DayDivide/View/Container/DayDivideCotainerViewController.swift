@@ -91,7 +91,7 @@ extension DayDivideCotainerViewController: PageboyViewControllerDataSource {
 extension DayDivideCotainerViewController: TMBarDataSource {
 
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
-        let title = "Day \(index + 1)"
+        let title = viewModel.barItemTitle(at: index)
         return TMBarItem(title: title)
     }
 

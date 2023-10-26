@@ -16,8 +16,8 @@ final class DetailTodoFooter: BaseCollectionReusableView {
     private let endTitleLabel = TitleLabel(style: .end)
 
     // MARK: - Configure
-    func configure(_ todoSection: TodoSection) {
-        endTimeLabel.text = todoSection.endTime
+    func configure(_ todo: TodoStruct) {
+        endTimeLabel.text = todo.endTimeToString
         endTitleLabel.text = "마감"
     }
 

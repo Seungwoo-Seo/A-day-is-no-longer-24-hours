@@ -44,6 +44,7 @@ enum Constraints {
             static let title = UIFont.systemFont(ofSize: 17, weight: .regular)
             static let systemFont_17_semibold = UIFont.systemFont(ofSize: 17, weight: .semibold)
             static let systemFont_24_semibold = UIFont.systemFont(ofSize: 24, weight: .semibold)
+            static let systemFont_24_bold = UIFont.systemFont(ofSize: 24, weight: .bold)
         }
 
         /// 변경했을 때 큰 이슈가 생길 수 있음

@@ -17,11 +17,11 @@ final class StartStandardTodoHeader: BaseCollectionReusableView {
     private let verticalView = LineView(style: .separator)
 
     // MARK: - Configure
-    func configure(_ todoSection: TodoSection) {
-        timeLabel.text = todoSection.startTime
+    func configure(_ todo: TodoStruct) {
+        timeLabel.text = todo.startTimeToString
         titleLabel.setTitle(
-            category: todoSection.category,
-            title: todoSection.title
+            category: todo.category,
+            title: todo.subTitle
         )
     }
 

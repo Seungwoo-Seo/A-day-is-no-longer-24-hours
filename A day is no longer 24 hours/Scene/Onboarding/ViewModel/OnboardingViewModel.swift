@@ -114,10 +114,12 @@ private extension OnboardingViewModel {
             try realm.write {
                 realm.add(defaultDayConfig)
                 createDefaultDayConfigurationTableValidity.value = true
+                UserDefaultsManager.shared.isChange = true
                 print("add 성공")
             }
         } catch {
             createDefaultDayConfigurationTableValidity.value = false
+            UserDefaultsManager.shared.isChange = false
             print("add 실패")
         }
         print("add 다음 찍혀야함")

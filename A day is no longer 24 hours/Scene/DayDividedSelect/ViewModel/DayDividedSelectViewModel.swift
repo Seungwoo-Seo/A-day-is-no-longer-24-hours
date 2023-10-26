@@ -10,13 +10,15 @@ import Foundation
 final class DayDividedSelectViewModel {
 
     // MARK: - bind from DayDividedSelectViewController
-    let dividedValue: Observable<Int?> = Observable(nil)
+    let dividedValue = Observable(0)
 
     // MARK: - bind from TodoAddContainerViewController
+    let prevButtonTapped = Observable(false)
     let nextButtonTapped = Observable(false)
 
+    // MARK: - Result
     /// 선택한 나눈 날
-    var selectedDiviedDay = 0
+    let selectedDiviedDay = Observable(0)
 
 }
 
@@ -28,7 +30,7 @@ extension DayDividedSelectViewModel {
     }
 
     var numberOfRowsInComponent: Int {
-        return dividedValue.value ?? 0
+        return dividedValue.value
     }
 }
 
@@ -44,8 +46,7 @@ extension DayDividedSelectViewModel {
     }
 
     func didSelectRow(_ row: Int) {
-        print("row --> \(row)")
-        selectedDiviedDay = row
+        selectedDiviedDay.value = row
     }
 
 }

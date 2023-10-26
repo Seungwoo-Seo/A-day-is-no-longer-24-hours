@@ -9,53 +9,29 @@ import RealmSwift
 import UIKit
 
 final class DayDivideContainerViewModel {
-    // MARK: Sub ViewModel
-    let dayDividedContentViewModel = DayDivideContentViewModel()
-
     // MARK: Just Scene
     let viewControllers: Observable<[DayDivideContentViewController]> = Observable([])
 
-    // MARK: - Event
+    // MARK: - 상위 ViewModel에서 데이터 전달, self에서 바인딩
     // 캘린더에서 날짜를 선택했을 떄
-    let didSelectDate: Observable<Date?> = Observable(nil)
+    let selectedYmd: Observable<String>
 
-
-
-    let realm = try! Realm()
-
+    // MARK: - Repository
+    let task = RealmRepository()
 
     // MARK: - Init
-    init() {
-        // 캘린더에서 날짜를 선택할 때마다
-        didSelectDate.bind { [weak self] (bool) in
+    init(selectedYmd: String) {
+        self.selectedYmd = Observable(selectedYmd)
+        self.selectedYmd.bind { [weak self] (ymd) in
             guard let self else {return}
-            // 해당 날짜가 커스텀 되어 있는지 확인하고
-            // 커스텀 되어 있지 않다면
-            // DefaultDayConfiguration에 데이터를 활용한다.
-            // Get all todos in the realm
 
-
-            // -- 커스텀 되어 있지 않을 때
-            guard let defaultDayConfig = self.realm.objects(DefaultDayConfiguration.self).first else {return}
-
-            var viewControllers: [DayDivideContentViewController] = []
-            for _ in 0..<defaultDayConfig.dividedValue {
-
-                let viewModel = DayDivideContentViewModel()
-
-                let vc = DayDivideContentViewController(
-                    viewModel: viewModel
-                )
-                vc.view.backgroundColor = Constraints.Color.black
-                viewControllers.append(vc)
-            }
-
-            self.viewControllers.value = viewControllers
+            self.updateViewControllers(to: ymd)
         }
     }
 
 }
 
+// MARK: - PageboyViewControllerDataSource
 extension DayDivideContainerViewModel {
 
     var numberOfViewControllers: Int {
@@ -64,6 +40,69 @@ extension DayDivideContainerViewModel {
 
     func viewController(index: Int) -> UIViewController {
         return viewControllers.value[index]
+    }
+
+}
+
+// MARK: - TMBarDataSource
+extension DayDivideContainerViewModel {
+
+    func barItemTitle(at index: Int) -> String {
+        return "Day \(index + 1)"
+    }
+}
+
+private extension DayDivideContainerViewModel {
+
+    func updateViewControllers(to ymd: String) {
+        // 먼저 선택한 날짜에 해당하는 UseDay 레코드가 없다면
+        // 일단 DefaultDayConfiguration을 기반으로 보여주기만 해야한다.
+        switch task.state(of: ymd) {
+        case .onlyDivided(let useDay):
+            var viewControllers: [DayDivideContentViewController] = []
+
+            for dividedDay in useDay.dividedDayList {
+                let viewModel = DayDivideContentViewModel(
+                    selectedYmd: selectedYmd.value,
+                    dividedDay: dividedDay
+                )
+                let vc = DayDivideContentViewController(viewModel: viewModel)
+                viewControllers.append(vc)
+            }
+            self.viewControllers.value = viewControllers
+            print("onlyDivided")
+
+        case .stableAdded(let useDay):
+            var viewControllers: [DayDivideContentViewController] = []
+
+            for dividedDay in useDay.dividedDayList {
+                let viewModel = DayDivideContentViewModel(
+                    selectedYmd: selectedYmd.value,
+                    dividedDay: dividedDay
+                )
+                let vc = DayDivideContentViewController(viewModel: viewModel)
+                viewControllers.append(vc)
+            }
+            self.viewControllers.value = viewControllers
+            print("stableAdded")
+
+        case .noting(let defaultDayConfig):
+            var viewControllers: [DayDivideContentViewController] = []
+
+            // 여기서 어차피 보여주기만 하면 되잖아
+            for dividedDay in defaultDayConfig.dividedDayList {
+                let viewModel = DayDivideContentViewModel(
+                    selectedYmd: selectedYmd.value,
+                    dividedDay: dividedDay
+                )
+                let vc = DayDivideContentViewController(viewModel: viewModel)
+                viewControllers.append(vc)
+            }
+            self.viewControllers.value = viewControllers
+
+        case .never:
+            fatalError("너는 반드시 온보딩 화면에서 받았을텐데 너가 없다는건 뭔가 아주 단단히 잘못된 것이다")
+        }
     }
 
 }

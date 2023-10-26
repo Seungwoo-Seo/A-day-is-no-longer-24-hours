@@ -12,70 +12,104 @@ final class TodoTimeSettingViewController: BaseViewController {
     // MARK: - View
     let mainView = TodoTimeSettingMainView()
 
-    // 필연적으로 분은 0부터 59까지 표현을 해줘야하기 때문에
-    // 실제 해당 분기에 사용하는 시간보다 큰 값이 나올 수 있다.
-    // 그 부분도 조건문처리 해줘야한다.
-
-
     // MARK: - ViewModel
     let viewModel: TodoTimeSettingViewModel
 
-    // MARK: - Inif
+    // MARK: - Init
     init(viewModel: TodoTimeSettingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        viewModel.dividedDay.bind { [weak self] (dividedDay) in
-            guard let self, let _ = dividedDay else {return}
-            self.mainView.whenIsStartView.picker.reloadAllComponents()
-            self.mainView.howMuchToDoView.picker.reloadAllComponents()
-        }
-    }
-
-    func validation() {
-        // 360과 720 사이에 들어오고
-        // db에 검색해봤을 때
-        // 사용가능한 시간이면 통과~
-    }
-
     override func loadView() {
         view = mainView
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        viewModel.whenIsUseHourMinuteList.bind { [weak self] _ in
+            guard let self else {return}
+
+            self.mainView.whenIsStartView.picker.reloadAllComponents()
+            self.mainView.whenIsStartView.picker.selectRow(0, inComponent: 0, animated: false)
+            self.mainView.whenIsStartView.picker.selectRow(0, inComponent: 1, animated: false)
+        }
+
+        viewModel.livingHourMinuteList.bind { [weak self] _ in
+            guard let self else {return}
+
+            self.mainView.howMuchToDoView.picker.reloadAllComponents()
+            self.mainView.howMuchToDoView.picker.selectRow(0, inComponent: 0, animated: false)
+            self.mainView.howMuchToDoView.picker.selectRow(0, inComponent: 1, animated: false)
+        }
+
+        viewModel.whenIsStartViewBottomDescriptionText.bind { [weak self] (text) in
+            guard let self else {return}
+
+            self.mainView.whenIsStartView.setBottomDescriptionLabel(text: text)
+        }
+
+        viewModel.howMuchTodoViewBottomDescriptionText.bind { [weak self] (text) in
+            guard let self else {return}
+
+            self.mainView.howMuchToDoView.setBottomDescriptionLabel(text: text)
+        }
+
+        viewModel.timeOverFlow.bind { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.mainView.errorLabel.text = ""
+                self.mainView.nextButtom.isEnabled = true
+            } else {
+                self.mainView.errorLabel.text = "선택하신 하루의 종료 시각을 넘어가는 설정은 불가능합니다."
+                self.mainView.nextButtom.isEnabled = false
+            }
+        }
+
+        viewModel.timeAvailable.bind { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.mainView.errorLabel.text = ""
+                self.mainView.nextButtom.isEnabled = true
+            } else {
+                self.mainView.errorLabel.text = "선택하신 시간 범위에 이미 할 일이 있습니다."
+                self.mainView.nextButtom.isEnabled = false
+            }
+        }
+    }
 
     // MARK: - Initial Setting
     override func initialAttributes() {
         super.initialAttributes()
 
         view.backgroundColor = Constraints.Color.black
+        mainView.prevButton.addTarget(
+            self,
+            action: #selector(didTapPrevButton),
+            for: .touchUpInside
+        )
+        mainView.nextButtom.addTarget(
+            self,
+            action: #selector(didTapNextButton),
+            for: .touchUpInside
+        )
         mainView.whenIsStartView.picker.dataSource = self
         mainView.howMuchToDoView.picker.dataSource = self
         mainView.whenIsStartView.picker.delegate = self
         mainView.howMuchToDoView.picker.delegate = self
     }
 
+    // MARK: - Event
     @objc
-    func valueChangedwhenIsStartViewPickerView(_ sender: UIDatePicker) {
-        let components = sender.calendar.dateComponents(
-            in: TimeZone(abbreviation: "UTC")!,
-            from: sender.date
-        )
-        let hour = components.hour ?? 0
-        let minute = components.minute ?? 0
-        let hourToMinute = hour * 60 + minute
+    private func didTapPrevButton(_ sender: UIButton) {
+        viewModel.prevButtonTapped.value.toggle()
+    }
 
-        if hourToMinute >= 360 {
-
-        }
+    @objc
+    private func didTapNextButton(_ sender: UIButton) {
+        viewModel.nextButtonTapped.value.toggle()
     }
 
 }
@@ -102,14 +136,6 @@ extension TodoTimeSettingViewController: UIPickerViewDataSource {
 
 extension TodoTimeSettingViewController: UIPickerViewDelegate {
 
-//    func pickerView(
-//        _ pickerView: UIPickerView,
-//        titleForRow row: Int,
-//        forComponent component: Int
-//    ) -> String? {
-//        <#code#>
-//    }
-
     func pickerView(
         _ pickerView: UIPickerView,
         attributedTitleForRow row: Int,
@@ -127,7 +153,31 @@ extension TodoTimeSettingViewController: UIPickerViewDelegate {
         didSelectRow row: Int,
         inComponent component: Int
     ) {
-        
+        viewModel.didSelectRow(
+            row,
+            inComponent: component,
+            tag: pickerView.tag
+        ) {
+            // component가 0일 떄만 호출할 것
+            pickerView.reloadComponent(1)
+            // 이걸 일단 강제해줘야하는게 아쉽다
+            // 시를 올리는 선택을 하면 좋은 동작이지만
+            // 반대로 시를 내릴 때 분이 0번째 row로 강제되는게 안좋은 동작인거 같은데
+            // 강제할 수 밖에 없는 이유가
+            // 각 시마다 분의 개수가 다 다르기 때문에
+            // 더 많은 분을 가지고 있는 시에서 분을 스크롤 하던 도중
+            // 더 적은 분을 가지고 있는 시를 선택하는 순간 인덱스 아웃 오브 레인지 에러가 발생할 수 있어서 앱이 터지게 되기 때문에
+            // 그걸 막고자 좀 강제하게 되었다.
+            pickerView.selectRow(0, inComponent: 1, animated: false)
+
+            // 필연적인 상황이 있어
+            // 예를들어 6시간이 맥스라면 분은 0일텐데
+            // 이전에 1분이라는 분을 선택하고 있었다면
+            // 이 값을 업데이트 해줘야 하잖아
+            return pickerView.selectedRow(
+                inComponent: 1
+            )
+        }
     }
 
 }

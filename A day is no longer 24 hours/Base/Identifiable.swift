@@ -16,3 +16,15 @@ extension UICollectionReusableView: Identifiable {
         return String(describing: self)
     }
 }
+
+extension UITableViewCell: Identifiable {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UITableViewHeaderFooterView : Identifiable {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}

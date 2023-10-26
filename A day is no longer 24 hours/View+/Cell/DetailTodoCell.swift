@@ -17,8 +17,8 @@ final class DetailTodoCell: BaseCollectionViewCell {
     private let titleLabel = TitleLabel(style: .todo)
 
     // MARK: - Configure
-    func configure(_ todo: Todo) {
-        titleLabel.text = todo.title
+    func configure(_ detailTodo: DetailTodoStruct) {
+        titleLabel.text = detailTodo.text
     }
 
     // MARK: - Initial Setting

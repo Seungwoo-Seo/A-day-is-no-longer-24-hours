@@ -8,32 +8,56 @@
 import Foundation
 import RealmSwift
 
+extension Date {
+    var toString: String {
+        let format = DateFormatter()
+        format.locale = Locale(identifier: "ko_KR")
+        format.dateFormat = "yyyyMMdd"
+        return format.string(from: self)
+    }
+}
+
 final class ScheduleViewModel {
-    // MARK: - ViewModel
-    let dayDivideContainerViewModel = DayDivideContainerViewModel()
+    // MARK: - Sub ViewModel
+    lazy var dayDivideContainerViewModel = DayDivideContainerViewModel(
+        selectedYmd: selectedYmd.value
+    )
+
+    // 선택한 년월일
+    let selectedYmd = Observable(Date().toString)
+
+    init() {
+        selectedYmd.bind { [weak self] (ymd) in
+            guard let self else {return}
+
+            self.dayDivideContainerViewModel.selectedYmd.value = ymd
+        }
+    }
 
 
-    var currentMonth = Observable<String>("")
-
-    let realm = try! Realm()
+    // MARK: - Just Scene
+    var currentMonth = Observable("")
 
 }
 
 // MARK: - 비즈니스: Calendar
 extension ScheduleViewModel {
 
-    func currentPage(date: Date, isMonth: Bool = false) -> String {
+    func updateCurrentPage(
+        date: Date,
+        isMonth: Bool = false
+    ) {
         let format = DateFormatter()
         format.locale = Locale(identifier: "ko_KR")
         format.dateFormat = "yyyy년 M월"
 
         if isMonth {
-            return format.string(from: date)
+            currentMonth.value = format.string(from: date)
         } else {
             guard let currentDate = Calendar.current.date(byAdding: .day, value: 3, to: date) else {
-                return ""
+                return
             }
-            return format.string(from: currentDate)
+            currentMonth.value = format.string(from: currentDate)
         }
     }
 

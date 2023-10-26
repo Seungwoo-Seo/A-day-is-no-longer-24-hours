@@ -57,7 +57,7 @@ final class DateBranchViewController: BaseViewController {
     }()
     private let bedTimeLabelTimePickerView = LabelDatePickerView(title: "언제 잘건가요? 😴")
     private lazy var wakeUpTimeLabelTimePickerView = TimeSettingView(title: "얼마나 잘건가요? 🐔", delegate: self)
-    private let dateBranchLabelPickerView = LabelTextFieldPickerView(title: "하루를 어떻게 나눌건가요? ✂️")
+    private let dateBranchLabelPickerView = LabelPickerView(title: "하루를 어떻게 나눌건가요? ✂️")
 
 
 

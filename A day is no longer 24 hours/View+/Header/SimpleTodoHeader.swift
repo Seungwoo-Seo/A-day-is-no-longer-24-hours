@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SimpleTodoHeaderProtocol: AnyObject {
+    func didTapSimpleTodoHeader(_ todo: TodoStruct)
+}
+
 final class SimpleTodoHeader: BaseCollectionReusableView {
     // MARK: - View
     private let standardHorizontalView = LineView(style: .eyewash)
@@ -24,17 +28,39 @@ final class SimpleTodoHeader: BaseCollectionReusableView {
     private let endHorizontalView = LineView(style: .separator)
     private let joinVerticalView = LineView(style: .separator)
 
+    weak var delegate: SimpleTodoHeaderProtocol?
+
+    private var todo: TodoStruct?
+
     // MARK: - Configure
-    func configure(_ todoSection: TodoSection) {
-        startTimeLabel.text = todoSection.startTime
+    func configure(
+        _ delegate: SimpleTodoHeaderProtocol?,
+        todo: TodoStruct
+    ) {
+        self.delegate = delegate
+        self.todo = todo
+        startTimeLabel.text = todo.startTimeToString
         startTitleLabel.setTitle(
-            category: todoSection.category,
-            title: todoSection.title
+            category: todo.category,
+            title: todo.subTitle
         )
-        endTimeLabel.text = todoSection.endTime
+        endTimeLabel.text = todo.endTimeToString
     }
 
     // MARK: - Initial Setting
+    override func initialAttributes() {
+        super.initialAttributes()
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSimpleTodoHeader))
+        addGestureRecognizer(tap)
+    }
+
+    @objc
+    func didTapSimpleTodoHeader() {
+        guard let todo else {return}
+        delegate?.didTapSimpleTodoHeader(todo)
+    }
+
     override func initialHierarchy() {
         super.initialHierarchy()
 
@@ -46,8 +72,8 @@ final class SimpleTodoHeader: BaseCollectionReusableView {
             startCircleImageView,
             timeLineView,
             startHorizontalView,
-            startTitleLabel,
-            stateButton
+            startTitleLabel
+//            stateButton
         ].forEach { addSubview($0) }
 
         // end
@@ -100,11 +126,11 @@ final class SimpleTodoHeader: BaseCollectionReusableView {
             make.centerY.equalTo(startTimeLabel)
         }
 
-        stateButton.snp.makeConstraints { make in
-            make.leading.equalTo(startTitleLabel.snp.trailing)
-            make.trailing.lessThanOrEqualToSuperview()
-            make.centerY.equalTo(startTimeLabel)
-        }
+//        stateButton.snp.makeConstraints { make in
+//            make.leading.equalTo(startTitleLabel.snp.trailing)
+//            make.trailing.lessThanOrEqualToSuperview()
+//            make.centerY.equalTo(startTimeLabel)
+//        }
 
         // MARK: - end
         endTimeLabel.snp.makeConstraints { make in

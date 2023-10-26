@@ -9,74 +9,54 @@ import Foundation
 import RealmSwift
 
 final class UseDay: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var date: Date
-    @Persisted var isDefault: Bool
-    @Persisted var whenIsBedTime: Int?
-    @Persisted var whenIsWakeUpTime: Int?
-    @Persisted var howMuchLifeTime: Int?
-    @Persisted var divideValue: Int?
-    @Persisted var todoList = List<TodoDTO>()
+    @Persisted(primaryKey: true) var ymd: String
+    @Persisted var whenIsBedTime: Int
+    @Persisted var whenIsWakeUpTime: Int
+    @Persisted var howMuchLifeTime: Int
+    @Persisted var dividedValue: Int
+    /// 나눠진 하루들
+    @Persisted var dividedDayList: List<DividedDay>
+
+//    var toUseDay: UseDay {
+//
+//
+//        UseDay(
+//            ymd: ymd,
+//            whenIsBedTime: whenIsBedTime,
+//            whenIsWakeUpTime: whenIsWakeUpTime,
+//            howMuchLifeTime: howMuchLifeTime,
+//            dividedValue: dividedValue,
+//            dividedDayList: <#T##[DividedDay]#>
+//        )
+//
+//
+//    }
+
 
     convenience init(
-        _id: ObjectId,
-        date: Date,
-        isDefault: Bool,
-        whenIsBedTime: Int? = nil,
-        whenIsWakeUpTime: Int? = nil,
-        howMuchLifeTime: Int? = nil,
-        divideValue: Int? = nil
+        ymd: String,
+        whenIsBedTime: Int,
+        whenIsWakeUpTime: Int,
+        howMuchLifeTime: Int,
+        dividedValue: Int,
+        dividedDayList: [DividedDay]
     ) {
         self.init()
-        self._id = _id
-        self.date = date
-        self.isDefault = isDefault
+        self.ymd = ymd
         self.whenIsBedTime = whenIsBedTime
         self.whenIsWakeUpTime = whenIsWakeUpTime
         self.howMuchLifeTime = howMuchLifeTime
-        self.divideValue = divideValue
+        self.dividedValue = dividedValue
+        self.dividedDayList.append(objectsIn: dividedDayList)
     }
 
-}
-
-//enum TodoDTOKind: String, PersistableEnum {
-//    case simple
-//    case detail
-//}
-
-final class TodoDTO: EmbeddedObject {
-    @Persisted var whenIsStart: Int
-    @Persisted var whenIsEnd: Int
-    @Persisted var category: String
-    @Persisted var subTitle: String?
-    @Persisted var isComplete: Bool
-    @Persisted var detailTodoList: List<DetailTodoDTO>
-
-    convenience init(
-        whenIsStart: Int,
-        whenIsEnd: Int,
-        category: String,
-        subTitle: String?,
-        isComplete: Bool,
-        detailTodoList: List<DetailTodoDTO>
-    ) {
-        self.init()
-        self.whenIsStart = whenIsStart
-        self.whenIsEnd = whenIsEnd
-        self.category = category
-        self.subTitle = subTitle
-        self.isComplete = isComplete
-        self.detailTodoList = detailTodoList
+    /// 모든 나눠진 하루의 Todo 개수를 알려주는 프로퍼티
+    var allDividedDayTodoCount: Int {
+        var count = 0
+        dividedDayList.forEach {
+            count += $0.todoList.count
+        }
+        return count
     }
-}
 
-final class DetailTodoDTO: EmbeddedObject {
-    @Persisted var title: String
-    @Persisted var isComplete: Bool
-
-    convenience init(title: String, isComplete: Bool) {
-        self.init()
-        self.title = title
-        self.isComplete = isComplete
-    }
 }

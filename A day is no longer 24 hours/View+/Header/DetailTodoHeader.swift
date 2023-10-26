@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailTodoHeaderProtocol: AnyObject {
     func didTapExpandButton(_ sender: ExpandButton)
+    func didTapDetailTodoHeader(_ todo: TodoStruct)
 }
 
 final class DetailTodoHeader: BaseCollectionReusableView {
@@ -23,18 +24,21 @@ final class DetailTodoHeader: BaseCollectionReusableView {
     // MARK: - Delegate
     weak var delegate: DetailTodoHeaderProtocol?
 
+    private var todo: TodoStruct?
+
     // MARK: - Configure
     func configure(
         _ delegate: DetailTodoHeaderProtocol?,
-        todoSection: TodoSection
+        todo: TodoStruct
     ) {
         self.delegate = delegate
-        startTimeLabel.text = todoSection.startTime
+        self.todo = todo
+        startTimeLabel.text = todo.startTimeToString
         startTitleLabel.setTitle(
-            category: todoSection.category,
-            title: todoSection.title
+            category: todo.category,
+            title: todo.subTitle
         )
-        expandButton.identifier = todoSection.identifier
+        expandButton.identifier = todo.hashValue
     }
 
     // MARK: - Initial Setting
@@ -42,12 +46,23 @@ final class DetailTodoHeader: BaseCollectionReusableView {
         super.initialAttributes()
 
         expandButton.addTarget(self, action: #selector(didTapExpandButton), for: .touchUpInside)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapDetailTodoHeader))
+        addGestureRecognizer(tap)
+    }
+
+    @objc
+    func didTapDetailTodoHeader() {
+        guard let todo else {return}
+        delegate?.didTapDetailTodoHeader(todo)
     }
 
     @objc
     func didTapExpandButton(_ sender: ExpandButton) {
         delegate?.didTapExpandButton(sender)
     }
+
+
 
     override func initialHierarchy() {
         super.initialHierarchy()

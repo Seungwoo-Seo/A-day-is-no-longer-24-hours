@@ -6,18 +6,17 @@
 //
 
 import FSCalendar
-import RealmSwift
 import UIKit
 
 final class ScheduleViewController: BaseViewController {
     // MARK: - View
     private let titleLabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.textColor = Constraints.Color.white
+        label.font = Constraints.Font.Insensitive.systemFont_24_bold
         return label
     }() // 여기 있어야하고
-    private lazy var titleBarButtonItem = UIBarButtonItem(customView: titleLabel) // 여기 있어야 하고
+    private lazy var titleBarButtonItem = UIBarButtonItem(customView: titleLabel)
     private lazy var addTodoBarButtonItem = {
         let button = UIBarButtonItem(
             image: UIImage(systemName: "plus"),
@@ -27,25 +26,8 @@ final class ScheduleViewController: BaseViewController {
         )
         button.tintColor = Constraints.Color.white
         return button
-    }() // 여기 있어야 하고
-    private lazy var calendarView = {
-        let view = FSCalendar(frame: .zero)
-        view.dataSource = self
-        view.delegate = self
-        view.backgroundColor = Constraints.Color.black
-        view.scope = .week
-        view.headerHeight = 0
-        view.locale = Locale(identifier: "ko_KR")
-        view.appearance.borderRadius = 8
-        view.appearance.titleWeekendColor = .red
-        view.appearance.selectionColor = Constraints.Color.white
-        view.appearance.todayColor = Constraints.Color.clear
-        view.appearance.titleTodayColor = Constraints.Color.todayColor
-        view.appearance.weekdayTextColor = Constraints.Color.white
-        view.appearance.titleDefaultColor = Constraints.Color.white
-        view.select(view.today)
-        return view
-    }() // mainView로 가도 됌
+    }()
+    private let mainView = ScheduleMainView()
     lazy var dayDivideView = DayDivideCotainerViewController(
         viewModel: viewModel.dayDivideContainerViewModel
     )
@@ -53,11 +35,11 @@ final class ScheduleViewController: BaseViewController {
     // MARK: - ViewModel
     let viewModel = ScheduleViewModel()
 
-
-    let realm = try! Realm()
-
-
     // MARK: - Life Cycle
+    override func loadView() {
+        view = mainView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,13 +50,14 @@ final class ScheduleViewController: BaseViewController {
         }
 
         // initial input
-        viewModel.currentMonth.value = viewModel.currentPage(date: calendarView.currentPage)
+        viewModel.updateCurrentPage(date: mainView.calendarView.currentPage)
     }
 
     // MARK: - Initial Setting
     override func initialAttributes() {
         super.initialAttributes()
 
+        mainView.delegate = self
     }
 
     override func initialHierarchy() {
@@ -82,7 +65,6 @@ final class ScheduleViewController: BaseViewController {
 
         navigationItem.leftBarButtonItem = titleBarButtonItem
         navigationItem.rightBarButtonItem = addTodoBarButtonItem
-        view.addSubview(calendarView)
         addChild(dayDivideView)
         view.addSubview(dayDivideView.view)
         dayDivideView.didMove(toParent: self)
@@ -91,13 +73,8 @@ final class ScheduleViewController: BaseViewController {
     override func initialLayout() {
         super.initialLayout()
 
-        calendarView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(300)
-        }
-
         dayDivideView.view.snp.makeConstraints { make in
-            make.top.equalTo(calendarView.snp.bottom).offset(8)
+            make.top.equalTo(mainView.calendarView.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -105,85 +82,34 @@ final class ScheduleViewController: BaseViewController {
     // MARK: - Event
     @objc
     private func didTapAddTodoBarButtonItem(_ sender: UIBarButtonItem) {
-        presentActionSheet()
+        presentTodoAddContainerViewController()
     }
 
 }
 
-// MARK: - FSCalendarDataSource
-extension ScheduleViewController: FSCalendarDataSource {
-
-}
-
-// MARK: - FSCalendarDelegate
-extension ScheduleViewController: FSCalendarDelegate {
-
-    func calendar(
-        _ calendar: FSCalendar,
-        boundingRectWillChange bounds: CGRect,
-        animated: Bool
-    ) {
-        calendar.snp.updateConstraints { make in
-            make.height.equalTo(bounds.height)
-        }
-        view.layoutIfNeeded()
-    }
+extension ScheduleViewController: ScheduleMainViewDelegate {
 
     func calendarCurrentPageDidChange(
-        _ calendar: FSCalendar
+        scope: FSCalendarScope,
+        currentPage: Date
     ) {
-        switch calendar.scope {
+        switch scope {
         case .month:
-            viewModel.currentMonth.value = viewModel.currentPage(
-                date: calendarView.currentPage,
+            viewModel.updateCurrentPage(
+                date: currentPage,
                 isMonth: true
             )
         case .week:
-            viewModel.currentMonth.value = viewModel.currentPage(
-                date: calendarView.currentPage
+            viewModel.updateCurrentPage(
+                date: currentPage
             )
         @unknown default:
             fatalError("calendar scope case 추가됌")
         }
     }
 
-    func calendar(
-        _ calendar: FSCalendar,
-        didSelect date: Date,
-        at monthPosition: FSCalendarMonthPosition
-    ) {
-        // 한국 시간으로 변경 필요
-        let format = DateFormatter()
-        format.locale = Locale(identifier: "ko_KR")
-        format.dateFormat = "yyyyMMdd"
-        let tapDate = format.string(from: date) // 년월일 이니까 Unique 하다.
-        print("탭한 날은 -> \(tapDate)")
-
-        // 해당 날짜에 적용되는 하루 나눈 값과 Todo를 가져와야지?
-        // 여기서 탭하면 DayDivideContainer가 알아야하고
-        // 즉, DayDivideContainerViewModel에서 바인딩 해줘야하겠네
-        viewModel.dayDivideContainerViewModel.didSelectDate.value = date
-    }
-
-}
-
-// MARK: - FSCalendarDelegateAppearance
-extension ScheduleViewController: FSCalendarDelegateAppearance {
-
-    func calendar(
-        _ calendar: FSCalendar,
-        appearance: FSCalendarAppearance,
-        fillSelectionColorFor date: Date
-    ) -> UIColor? {
-        return Constraints.Color.white
-    }
-
-    func calendar(
-        _ calendar: FSCalendar,
-        appearance: FSCalendarAppearance,
-        titleSelectionColorFor date: Date
-    ) -> UIColor? {
-        return Constraints.Color.black
+    func calendarDidSelect(_ date: Date) {
+        viewModel.selectedYmd.value = date.toString
     }
 
 }
@@ -192,31 +118,15 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
 private extension ScheduleViewController {
 
     func goToToday() {
-        calendarView.select(calendarView.today)
-    }
-
-    func presentActionSheet() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let simple = UIAlertAction(title: "간단한 Todo", style: .default) { [weak self] _ in
-            guard let self else {return}
-            self.pushToTodoAddContainerViewController()
-        }
-        let detail = UIAlertAction(title: "자세한 Todo", style: .default)
-        [cancel, simple, detail].forEach { alert.addAction($0) }
-        present(alert, animated: true)
+//        calendarView.select(calendarView.today)
+//        viewModel.calendarViewSelected.value.toggle()
     }
 
     // MARK: - 여기선 걍 선택한 날짜만 넘기면 될꺼 같은데
-    func pushToTodoAddContainerViewController() {
-        guard let selectedDate = calendarView.selectedDate else {print("calendarView selectedDate 없음"); return}
-
-        let viewModel = TodoAddViewModel(
-            selectedDate: Observable(selectedDate)
-        )
-        let vc = TodoAddContainerViewController(
-            viewModel: viewModel
-        )
+    func presentTodoAddContainerViewController() {
+        let selectedYmd = viewModel.selectedYmd.value
+        let viewModel = TodoAddViewModel(selectedYmd: Observable(selectedYmd))
+        let vc = TodoAddContainerViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

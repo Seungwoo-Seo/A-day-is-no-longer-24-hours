@@ -1,13 +1,14 @@
 //
-//  TodoTimeSettingMainView.swift
+//  DayDividedSelectMainView.swift
 //  A day is no longer 24 hours
 //
-//  Created by 서승우 on 2023/10/20.
+//  Created by 서승우 on 2023/10/24.
 //
 
 import UIKit
 
-final class TodoTimeSettingMainView: BaseView {
+final class DayDividedSelectMainView: BaseView {
+    // MARK: - View
     lazy var prevButton = {
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = Constraints.Color.systemBlue
@@ -26,44 +27,31 @@ final class TodoTimeSettingMainView: BaseView {
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
-    let whenIsStartView = {
-        let view = LabelPickerView(title: "언제 시작할 건가요?")
-        view.picker.tag = 0
-        return view
-    }()
-    let howMuchToDoView = {
-        let view = LabelPickerView(title: "얼마 동안 할 건가요?")
-        view.picker.tag = 1
-        return view
-    }()
-    let errorLabel = {
+    private let descriptionLabel = {
         let label = UILabel()
+        label.text = "Todo를 추가할 Day를 선택해주세요."
+        label.textColor = Constraints.Color.white
         label.textAlignment = .center
+        label.font = Constraints.Font.Insensitive.systemFont_24_semibold
         label.numberOfLines = 0
-        label.font = Constraints.Font.Insensitive.systemFont_17_semibold
-        label.textColor = Constraints.Color.red
         return label
     }()
+    lazy var dayDividedPickerView = {
+        let view = UIPickerView()
+        view.backgroundColor = Constraints.Color.lightGray_alpha012
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        return view
+    }()
 
-    // 여기서 미안하지만 알아서 맞춰줘야해 최대 시간보다 낮은 시간대로
-
-
-    // 그 분기를 선택했으니까 각 분기의 범위 => 즉, 몇 시간인지 알 수 있으니까
-    // 사용자한태 입력을 받으면 현재 분기에서 최대로 적용할 수 있는 시간이 된다
-    // 사용자한태 입력을 받으면(숫자를 입력받아야지) 해당 숫자를 분으로 다 바꿔서 더해주면 끝값이 나오니까
-    // 시작 값과 끝 값이 적용되는지 확인해 보고
-
-
-    // MARK: - Initial Setting
     override func initialHierarchy() {
         super.initialHierarchy()
 
         [
             prevButton,
             nextButtom,
-            whenIsStartView,
-            howMuchToDoView,
-            errorLabel
+            descriptionLabel,
+            dayDividedPickerView
         ].forEach { addSubview($0) }
     }
 
@@ -82,19 +70,15 @@ final class TodoTimeSettingMainView: BaseView {
             make.trailing.equalToSuperview()
         }
 
-        whenIsStartView.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(nextButtom.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
+            make.bottom.equalTo(dayDividedPickerView.snp.top).offset(-offset)
         }
 
-        howMuchToDoView.snp.makeConstraints { make in
-            make.top.equalTo(whenIsStartView.snp.bottom).offset(offset*2)
+        dayDividedPickerView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(inset)
-        }
-
-        errorLabel.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(howMuchToDoView.snp.bottom).offset(offset)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 
