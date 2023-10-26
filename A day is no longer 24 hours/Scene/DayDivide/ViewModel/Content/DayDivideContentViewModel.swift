@@ -68,7 +68,7 @@ extension DayDivideContentViewModel {
         if let index = todoStructList.value.firstIndex(of: todo) {
             todoStructList.value.remove(at: index)
 
-            let record = task.fetchUseDayRecord(selectedYmd)
+//            let record = task.fetchUseDayRecord(selectedYmd)
 
             task.deleteTodo(selectedYmd, dividedValue: dividedDay.day, todoStruct: todo)
         }

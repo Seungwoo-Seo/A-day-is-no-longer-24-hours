@@ -56,10 +56,11 @@ final class TodoAddContainerViewController: PageboyViewController {
             self.scrollToPage(.previous, animated: true)
         }
 
-
         viewModel.isDone.bind { [weak self] (bool) in
             guard let self else {return}
-            self.dismiss(animated: true)
+            if bool {
+                self.dismiss(animated: true)
+            }
         }
     }
 

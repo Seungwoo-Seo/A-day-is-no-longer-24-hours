@@ -172,7 +172,11 @@ final class DividedDay: EmbeddedObject {
         } else if whenIsUseHourList.last == hour {
             if whenIsUseHourList.last == whenIsEndTime / 60 {
                 let endMinute = whenIsEndTime % 60
-                return [Int](0...endMinute)
+                if endMinute == 0 {
+                    return [Int](0...endMinute)
+                } else {
+                    return [Int](0...endMinute-1)
+                }
             } else {
                 return [Int](0...59)
             }
@@ -204,12 +208,7 @@ final class DividedDay: EmbeddedObject {
     // howMuchTime에 해당 여기는
     func minuteAvailableFromLivingHour(_ hour: Int) -> [Int] {
         if livingHourSplitList.first == hour {  // 항상 0이니까
-            let startMinute = howMuchLivingTime % 60
-            if startMinute == 0 {
-                return [Int](1...59)    // 최소 1분은 보장하기 위해서
-            } else {
-                return [Int](startMinute...59)
-            }
+            return [Int](1...59)
         } else if livingHourSplitList.last == hour {
             let endMinute = howMuchLivingTime % 60
             return [Int](0...endMinute)

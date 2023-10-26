@@ -22,6 +22,7 @@ final class TodoDetailTodoWritingCell: BaseTableViewCell {
     // MARK: - View
     lazy var detailTodoTextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.textColor = Constraints.Color.white
         textField.tintColor = Constraints.Color.white
         textField.backgroundColor = Constraints.Color.lightGray_alpha012
@@ -112,6 +113,15 @@ final class TodoDetailTodoWritingCell: BaseTableViewCell {
             make.trailing.bottom.equalToSuperview().inset(inset)
             make.height.equalTo(height)
         }
+    }
+
+}
+
+extension TodoDetailTodoWritingCell: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

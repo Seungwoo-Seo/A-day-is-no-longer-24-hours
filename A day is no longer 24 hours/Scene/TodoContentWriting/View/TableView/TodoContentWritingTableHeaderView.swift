@@ -22,6 +22,7 @@ final class TodoContentWritingTableHeaderView: BaseView {
     }()
     lazy var categoryTextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.textColor = Constraints.Color.white
         textField.tintColor = Constraints.Color.white
         textField.backgroundColor = Constraints.Color.lightGray_alpha012
@@ -32,6 +33,14 @@ final class TodoContentWritingTableHeaderView: BaseView {
         textField.borderStyle = .roundedRect
         textField.addTarget(self, action: #selector(editChangedCategoryTextField), for: .editingChanged)
         return textField
+    }()
+    let errorLabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = Constraints.Font.Insensitive.systemFont_17_semibold
+        label.textColor = Constraints.Color.red
+        return label
     }()
 
     weak var delegate: TodoContentWritingTableHeaderViewDelegate?
@@ -51,7 +60,11 @@ final class TodoContentWritingTableHeaderView: BaseView {
     override func initialHierarchy() {
         super.initialHierarchy()
 
-        [titleLabel, categoryTextField].forEach { addSubview($0) }
+        [
+            titleLabel,
+            categoryTextField,
+            errorLabel
+        ].forEach { addSubview($0) }
     }
 
     override func initialLayout() {
@@ -67,8 +80,22 @@ final class TodoContentWritingTableHeaderView: BaseView {
         categoryTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(offset/2)
             make.horizontalEdges.equalToSuperview().inset(inset)
-            make.bottom.equalToSuperview().inset(inset*2)
             make.height.equalTo(44)
         }
+
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(categoryTextField.snp.bottom).offset(offset/2)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().inset(inset*3)
+        }
     }
+}
+
+extension TodoContentWritingTableHeaderView: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 }

@@ -88,8 +88,8 @@ final class TodoAddViewModel {
 
     private func appendTodo(_ todo: Todo) {
         switch task.state(of: selectedYmd.value) {
-        case .onlyDivided(_):
-            print("여기도 일단 넘어간다")
+//        case .onlyDivided(_):
+//            print("여기도 일단 넘어간다")
 
         case .stableAdded(let useDay):
             let selectedDividedValue = selectedDividedValue.value!
@@ -213,10 +213,11 @@ private extension TodoAddViewModel {
     /// 하루를 며칠로 나눴는지에 해당하는 데이터를 전달해주는 메소드
     func relayDividedValueToDayDividedSelectViewModel(_ ymd: String) {
         switch task.state(of: ymd) {
-        case .onlyDivided(_):
-            print("여기도 일단 넘어간다")
+//        case .onlyDivided(_):
+//            print("여기도 일단 넘어간다")
 
         case .stableAdded(let useDay):
+            print("너가 왜 안나와?")
             dayDividedSelectViewModel.dividedValue.value = useDay.dividedValue
 
         case .noting(let defaultDayConfiguration):
@@ -235,8 +236,8 @@ private extension TodoAddViewModel {
     /// 선택된 나눠진 하루에 데이터를 전달해주는 메소드
     func relayDividedDayToTodoTimeSettingViewModel(_ ymd: String, selectedDividedDay: Int) {
         switch task.state(of: ymd) {
-        case .onlyDivided(_):
-            print("여기도 일단 넘어간다")
+//        case .onlyDivided(_):
+//            print("여기도 일단 넘어간다")
 
         case .stableAdded(let useDay):
             todoTimeSettingViewModel.selectedDividedDay.value = useDay.dividedDayList[selectedDividedDay]
@@ -252,8 +253,8 @@ private extension TodoAddViewModel {
     /// 해당 시간 범위를 사용할 수 있는지 검사하는 메서드
     func checkWantTimeRange(_ wantTimeRange: TodoTimeRange) {
         switch task.state(of: selectedYmd.value) {
-        case .onlyDivided(_):
-            print("여기도 일단 넘어가는데 검증 필요없을 걸?")
+//        case .onlyDivided(_):
+//            print("여기도 일단 넘어가는데 검증 필요없을 걸?")
 
         case .stableAdded(let useDay):
             let selectedDividedValue = selectedDividedValue.value!
@@ -286,9 +287,21 @@ private extension TodoAddViewModel {
             }
             todoTimeSettingViewModel.timeAvailable.value = timeAvailable
 
-        case .noting(_):
-            // 여긴 검증 필요 없으니까
+        case .noting(let defaultDayConfiguration):
+            let selectedDividedValue = selectedDividedValue.value!
+            let dividedDay = defaultDayConfiguration.dividedDayList[selectedDividedValue]
+            // 여긴 시간 사용여부 검증말고 시간 범위 오버플로 검증 필요
+            // 1. 원하는 시간이 하루를 넘어가진 않는지 검사하는 로직
+            print("wantTimeRange.whenIsEndTime ==> ", wantTimeRange.whenIsEndTime)
+            print("dividedDay.whenIsEndTime ==> ", dividedDay.whenIsEndTime)
+            if wantTimeRange.whenIsEndTime > dividedDay.whenIsEndTime {
+                self.wantTimeRange.value = nil
+                todoTimeSettingViewModel.timeOverFlow.value = false
+                return
+            }
+
             self.wantTimeRange.value = wantTimeRange
+            // 2. 미리 설정된 Todo가 없기 때문에 바로 true
             todoTimeSettingViewModel.timeAvailable.value = true
         case .never:
             fatalError("넌 사고")

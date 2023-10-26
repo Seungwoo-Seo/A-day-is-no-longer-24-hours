@@ -67,18 +67,19 @@ final class TodoContentWritingMainView: BaseView {
     override func initialLayout() {
         super.initialLayout()
 
+        let offset = 4
         prevButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset)
             make.leading.equalToSuperview()
         }
 
         addButtom.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset)
             make.trailing.equalToSuperview()
         }
 
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(addButtom.snp.bottom).offset(8)
+            make.top.equalTo(addButtom.snp.bottom).offset(offset)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeAreaLayoutGuide)
         }

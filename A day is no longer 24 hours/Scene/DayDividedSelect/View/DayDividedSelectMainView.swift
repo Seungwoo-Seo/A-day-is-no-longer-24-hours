@@ -61,12 +61,12 @@ final class DayDividedSelectMainView: BaseView {
         let offset = 16
         let inset = 8
         prevButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset/4)
             make.leading.equalToSuperview()
         }
 
         nextButtom.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset/4)
             make.trailing.equalToSuperview()
         }
 

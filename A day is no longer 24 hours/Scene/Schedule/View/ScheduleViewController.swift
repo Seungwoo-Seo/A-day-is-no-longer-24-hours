@@ -27,6 +27,16 @@ final class ScheduleViewController: BaseViewController {
         button.tintColor = Constraints.Color.white
         return button
     }()
+    private lazy var todayBarButtomItem = {
+        let button = UIBarButtonItem(
+            title: "today",
+            style: .plain,
+            target: self,
+            action: #selector(didTapTodayBarButtomItem)
+        )
+        button.tintColor = Constraints.Color.white
+        return button
+    }()
     private let mainView = ScheduleMainView()
     lazy var dayDivideView = DayDivideCotainerViewController(
         viewModel: viewModel.dayDivideContainerViewModel
@@ -64,6 +74,7 @@ final class ScheduleViewController: BaseViewController {
         super.initialHierarchy()
 
         navigationItem.leftBarButtonItem = titleBarButtonItem
+//        navigationItem.rightBarButtonItems = [addTodoBarButtonItem, todayBarButtomItem]
         navigationItem.rightBarButtonItem = addTodoBarButtonItem
         addChild(dayDivideView)
         view.addSubview(dayDivideView.view)
@@ -83,6 +94,11 @@ final class ScheduleViewController: BaseViewController {
     @objc
     private func didTapAddTodoBarButtonItem(_ sender: UIBarButtonItem) {
         presentTodoAddContainerViewController()
+    }
+
+    @objc
+    func didTapTodayBarButtomItem(_ sender: UIBarButtonItem) {
+        backToday()
     }
 
 }
@@ -117,8 +133,8 @@ extension ScheduleViewController: ScheduleMainViewDelegate {
 // MARK: - Action
 private extension ScheduleViewController {
 
-    func goToToday() {
-//        calendarView.select(calendarView.today)
+    func backToday() {
+        mainView.calendarView.select(mainView.calendarView.today)
 //        viewModel.calendarViewSelected.value.toggle()
     }
 

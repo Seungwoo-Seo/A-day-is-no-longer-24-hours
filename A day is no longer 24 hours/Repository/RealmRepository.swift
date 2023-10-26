@@ -11,7 +11,7 @@ import RealmSwift
 /// 날짜의 상태를 나타내는 열거형
 enum DateState {
     // UseDay Table에 추가되어 있지만 Todo는 한 개도 없고 DefaultDayConfiguration의 dividedValue와 다르게 사용자가 변경한 상태
-    case onlyDivided(useDay: UseDay)
+//    case onlyDivided(useDay: UseDay)
 
     // Todo가 추가된 상태로 UseDay Table에 추가되어 있는 상태
     case stableAdded(useDay: UseDay)
@@ -32,7 +32,8 @@ final class RealmRepository {
             // UseDay Table에 동일한 Date를 가진 레코드가 있을 때 Todo가 0개라면
             // => 해당 날짜는 나누는 것만 커스텀 한 것!
             if record.allDividedDayTodoCount == 0 {
-                return .onlyDivided(useDay: record)
+                return .stableAdded(useDay: record)
+//                return .onlyDivided(useDay: record)
             } else {
                 // 얘는 걍 처리하면 되지 않나?
                 return .stableAdded(useDay: record)

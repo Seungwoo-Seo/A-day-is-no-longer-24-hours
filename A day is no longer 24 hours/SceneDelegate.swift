@@ -13,8 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let fileURL = try! FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        print(fileURL)
+//        let fileURL = try! FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        print(fileURL)
 
         guard let windowScene = (scene as? UIWindowScene) else {return}
         window = UIWindow(windowScene: windowScene)

@@ -58,19 +58,19 @@ private extension DayDivideContainerViewModel {
         // 먼저 선택한 날짜에 해당하는 UseDay 레코드가 없다면
         // 일단 DefaultDayConfiguration을 기반으로 보여주기만 해야한다.
         switch task.state(of: ymd) {
-        case .onlyDivided(let useDay):
-            var viewControllers: [DayDivideContentViewController] = []
-
-            for dividedDay in useDay.dividedDayList {
-                let viewModel = DayDivideContentViewModel(
-                    selectedYmd: selectedYmd.value,
-                    dividedDay: dividedDay
-                )
-                let vc = DayDivideContentViewController(viewModel: viewModel)
-                viewControllers.append(vc)
-            }
-            self.viewControllers.value = viewControllers
-            print("onlyDivided")
+//        case .onlyDivided(let useDay):
+//            var viewControllers: [DayDivideContentViewController] = []
+//
+//            for dividedDay in useDay.dividedDayList {
+//                let viewModel = DayDivideContentViewModel(
+//                    selectedYmd: selectedYmd.value,
+//                    dividedDay: dividedDay
+//                )
+//                let vc = DayDivideContentViewController(viewModel: viewModel)
+//                viewControllers.append(vc)
+//            }
+//            self.viewControllers.value = viewControllers
+//            print("onlyDivided")
 
         case .stableAdded(let useDay):
             var viewControllers: [DayDivideContentViewController] = []

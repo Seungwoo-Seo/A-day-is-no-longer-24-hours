@@ -17,6 +17,8 @@ final class TodoContentWritingViewModel {
     // 현재 detailTodo 갯수 => 즉, 화면에 추가된 textField Cell 갯수 - 옵션
     // 여기선 itemIdentifier를 Class로 사용해야함
     let detailTodoList: Observable<[DetailTodo]> = Observable([])
+    // 카테고리 존재 여부 판단
+    let categoryExists = Observable(false)
 
     // MARK: - bind from TodoAddContainerViewController
     let prevButtonTapped = Observable(false)
@@ -47,12 +49,13 @@ final class TodoContentWritingViewModel {
                     self.todoContent.value = (category, [])
                 } else {
                     let category = self.category ?? ""
-                    let detailTodoStructList = self.detailTodoList.value.map { $0.toDetailTodoStruct }
+                    let detailTodoStructList = self.detailTodoList.value
+                        .filter { !($0.text.trimmingCharacters(in: .whitespaces).isEmpty) }
+                        .map { $0.toDetailTodoStruct }
                     self.todoContent.value = (category, detailTodoStructList)
                 }
                 self.isStandby.value = true
             } else {
-                print("카테고리를 입력해주세요!!")
                 self.todoContent.value = nil
                 self.isStandby.value = false
             }
@@ -67,9 +70,11 @@ private extension TodoContentWritingViewModel {
     func checkIfTodoCanBeAdd() {
         // 카테고리가 반드시 있어야 한다.
         guard category != nil else {
+            categoryExists.value = false
             todoCanBeAdd.value = false
             return
         }
+        categoryExists.value = true
         todoCanBeAdd.value = true
     }
 

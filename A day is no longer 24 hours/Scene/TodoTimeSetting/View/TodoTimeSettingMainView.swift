@@ -8,6 +8,14 @@
 import UIKit
 
 final class TodoTimeSettingMainView: BaseView {
+    private let scrollView = {
+        let view = UIScrollView(frame: .zero)
+        return view
+    }()
+    private let contentView = {
+        let view = UIView()
+        return view
+    }()
     lazy var prevButton = {
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = Constraints.Color.systemBlue
@@ -45,15 +53,6 @@ final class TodoTimeSettingMainView: BaseView {
         return label
     }()
 
-    // 여기서 미안하지만 알아서 맞춰줘야해 최대 시간보다 낮은 시간대로
-
-
-    // 그 분기를 선택했으니까 각 분기의 범위 => 즉, 몇 시간인지 알 수 있으니까
-    // 사용자한태 입력을 받으면 현재 분기에서 최대로 적용할 수 있는 시간이 된다
-    // 사용자한태 입력을 받으면(숫자를 입력받아야지) 해당 숫자를 분으로 다 바꿔서 더해주면 끝값이 나오니까
-    // 시작 값과 끝 값이 적용되는지 확인해 보고
-
-
     // MARK: - Initial Setting
     override func initialHierarchy() {
         super.initialHierarchy()
@@ -61,10 +60,16 @@ final class TodoTimeSettingMainView: BaseView {
         [
             prevButton,
             nextButtom,
+            scrollView
+        ].forEach { addSubview($0) }
+
+        scrollView.addSubview(contentView)
+
+        [
             whenIsStartView,
             howMuchToDoView,
             errorLabel
-        ].forEach { addSubview($0) }
+        ].forEach { contentView.addSubview($0) }
     }
 
     override func initialLayout() {
@@ -73,28 +78,39 @@ final class TodoTimeSettingMainView: BaseView {
         let offset = 16
         let inset = 8
         prevButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset/4)
             make.leading.equalToSuperview()
         }
 
         nextButtom.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(offset/4)
             make.trailing.equalToSuperview()
         }
 
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(nextButtom.snp.bottom).offset(offset/4)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+        }
+
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(scrollView.snp.width)
+        }
+
         whenIsStartView.snp.makeConstraints { make in
-            make.top.equalTo(nextButtom.snp.bottom).offset(offset)
+            make.top.equalToSuperview().offset(offset)
             make.horizontalEdges.equalToSuperview().inset(inset)
         }
 
         howMuchToDoView.snp.makeConstraints { make in
-            make.top.equalTo(whenIsStartView.snp.bottom).offset(offset*2)
+            make.top.equalTo(whenIsStartView.snp.bottom).offset(offset*3)
             make.horizontalEdges.equalToSuperview().inset(inset)
         }
 
         errorLabel.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(howMuchToDoView.snp.bottom).offset(offset)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().inset(inset*2)
         }
     }
 

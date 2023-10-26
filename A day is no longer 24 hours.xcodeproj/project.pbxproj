@@ -84,7 +84,6 @@
 		57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616C72ADC1A8C007C7C4C /* FSCalendar */; };
 		57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616CA2ADC1B81007C7C4C /* Realm */; };
 		57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57F616CC2ADC1B81007C7C4C /* RealmSwift */; };
-		57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F822362ACEE6DC0005CBC6 /* Preview.storyboard */; };
 		925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,7 +161,6 @@
 		57F616B42AD9B3E8007C7C4C /* DefaultDayConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDayConfiguration.swift; sourceTree = "<group>"; };
 		57F616B62AD9B9D5007C7C4C /* OnboardingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabViewController.swift; sourceTree = "<group>"; };
 		57F616B82ADA792E007C7C4C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		57F822362ACEE6DC0005CBC6 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		6325C6645600D66DA722265B /* Pods_A_day_is_no_longer_24_hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_day_is_no_longer_24_hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699704C0E154EFA3F0B65183 /* Pods-A day is no longer 24 hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.debug.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.debug.xcconfig"; sourceTree = "<group>"; };
 		DBD42A7EE31B10218A333749 /* Pods-A day is no longer 24 hours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A day is no longer 24 hours.release.xcconfig"; path = "Target Support Files/Pods-A day is no longer 24 hours/Pods-A day is no longer 24 hours.release.xcconfig"; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 				57C138412AC5496500277597 /* SceneDelegate.swift */,
 				57C138482AC5496A00277597 /* Assets.xcassets */,
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
-				57F822362ACEE6DC0005CBC6 /* Preview.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
 			);
 			path = "A day is no longer 24 hours";
@@ -778,7 +775,6 @@
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
-				57F822372ACEE6DC0005CBC6 /* Preview.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,8 +1040,10 @@
 				INFOPLIST_FILE = "A day is no longer 24 hours/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1076,8 +1074,10 @@
 				INFOPLIST_FILE = "A day is no longer 24 hours/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

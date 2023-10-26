@@ -39,6 +39,17 @@ final class TodoContentWritingViewController: BaseViewController {
             snapshot.appendItems(detailTodoList, toSection: .detail)
             self.dataSource.apply(snapshot)
         }
+
+        viewModel.categoryExists.bind(
+            subscribeNow: false
+        ) { [weak self] (bool) in
+            guard let self else {return}
+            if bool {
+                self.mainView.tableHeaderView.errorLabel.text = ""
+            } else {
+                self.mainView.tableHeaderView.errorLabel.text = "할 일이 어떤 종류인지 적어주세요."
+            }
+        }
     }
 
     override func viewDidLayoutSubviews() {

@@ -7,7 +7,6 @@
 
 import FSCalendar
 import UIKit
-import TextFieldEffects
 
 final class DateBranchViewController: BaseViewController {
     fileprivate let gregorian = Calendar(identifier: .gregorian)
