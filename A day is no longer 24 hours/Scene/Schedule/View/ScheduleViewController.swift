@@ -85,7 +85,7 @@ final class ScheduleViewController: BaseViewController {
         super.initialLayout()
 
         dayDivideView.view.snp.makeConstraints { make in
-            make.top.equalTo(mainView.calendarView.snp.bottom).offset(8)
+            make.top.equalTo(mainView.calendarView.snp.bottom).offset(1)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }

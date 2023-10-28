@@ -10,28 +10,14 @@ import RealmSwift
 
 final class UseDay: Object {
     @Persisted(primaryKey: true) var ymd: String
+    // 개별적인지 확인하는 프로퍼티
+    @Persisted var isIndependent: Bool = false
     @Persisted var whenIsBedTime: Int
     @Persisted var whenIsWakeUpTime: Int
     @Persisted var howMuchLifeTime: Int
     @Persisted var dividedValue: Int
     /// 나눠진 하루들
     @Persisted var dividedDayList: List<DividedDay>
-
-//    var toUseDay: UseDay {
-//
-//
-//        UseDay(
-//            ymd: ymd,
-//            whenIsBedTime: whenIsBedTime,
-//            whenIsWakeUpTime: whenIsWakeUpTime,
-//            howMuchLifeTime: howMuchLifeTime,
-//            dividedValue: dividedValue,
-//            dividedDayList: <#T##[DividedDay]#>
-//        )
-//
-//
-//    }
-
 
     convenience init(
         ymd: String,

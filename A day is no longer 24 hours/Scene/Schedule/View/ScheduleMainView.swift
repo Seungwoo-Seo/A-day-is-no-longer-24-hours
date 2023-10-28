@@ -20,13 +20,12 @@ final class ScheduleMainView: BaseView {
     lazy var calendarView = {
         let view = FSCalendar(frame: .zero)
         view.backgroundColor = Constraints.Color.black
-//        view.dataSource = self
         view.delegate = self
         view.scope = .week
         view.headerHeight = 0
         view.locale = Locale(identifier: "ko_KR")
         view.appearance.borderRadius = 8
-        view.appearance.titleWeekendColor = .systemMint //Constraints.Color.darkGray
+        view.appearance.titleWeekendColor = Constraints.Color.systemBlue
         view.appearance.selectionColor = Constraints.Color.white
         view.appearance.todayColor = Constraints.Color.clear
         view.appearance.titleTodayColor = Constraints.Color.todayColor
@@ -34,7 +33,12 @@ final class ScheduleMainView: BaseView {
         view.appearance.titleDefaultColor = Constraints.Color.white
         view.select(view.today)
         return view
-    }() // mainView로 가도 됌
+    }()
+    let lineView = {
+        let view = LineView(style: .separator)
+        view.backgroundColor = Constraints.Color.systemBlue.withAlphaComponent(0.5)
+        return view
+    }()
 
     // MARK: - Delegate
     weak var delegate: ScheduleMainViewDelegate?
@@ -43,7 +47,7 @@ final class ScheduleMainView: BaseView {
     override func initialHierarchy() {
         super.initialHierarchy()
 
-        addSubview(calendarView)
+        [calendarView, lineView].forEach { addSubview($0) }
     }
 
     override func initialLayout() {
@@ -52,6 +56,12 @@ final class ScheduleMainView: BaseView {
         calendarView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(300)
+        }
+
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(calendarView.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(1)
         }
     }
 

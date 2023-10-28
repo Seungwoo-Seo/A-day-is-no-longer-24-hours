@@ -51,9 +51,14 @@ final class DefaultTimeConfigMainView: BaseView {
         view.spacing = 5
         return view
     }()
-    private let bedTimeImageView = UIImageView(
-        image: UIImage(systemName: "bed.double.fill")
-    )
+    
+    private let bedTimeImageView = {
+        let view = UIImageView(
+            image: UIImage(systemName: "bed.double.fill")
+        )
+        view.tintColor = Constraints.Color.systemBlue
+        return view
+    }()
     private let bedTimeTitleLabel = {
         let label = UILabel()
         label.text = "취침 시간"
@@ -83,9 +88,13 @@ final class DefaultTimeConfigMainView: BaseView {
         view.spacing = 5
         return view
     }()
-    private let wakeUpTimeImageView = UIImageView(
-        image: UIImage(systemName: "bell.fill")
-    )
+    private let wakeUpTimeImageView = {
+        let view = UIImageView(
+            image: UIImage(systemName: "bell.fill")
+        )
+        view.tintColor = Constraints.Color.systemBlue
+        return view
+    }()
     private let wakeUpTimeTitleLabel = {
         let label = UILabel()
         label.text = "기상 시간"

@@ -48,7 +48,7 @@ extension DayDivideContainerViewModel {
 extension DayDivideContainerViewModel {
 
     func barItemTitle(at index: Int) -> String {
-        return "Day \(index + 1)"
+        return "day \(index + 1)"
     }
 }
 
