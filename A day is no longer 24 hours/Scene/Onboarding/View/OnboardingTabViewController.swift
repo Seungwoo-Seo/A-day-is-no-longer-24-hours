@@ -102,9 +102,7 @@ private extension OnboardingTabViewController {
     func windowResetByScheduleViewController() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController = UINavigationController(
-            rootViewController: ScheduleViewController()
-        )
+        sceneDelegate?.window?.rootViewController = TabBarController()
         sceneDelegate?.window?.makeKeyAndVisible()
     }
 
