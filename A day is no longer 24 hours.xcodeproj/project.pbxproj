@@ -57,6 +57,9 @@
 		57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */; };
 		57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */; };
 		57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */; };
+		57D55AB22AEFD7AE0020C4AF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB12AEFD7AE0020C4AF /* SettingViewController.swift */; };
+		57D55AB42AEFD7CB0020C4AF /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */; };
+		57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB52AEFE1740020C4AF /* SettingMainView.swift */; };
 		57DDC6C32AEBC1A100D902A8 /* TinderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */; };
 		57DDC6C52AEBC20000D902A8 /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */; };
 		57DDC6C72AEBC24000D902A8 /* TinderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C62AEBC24000D902A8 /* TinderColors.swift */; };
@@ -146,6 +149,9 @@
 		57C714002AD2D6E400DF57D2 /* DateBranchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewController.swift; sourceTree = "<group>"; };
 		57C714052AD2DB3F00DF57D2 /* DateBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBranchViewModel.swift; sourceTree = "<group>"; };
 		57C714072AD2E78300DF57D2 /* DIYCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIYCalendarCell.swift; sourceTree = "<group>"; };
+		57D55AB12AEFD7AE0020C4AF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		57D55AB52AEFE1740020C4AF /* SettingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainView.swift; sourceTree = "<group>"; };
 		57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBar.swift; sourceTree = "<group>"; };
 		57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolation.swift"; sourceTree = "<group>"; };
 		57DDC6C62AEBC24000D902A8 /* TinderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderColors.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				573C68902AE1639A0039217C /* DayDividedSelect */,
 				573C68972AE18E190039217C /* TodoTimeSetting */,
 				57EF5B552AE432EF0059ECC4 /* TodoContentWriting */,
+				57D55AB02AEFD7980020C4AF /* Setting */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -567,6 +574,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		57D55AB02AEFD7980020C4AF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				57D55AB72AEFE2790020C4AF /* View */,
+				57D55AB82AEFE27E0020C4AF /* ViewModel */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		57D55AB72AEFE2790020C4AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57D55AB52AEFE1740020C4AF /* SettingMainView.swift */,
+				57D55AB12AEFD7AE0020C4AF /* SettingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57D55AB82AEFE27E0020C4AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +886,7 @@
 				570C37D62AEBB34C009BE9AA /* TinderBarButton.swift in Sources */,
 				57EF5B4B2AE25A370059ECC4 /* TodoTimeSettingMainView.swift in Sources */,
 				5714F4D72AC90EF000D55041 /* StateButton.swift in Sources */,
+				57D55AB42AEFD7CB0020C4AF /* SettingViewModel.swift in Sources */,
 				5714F4D22AC867ED00D55041 /* BaseLabel.swift in Sources */,
 				57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */,
 				57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */,
@@ -876,10 +910,12 @@
 				5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				570C37CA2AE7A2AE009BE9AA /* ScheduleMainView.swift in Sources */,
+				57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */,
 				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
 				5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */,
 				5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */,
+				57D55AB22AEFD7AE0020C4AF /* SettingViewController.swift in Sources */,
 				57DDC6C32AEBC1A100D902A8 /* TinderBar.swift in Sources */,
 				57C714082AD2E78300DF57D2 /* DIYCalendarCell.swift in Sources */,
 				57F616B92ADA792E007C7C4C /* OnboardingViewModel.swift in Sources */,

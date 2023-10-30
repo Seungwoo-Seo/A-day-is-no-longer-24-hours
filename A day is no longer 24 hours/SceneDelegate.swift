@@ -19,6 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else {return}
         window = UIWindow(windowScene: windowScene)
 
+//        let navi = UINavigationController(rootViewController: SettingViewController())
+//        navi.navigationItem.title = "설정"
+//        window?.rootViewController = navi
+//        window?.makeKeyAndVisible()
+
         let isChange = UserDefaultsManager.shared.isChange
 
         if isChange {

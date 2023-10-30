@@ -112,17 +112,25 @@ private extension OnboardingViewModel {
 
         do {
             try realm.write {
-                realm.add(defaultDayConfig)
-                createDefaultDayConfigurationTableValidity.value = true
-                UserDefaultsManager.shared.isChange = true
-                print("add 성공")
+                if let defaultDayConfigUpdate = realm.objects(DefaultDayConfiguration.self).first {
+                    // 업데이트
+                    realm.delete(defaultDayConfigUpdate)
+                    realm.add(defaultDayConfig)
+                    createDefaultDayConfigurationTableValidity.value = true
+                    print("update 성공")
+                } else {
+                    // 최초 생성
+                    realm.add(defaultDayConfig)
+                    createDefaultDayConfigurationTableValidity.value = true
+                    UserDefaultsManager.shared.isChange = true
+                    print("add 성공")
+                }
             }
         } catch {
             createDefaultDayConfigurationTableValidity.value = false
             UserDefaultsManager.shared.isChange = false
             print("add 실패")
         }
-        print("add 다음 찍혀야함")
     }
 
 }
