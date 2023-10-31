@@ -10,7 +10,10 @@ import RealmSwift
 
 final class DayDivideContentViewModel {
     let selectedYmd: String
-    let dividedDay: DividedDay
+    // TODO: 여기서 Realm Type을 사용하지말고 걍 이 렘 썅 좆같은년은 DTO로 두고 쓰자
+    // Hasable해서 DefaultDayConfiguration 업데이트할 때 미리 가지고 있던 dividedDay를 날려버리니까
+    // 아래 todoListAppended() 메서드 호출되면 걍 런타임 에러되는 듯 개 ㅈ같네 시빯ㅁㅇㅆㅇㅂㅅㅂㅅ
+    let dividedDayStruct: DividedDayStruct
 
     let todoStructList: Observable<[TodoStruct]> = Observable([])
 
@@ -18,12 +21,10 @@ final class DayDivideContentViewModel {
     let task = RealmRepository()
 
     // MARK: - Init
-    init(selectedYmd: String, dividedDay: DividedDay) {
+    init(selectedYmd: String, dividedDayStruct: DividedDayStruct) {
         self.selectedYmd = selectedYmd
-        self.dividedDay = dividedDay
-        self.todoStructList.value = dividedDay.todoList.map({$0.toTodoStruct}).sorted(by: {
-            $0.whenIsStartTime < $1.whenIsStartTime
-        })
+        self.dividedDayStruct = dividedDayStruct
+        self.todoStructList.value = dividedDayStruct.todoList.sorted(by: {$0.whenIsStartTime < $1.whenIsStartTime})
 
         NotificationCenter.default.addObserver(
             self,
@@ -35,10 +36,8 @@ final class DayDivideContentViewModel {
 
     @objc
     func todoListAppended() {
-        if let dividedDay = task.fetchUseDayRecord(selectedYmd)?.dividedDayList[dividedDay.day] {
-            todoStructList.value = dividedDay.todoList.map({ $0.toTodoStruct }).sorted(by: {
-                $0.whenIsStartTime < $1.whenIsStartTime
-            })
+        if let dividedDay = task.fetchUseDayRecord(selectedYmd)?.dividedDayList[dividedDayStruct.day] {
+            todoStructList.value = dividedDay.toDividedDayStruct.todoList.sorted(by: {$0.whenIsStartTime < $1.whenIsStartTime})
         } else {
             // 없으면 뭐 할 필요 없지 않나?
         }
@@ -70,7 +69,7 @@ extension DayDivideContentViewModel {
 
 //            let record = task.fetchUseDayRecord(selectedYmd)
 
-            task.deleteTodo(selectedYmd, dividedValue: dividedDay.day, todoStruct: todo)
+            task.deleteTodo(selectedYmd, dividedValue: dividedDayStruct.day, todoStruct: todo)
         }
     }
 
@@ -84,7 +83,7 @@ extension DayDivideContentViewModel {
     ) {
         if let index = todoStructList.value.firstIndex(of: todo) {
             todoStructList.value.remove(at: index)
-            task.deleteTodo(selectedYmd, dividedValue: dividedDay.day, todoStruct: todo)
+            task.deleteTodo(selectedYmd, dividedValue: dividedDayStruct.day, todoStruct: todo)
         }
     }
 

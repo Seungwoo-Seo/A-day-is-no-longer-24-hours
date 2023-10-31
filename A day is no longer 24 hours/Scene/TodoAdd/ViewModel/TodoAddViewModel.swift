@@ -108,33 +108,34 @@ final class TodoAddViewModel {
         case .noting(let defaultDayConfiguration):
             let selectedDividedValue = selectedDividedValue.value!
 
-            try! realm.write {
-                let dividedDayList: [DividedDay] = defaultDayConfiguration
-                    .dividedDayList.map {
-                        DividedDay(
-                            day: $0.day,
-                            whenIsStartTime: $0.whenIsStartTime,
-                            whenIsEndTime: $0.whenIsEndTime,
-                            howMuchLivingTime: $0.howMuchLivingTime
-                        )
-                    }
-
-                let useDay = UseDay(
-                    ymd: selectedYmd.value,
-                    whenIsBedTime: defaultDayConfiguration.whenIsBedTime,
-                    whenIsWakeUpTime: defaultDayConfiguration.whenIsWakeUpTime,
-                    howMuchLifeTime: defaultDayConfiguration.howMuchLivingTime,
-                    dividedValue: defaultDayConfiguration.dividedValue,
-                    dividedDayList: dividedDayList
-                )
-                useDay.dividedDayList[selectedDividedValue].todoList.append(todo)
-
-                realm.add(useDay)
-                
+            do {
+                try realm.write {
+                    let dividedDayList: [DividedDay] = defaultDayConfiguration
+                        .dividedDayList.map {
+                            DividedDay(
+                                day: $0.day,
+                                whenIsStartTime: $0.whenIsStartTime,
+                                whenIsEndTime: $0.whenIsEndTime,
+                                howMuchLivingTime: $0.howMuchLivingTime
+                            )
+                        }
+                    let useDay = UseDay(
+                        ymd: selectedYmd.value,
+                        whenIsBedTime: defaultDayConfiguration.whenIsBedTime,
+                        whenIsWakeUpTime: defaultDayConfiguration.whenIsWakeUpTime,
+                        howMuchLifeTime: defaultDayConfiguration.howMuchLivingTime,
+                        dividedValue: defaultDayConfiguration.dividedValue,
+                        dividedDayList: dividedDayList
+                    )
+                    useDay.dividedDayList[selectedDividedValue].todoList.append(todo)
+                    realm.add(useDay)
+                }
                 NotificationCenter.default.post(
                     name: NSNotification.Name.todoListAppend,
                     object: nil
                 )
+            } catch {
+                print("너냐?")
             }
 
         case .never:

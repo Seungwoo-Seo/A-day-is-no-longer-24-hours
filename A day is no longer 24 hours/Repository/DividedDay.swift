@@ -8,6 +8,14 @@
 import Foundation
 import RealmSwift
 
+struct DividedDayStruct {
+    let day: Int
+    let whenIsStartTime: Int
+    let whenIsEndTime: Int
+    let howMuchLivingTime: Int
+    var todoList = [TodoStruct]()
+}
+
 final class DividedDay: EmbeddedObject {
     /// 나눠진 하루 식별자, 0부터 시작
     @Persisted var day: Int
@@ -26,6 +34,18 @@ final class DividedDay: EmbeddedObject {
         self.whenIsStartTime = whenIsStartTime
         self.whenIsEndTime = whenIsEndTime
         self.howMuchLivingTime = howMuchLivingTime
+    }
+
+    var toDividedDayStruct: DividedDayStruct {
+        var dividedDayStruct = DividedDayStruct(
+            day: day,
+            whenIsStartTime: whenIsStartTime,
+            whenIsEndTime: whenIsEndTime,
+            howMuchLivingTime: howMuchLivingTime
+        )
+        dividedDayStruct.todoList = todoList.map { $0.toTodoStruct }
+
+        return dividedDayStruct
     }
 
     var startTime: (startHour: Int, startMinute: Int) {

@@ -78,7 +78,7 @@ private extension DayDivideContainerViewModel {
             for dividedDay in useDay.dividedDayList {
                 let viewModel = DayDivideContentViewModel(
                     selectedYmd: selectedYmd.value,
-                    dividedDay: dividedDay
+                    dividedDayStruct: dividedDay.toDividedDayStruct
                 )
                 let vc = DayDivideContentViewController(viewModel: viewModel)
                 viewControllers.append(vc)
@@ -93,7 +93,7 @@ private extension DayDivideContainerViewModel {
             for dividedDay in defaultDayConfig.dividedDayList {
                 let viewModel = DayDivideContentViewModel(
                     selectedYmd: selectedYmd.value,
-                    dividedDay: dividedDay
+                    dividedDayStruct: dividedDay.toDividedDayStruct
                 )
                 let vc = DayDivideContentViewController(viewModel: viewModel)
                 viewControllers.append(vc)

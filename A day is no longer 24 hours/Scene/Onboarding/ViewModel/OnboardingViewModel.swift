@@ -112,12 +112,10 @@ private extension OnboardingViewModel {
 
         do {
             try realm.write {
-                if let defaultDayConfigUpdate = realm.objects(DefaultDayConfiguration.self).first {
-                    // 업데이트
-                    realm.delete(defaultDayConfigUpdate)
+                if let defaultDayConfigDelete = realm.objects(DefaultDayConfiguration.self).first {
+                    realm.delete(defaultDayConfigDelete)
                     realm.add(defaultDayConfig)
                     createDefaultDayConfigurationTableValidity.value = true
-                    print("update 성공")
                 } else {
                     // 최초 생성
                     realm.add(defaultDayConfig)
