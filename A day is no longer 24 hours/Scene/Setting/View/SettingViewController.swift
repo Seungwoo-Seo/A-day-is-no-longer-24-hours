@@ -28,6 +28,8 @@ final class SettingViewController: BaseViewController {
     override func initialAttributes() {
         super.initialAttributes()
 
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Constraints.Color.white]
+        navigationItem.title = "설정"
         navigationItem.backButtonTitle = "설정"
         mainView.collectionView.delegate = self
     }

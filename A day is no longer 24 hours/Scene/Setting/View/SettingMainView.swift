@@ -14,6 +14,7 @@ final class SettingMainView: BaseView {
             frame: .zero,
             collectionViewLayout: createLayout()
         )
+        view.backgroundColor = Constraints.Color.black
         return view
     }()
 
@@ -66,14 +67,20 @@ private extension SettingMainView {
     }
 
     func createLayout() -> UICollectionViewLayout {
-        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        config.backgroundColor = Constraints.Color.black
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         return layout
     }
 
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SettingItemIdentifier> { (cell, indexPath, itemIdentifier) in
+            var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
+            backgroundConfig.backgroundColor = Constraints.Color.lightGray_alpha012
+            cell.backgroundConfiguration = backgroundConfig
+
             var contentConfig = cell.defaultContentConfiguration()
+            contentConfig.textProperties.color = Constraints.Color.white
             contentConfig.text = itemIdentifier.text
             cell.contentConfiguration = contentConfig
         }
