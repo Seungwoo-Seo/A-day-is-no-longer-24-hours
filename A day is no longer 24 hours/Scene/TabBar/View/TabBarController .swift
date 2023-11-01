@@ -26,7 +26,7 @@ enum TabBarItem: Int, CaseIterable {
             let vc = UINavigationController(rootViewController: SettingViewController())
             vc.tabBarItem = UITabBarItem(
                 title: "설정",
-                image: UIImage(systemName: "ellipsis"),
+                image: UIImage(systemName: "gearshape"),
                 tag: rawValue
             )
             return vc
