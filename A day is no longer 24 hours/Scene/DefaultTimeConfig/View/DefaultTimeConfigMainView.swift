@@ -9,24 +9,8 @@ import HGCircularSlider
 import UIKit
 
 final class DefaultTimeConfigMainView: BaseView {
-    lazy var nextButtom = {
-        var config = UIButton.Configuration.plain()
-        config.baseForegroundColor = Constraints.Color.systemBlue
-        config.background.backgroundColor = Constraints.Color.clear
-        config.title = "다음으로"
-        let button = UIButton(configuration: config)
-        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return button
-    }()
-    let descriptionLabel = {
-        let label = UILabel()
-        label.text = "취침 시간과 기상 시간을 알려주세요."
-        label.textAlignment = .center
-        label.textColor = Constraints.Color.white
-        label.font = Constraints.Font.Insensitive.systemFont_24_semibold
-        label.numberOfLines = 0
-        return label
-    }()
+    let nextButtom = SceneTransformButton(title: "다음으로")
+    private let descriptionLabel = DescriptionLabel(text: "취침 시간과 기상 시간을 알려주세요.")
     private let containerStackView = {
         let view = UIStackView()
         view.axis = .horizontal
@@ -133,9 +117,7 @@ final class DefaultTimeConfigMainView: BaseView {
         view.endPointValue = 7 * 60 * 60
         return view
     }()
-    private let clockImageView = UIImageView(
-        image: UIImage(named: "clock")
-    )
+    private let clockImageView = UIImageView(image: UIImage(named: "clock"))
     let sleepHourAndMinuteLabel = {
         let label = UILabel()
         label.textAlignment = .center
