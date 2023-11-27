@@ -50,6 +50,7 @@
 		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
 		578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */; };
 		578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */; };
+		57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */; };
 		57BDFAE92B14BCF5006CAE1F /* AdviceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
@@ -149,6 +150,7 @@
 		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
 		578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideCotainerViewController.swift; sourceTree = "<group>"; };
 		578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContainerViewModel.swift; sourceTree = "<group>"; };
+		57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchSleepTimeState.swift; sourceTree = "<group>"; };
 		57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceLabel.swift; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -534,6 +536,14 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		57BDFAE52B14B680006CAE1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		57C138332AC5496500277597 = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +653,7 @@
 		57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */ = {
 			isa = PBXGroup;
 			children = (
+				57BDFAE52B14B680006CAE1F /* Model */,
 				57ECC6ED2AD7D90C009E22BE /* View */,
 				57ECC6EE2AD7D913009E22BE /* ViewModel */,
 			);
@@ -935,6 +946,7 @@
 				57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */,
 				57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */,
 				57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */,
+				57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */,
 				57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */,
 				57EF5B662AE533760059ECC4 /* TodoDetailTodoWritingCell.swift in Sources */,
 				57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */,
