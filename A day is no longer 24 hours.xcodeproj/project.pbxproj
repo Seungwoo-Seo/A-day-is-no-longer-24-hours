@@ -61,6 +61,9 @@
 		57D55AB42AEFD7CB0020C4AF /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */; };
 		57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB52AEFE1740020C4AF /* SettingMainView.swift */; };
 		57D55ABA2AEFF0CC0020C4AF /* TabBarController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB92AEFF0CC0020C4AF /* TabBarController .swift */; };
+		57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA532B14814B00A76420 /* RxCocoa */; };
+		57D5FA562B14814B00A76420 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA552B14814B00A76420 /* RxRelay */; };
+		57D5FA582B14814B00A76420 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA572B14814B00A76420 /* RxSwift */; };
 		57DDC6C32AEBC1A100D902A8 /* TinderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */; };
 		57DDC6C52AEBC20000D902A8 /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */; };
 		57DDC6C72AEBC24000D902A8 /* TinderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C62AEBC24000D902A8 /* TinderColors.swift */; };
@@ -191,12 +194,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D5FA562B14814B00A76420 /* RxRelay in Frameworks */,
 				57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */,
+				57D5FA582B14814B00A76420 /* RxSwift in Frameworks */,
 				57F616C22ADC1A4B007C7C4C /* SnapKit in Frameworks */,
 				57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */,
 				57F616C52ADC1A5A007C7C4C /* IQKeyboardManagerSwift in Frameworks */,
 				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
 				57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */,
+				57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */,
 				57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +799,9 @@
 				57F616C72ADC1A8C007C7C4C /* FSCalendar */,
 				57F616CA2ADC1B81007C7C4C /* Realm */,
 				57F616CC2ADC1B81007C7C4C /* RealmSwift */,
+				57D5FA532B14814B00A76420 /* RxCocoa */,
+				57D5FA552B14814B00A76420 /* RxRelay */,
+				57D5FA572B14814B00A76420 /* RxSwift */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -828,6 +837,7 @@
 				57F616C32ADC1A5A007C7C4C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */,
+				57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -1201,6 +1211,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
@@ -1244,6 +1262,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		57D5FA532B14814B00A76420 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		57D5FA552B14814B00A76420 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		57D5FA572B14814B00A76420 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		57F616BE2ADC1A28007C7C4C /* HGCircularSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */;
