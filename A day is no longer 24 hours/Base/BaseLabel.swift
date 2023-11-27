@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseLabel: UILabel {
+class BaseLabel: UILabel, Base {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +17,7 @@ class BaseLabel: UILabel {
         initialLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -34,7 +34,7 @@
 		5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D82AC90F0E00D55041 /* BaseButton.swift */; };
 		5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DD2AC9142900D55041 /* CircleImageView.swift */; };
 		5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DF2AC9143F00D55041 /* BaseImageView.swift */; };
-		5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* Identifiable.swift */; };
+		5714F4E42AC9266A00D55041 /* ViewIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */; };
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		5724C80D2AE798B400C7B92A /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5724C80C2AE798B400C7B92A /* RealmRepository.swift */; };
 		573490282AE0F40600CA1A9D /* StartStandardTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */; };
@@ -64,6 +64,8 @@
 		57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA532B14814B00A76420 /* RxCocoa */; };
 		57D5FA562B14814B00A76420 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA552B14814B00A76420 /* RxRelay */; };
 		57D5FA582B14814B00A76420 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA572B14814B00A76420 /* RxSwift */; };
+		57D5FA5A2B14833400A76420 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA592B14833400A76420 /* Base.swift */; };
+		57D5FA602B1486D500A76420 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA5F2B1486D500A76420 /* ViewModelType.swift */; };
 		57DDC6C32AEBC1A100D902A8 /* TinderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */; };
 		57DDC6C52AEBC20000D902A8 /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */; };
 		57DDC6C72AEBC24000D902A8 /* TinderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C62AEBC24000D902A8 /* TinderColors.swift */; };
@@ -128,7 +130,7 @@
 		5714F4D82AC90F0E00D55041 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		5714F4DD2AC9142900D55041 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		5714F4DF2AC9143F00D55041 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
-		5714F4E32AC9266A00D55041 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifiable.swift; sourceTree = "<group>"; };
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		5724C80C2AE798B400C7B92A /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStandardTodoHeader.swift; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		57D55AB52AEFE1740020C4AF /* SettingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainView.swift; sourceTree = "<group>"; };
 		57D55AB92AEFF0CC0020C4AF /* TabBarController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarController .swift"; sourceTree = "<group>"; };
+		57D5FA592B14833400A76420 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		57D5FA5F2B1486D500A76420 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBar.swift; sourceTree = "<group>"; };
 		57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolation.swift"; sourceTree = "<group>"; };
 		57DDC6C62AEBC24000D902A8 /* TinderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderColors.swift; sourceTree = "<group>"; };
@@ -276,16 +280,18 @@
 		5714F49D2AC8474300D55041 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+				57D5FA592B14833400A76420 /* Base.swift */,
+				5714F4D82AC90F0E00D55041 /* BaseButton.swift */,
 				5714F4C52AC8620300D55041 /* BaseCollectionReusableView.swift */,
 				5714F4C72AC8651F00D55041 /* BaseCollectionViewCell.swift */,
+				5714F4DF2AC9143F00D55041 /* BaseImageView.swift */,
+				5714F4D12AC867ED00D55041 /* BaseLabel.swift */,
 				57EF5B582AE4E5F70059ECC4 /* BaseTableViewCell.swift */,
 				57EF5B5A2AE4E6AE0059ECC4 /* BaseTableViewHeaderFooterView.swift */,
 				5714F4CB2AC866A000D55041 /* BaseView.swift */,
-				5714F4D12AC867ED00D55041 /* BaseLabel.swift */,
-				5714F4D82AC90F0E00D55041 /* BaseButton.swift */,
-				5714F4DF2AC9143F00D55041 /* BaseImageView.swift */,
-				5714F4E32AC9266A00D55041 /* Identifiable.swift */,
+				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+				5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */,
+				57D5FA5F2B1486D500A76420 /* ViewModelType.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -939,6 +945,7 @@
 				5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				570C37CA2AE7A2AE009BE9AA /* ScheduleMainView.swift in Sources */,
+				57D5FA5A2B14833400A76420 /* Base.swift in Sources */,
 				57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */,
 				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
@@ -965,6 +972,7 @@
 				5714F4C02AC8609100D55041 /* SimpleTodoHeader.swift in Sources */,
 				573C68942AE163C30039217C /* DayDividedSelectViewModel.swift in Sources */,
 				5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */,
+				57D5FA602B1486D500A76420 /* ViewModelType.swift in Sources */,
 				57EF5B6A2AE533AA0059ECC4 /* TodoDetailTodoWritingAddFooter.swift in Sources */,
 				57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */,
 				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
@@ -977,7 +985,7 @@
 				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
 				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
-				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
+				5714F4E42AC9266A00D55041 /* ViewIdentifiable.swift in Sources */,
 				5724C80D2AE798B400C7B92A /* RealmRepository.swift in Sources */,
 				57EF5B4E2AE2683F0059ECC4 /* TodoAddContainerViewController.swift in Sources */,
 				5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */,

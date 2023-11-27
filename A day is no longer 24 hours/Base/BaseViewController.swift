@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, Base {
 
     override init(
         nibName nibNameOrNil: String?,
@@ -33,7 +33,9 @@ class BaseViewController: UIViewController {
         initialLayout()
     }
 
-    func initialAttributes() {}
+    func initialAttributes() {
+        view.backgroundColor = Constraints.Color.black
+    }
 
     func initialHierarchy() {}
 

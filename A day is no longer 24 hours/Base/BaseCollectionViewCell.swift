@@ -5,10 +5,9 @@
 //  Created by 서승우 on 2023/09/30.
 //
 
-import SnapKit
 import UIKit
 
-class BaseCollectionViewCell: UICollectionViewCell {
+class BaseCollectionViewCell: UICollectionViewCell, Base {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +17,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         initialLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
