@@ -235,7 +235,7 @@
 			children = (
 				57F616BA2ADB09C1007C7C4C /* Onboarding */,
 				57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */,
-				57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */,
+				57F616AF2AD8573D007C7C4C /* DefaultDivideConfig */,
 				57D55ABB2AEFF6210020C4AF /* TabBar */,
 				5714F4AB2AC851D900D55041 /* Schedule */,
 				578907AD2ADEABD700FF5274 /* DayDivide */,
@@ -740,13 +740,13 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */ = {
+		57F616AF2AD8573D007C7C4C /* DefaultDivideConfig */ = {
 			isa = PBXGroup;
 			children = (
 				57F616B02AD85743007C7C4C /* View */,
 				57F616B12AD85749007C7C4C /* ViewModel */,
 			);
-			path = DefaultDivideCofig;
+			path = DefaultDivideConfig;
 			sourceTree = "<group>";
 		};
 		57F616B02AD85743007C7C4C /* View */ = {
