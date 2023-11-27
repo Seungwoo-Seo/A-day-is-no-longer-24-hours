@@ -14,7 +14,7 @@
 		570C37D62AEBB34C009BE9AA /* TinderBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */; };
 		570C37D82AEBB3C5009BE9AA /* TinderBarButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */; };
 		570FE7142AE0AD4100ECE726 /* DayDivideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */; };
-		5714F4A22AC8487900D55041 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* Observable.swift */; };
+		5714F4A22AC8487900D55041 /* CustomObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* CustomObservable.swift */; };
 		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
 		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
 		5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A92AC851D400D55041 /* ScheduleViewController.swift */; };
@@ -110,7 +110,7 @@
 		570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBarButton.swift; sourceTree = "<group>"; };
 		570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBarButtonContainer.swift; sourceTree = "<group>"; };
 		570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewController.swift; sourceTree = "<group>"; };
-		5714F4A12AC8487900D55041 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5714F4A12AC8487900D55041 /* CustomObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomObservable.swift; sourceTree = "<group>"; };
 		5714F4A32AC849B700D55041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5714F4A72AC84C0E00D55041 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		5714F4A92AC851D400D55041 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		5714F4992AC8463A00D55041 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				5714F4A12AC8487900D55041 /* Observable.swift */,
+				5714F4A12AC8487900D55041 /* CustomObservable.swift */,
 				570C37D32AEBB2FF009BE9AA /* TinderBarLayout.swift */,
 				570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */,
 				570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */,
@@ -983,7 +983,7 @@
 				57EF5B712AE6A3D60059ECC4 /* Todo.swift in Sources */,
 				57EF5B682AE533950059ECC4 /* TodoDetailTodoWritingAddHeader.swift in Sources */,
 				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
-				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
+				5714F4A22AC8487900D55041 /* CustomObservable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
 				5714F4E42AC9266A00D55041 /* ViewIdentifiable.swift in Sources */,
 				5724C80D2AE798B400C7B92A /* RealmRepository.swift in Sources */,

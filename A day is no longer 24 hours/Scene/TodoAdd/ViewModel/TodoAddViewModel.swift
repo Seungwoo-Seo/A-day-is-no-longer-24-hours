@@ -15,16 +15,16 @@ final class TodoAddViewModel {
     let todoContentWritingViewModel = TodoContentWritingViewModel()
 
     // MARK: - 유저가 고른 값
-    let selectedYmd: Observable<String>
-    let selectedDividedValue: Observable<Int?> = Observable(nil)
-    let wantTimeRange: Observable<TodoTimeRange?> = Observable(nil)
-    let todoContent: Observable<TodoContent?> = Observable(nil)
+    let selectedYmd: CustomObservable<String>
+    let selectedDividedValue: CustomObservable<Int?> = CustomObservable(nil)
+    let wantTimeRange: CustomObservable<TodoTimeRange?> = CustomObservable(nil)
+    let todoContent: CustomObservable<TodoContent?> = CustomObservable(nil)
 
     // MARK: - bind from TodoAddContainerViewController
-    let isDone = Observable(false)
+    let isDone = CustomObservable(false)
 
     // MARK: - Just Scene
-    lazy var viewControllers = Observable(
+    lazy var viewControllers = CustomObservable(
         [
             DayDividedSelectViewController(viewModel: dayDividedSelectViewModel),
             TodoTimeSettingViewController(viewModel: todoTimeSettingViewModel),
@@ -37,7 +37,7 @@ final class TodoAddViewModel {
     let task = RealmRepository()
 
     // MARK: - Init
-    init(selectedYmd: Observable<String>) {
+    init(selectedYmd: CustomObservable<String>) {
         self.selectedYmd = selectedYmd
         bind()
         fromDayDividedSelectViewModelBind()

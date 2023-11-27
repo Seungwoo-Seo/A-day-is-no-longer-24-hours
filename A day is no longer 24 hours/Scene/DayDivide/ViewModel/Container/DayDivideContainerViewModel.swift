@@ -10,18 +10,18 @@ import UIKit
 
 final class DayDivideContainerViewModel {
     // MARK: Just Scene
-    let viewControllers: Observable<[DayDivideContentViewController]> = Observable([])
+    let viewControllers: CustomObservable<[DayDivideContentViewController]> = CustomObservable([])
 
     // MARK: - 상위 ViewModel에서 데이터 전달, self에서 바인딩
     // 캘린더에서 날짜를 선택했을 떄
-    let selectedYmd: Observable<String>
+    let selectedYmd: CustomObservable<String>
 
     // MARK: - Repository
     let task = RealmRepository()
 
     // MARK: - Init
     init(selectedYmd: String) {
-        self.selectedYmd = Observable(selectedYmd)
+        self.selectedYmd = CustomObservable(selectedYmd)
         self.selectedYmd.bind { [weak self] (ymd) in
             guard let self else {return}
 
