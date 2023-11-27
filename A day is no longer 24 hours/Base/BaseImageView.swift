@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseImageView: UIImageView {
+class BaseImageView: UIImageView, Base {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +17,7 @@ class BaseImageView: UIImageView {
         initialLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

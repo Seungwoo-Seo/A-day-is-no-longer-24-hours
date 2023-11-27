@@ -10,15 +10,15 @@ import Foundation
 final class DayDividedSelectViewModel {
 
     // MARK: - bind from DayDividedSelectViewController
-    let dividedValue = Observable(0)
+    let dividedValue = CustomObservable(0)
 
     // MARK: - bind from TodoAddContainerViewController
-    let prevButtonTapped = Observable(false)
-    let nextButtonTapped = Observable(false)
+    let prevButtonTapped = CustomObservable(false)
+    let nextButtonTapped = CustomObservable(false)
 
     // MARK: - Result
     /// 선택한 나눈 날
-    let selectedDiviedDay = Observable(0)
+    let selectedDiviedDay = CustomObservable(0)
 
 }
 

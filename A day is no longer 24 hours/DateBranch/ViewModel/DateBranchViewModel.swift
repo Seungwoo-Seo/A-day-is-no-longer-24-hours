@@ -9,23 +9,23 @@ import Foundation
 
 final class DateBranchViewModel {
     // 캘린더에서 선택한 날짜들
-    var dateList: Observable<[Date]> = Observable([])
+    var dateList: CustomObservable<[Date]> = CustomObservable([])
     // 선택한 날짜들이 모두 유효하다면 -> 수면 시간과 기상 시간을 설정하게 할 것
-    var dateListIsVaildate = Observable(false)
+    var dateListIsVaildate = CustomObservable(false)
     // 취침 시간
-    var bedTime: Observable<Date?> = Observable(nil)
+    var bedTime: CustomObservable<Date?> = CustomObservable(nil)
     // 기상 시간
-    var wakeUpTime: Observable<Date?> = Observable(nil)
+    var wakeUpTime: CustomObservable<Date?> = CustomObservable(nil)
 
 
-    var bedTimeComponents: Observable<DateComponents?> = Observable(nil)
-    var wakeUpTimeComponents: Observable<DateComponents?> = Observable(nil)
+    var bedTimeComponents: CustomObservable<DateComponents?> = CustomObservable(nil)
+    var wakeUpTimeComponents: CustomObservable<DateComponents?> = CustomObservable(nil)
 
 
-    var bedTimeCalendar: Observable<Calendar?> = Observable(nil)
-    var wakeUpTimeCalendar: Observable<Calendar?> = Observable(nil)
+    var bedTimeCalendar: CustomObservable<Calendar?> = CustomObservable(nil)
+    var wakeUpTimeCalendar: CustomObservable<Calendar?> = CustomObservable(nil)
 
-    var dateBranchKindList: Observable<[Int]> = Observable([])
+    var dateBranchKindList: CustomObservable<[Int]> = CustomObservable([])
 
 }
 

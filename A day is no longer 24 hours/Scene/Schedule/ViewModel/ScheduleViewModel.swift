@@ -24,7 +24,7 @@ final class ScheduleViewModel {
     )
 
     // 선택한 년월일
-    let selectedYmd = Observable(Date().toString)
+    let selectedYmd = CustomObservable(Date().toString)
 
     init() {
         selectedYmd.bind { [weak self] (ymd) in
@@ -36,7 +36,7 @@ final class ScheduleViewModel {
 
 
     // MARK: - Just Scene
-    var currentMonth = Observable("")
+    var currentMonth = CustomObservable("")
 
 }
 

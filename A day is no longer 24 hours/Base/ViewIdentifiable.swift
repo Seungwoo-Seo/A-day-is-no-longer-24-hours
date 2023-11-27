@@ -7,23 +7,23 @@
 
 import UIKit
 
-protocol Identifiable: AnyObject {
+protocol ViewIdentifiable: AnyObject {
     static var identifier: String {get}
 }
 
-extension UICollectionReusableView: Identifiable {
+extension UICollectionReusableView: ViewIdentifiable {
     static var identifier: String {
         return String(describing: self)
     }
 }
 
-extension UITableViewCell: Identifiable {
+extension UITableViewCell: ViewIdentifiable {
     static var identifier: String {
         return String(describing: self)
     }
 }
 
-extension UITableViewHeaderFooterView : Identifiable {
+extension UITableViewHeaderFooterView : ViewIdentifiable {
     static var identifier: String {
         return String(describing: self)
     }

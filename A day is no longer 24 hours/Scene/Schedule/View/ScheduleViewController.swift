@@ -141,7 +141,7 @@ private extension ScheduleViewController {
     // MARK: - 여기선 걍 선택한 날짜만 넘기면 될꺼 같은데
     func presentTodoAddContainerViewController() {
         let selectedYmd = viewModel.selectedYmd.value
-        let viewModel = TodoAddViewModel(selectedYmd: Observable(selectedYmd))
+        let viewModel = TodoAddViewModel(selectedYmd: CustomObservable(selectedYmd))
         let vc = TodoAddContainerViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
