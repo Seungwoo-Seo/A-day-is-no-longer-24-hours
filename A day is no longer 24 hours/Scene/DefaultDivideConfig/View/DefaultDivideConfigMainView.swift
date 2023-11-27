@@ -9,32 +9,10 @@ import UIKit
 
 final class DefaultDivideConfigMainView: BaseView {
     // MARK: - View
-    lazy var prevButton = {
-        var config = UIButton.Configuration.plain()
-        config.baseForegroundColor = Constraints.Color.systemBlue
-        config.background.backgroundColor = Constraints.Color.clear
-        config.title = "이전으로"
-        let button = UIButton(configuration: config)
-        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return button
-    }()
-    private let descriptionLabel = {
-        let label = UILabel()
-        label.text = "하루는 더 이상 24시간이 아닙니다. 하루를 나눠서 n배 생산적이고 효율적인 삶을 살아보세요."
-        label.textColor = Constraints.Color.white
-        label.font = Constraints.Font.Insensitive.systemFont_24_semibold
-        label.numberOfLines = 0
-        return label
-    }()
-    private let topAdviceLabel = {
-        let label = UILabel()
-        label.text = "수면 시간을 제외한 생활시간을 나누게 됩니다."
-        label.textColor = Constraints.Color.darkGray
-        label.font = Constraints.Font.Insensitive.systemFont_17_semibold
-        label.numberOfLines = 0
-        return label
-    }()
-    lazy var dateDividePickerView = {
+    let prevButton = SceneTransformButton(title: "이전으로")
+    private let descriptionLabel = DescriptionLabel(text: "하루는 더 이상 24시간이 아닙니다. 하루를 나눠서 n배 생산적이고 효율적인 삶을 살아보세요.")
+    private let topAdviceLabel = AdviceLabel(text: "수면 시간을 제외한 생활시간을 나누게 됩니다.")
+    let dateDividePickerView = {
         let view = UIPickerView()
         view.backgroundColor = Constraints.Color.lightGray_alpha012
         view.tintColor = Constraints.Color.white
@@ -42,15 +20,8 @@ final class DefaultDivideConfigMainView: BaseView {
         view.clipsToBounds = true
         return view
     }()
-    private let bottomAdviceLabel = {
-        let label = UILabel()
-        label.text = "사용자의 생활시간을 알고리즘을 통해 가장 최적화된 일수로 자동 분할했습니다."
-        label.textColor = Constraints.Color.darkGray
-        label.font = Constraints.Font.Insensitive.systemFont_17_semibold
-        label.numberOfLines = 0
-        return label
-    }()
-    lazy var divideAndStartButton = {
+    private let bottomAdviceLabel = AdviceLabel(text: "사용자의 생활시간을 알고리즘을 통해 가장 최적화된 일수로 자동 분할했습니다.")
+    let divideAndStartButton = {
         var config = UIButton.Configuration.filled()
         config.baseForegroundColor = Constraints.Color.black
         config.background.backgroundColor = Constraints.Color.white
