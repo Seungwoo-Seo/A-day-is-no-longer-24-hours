@@ -52,6 +52,7 @@
 		578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */; };
 		57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */; };
 		57BDFAE92B14BCF5006CAE1F /* AdviceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */; };
+		57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 57BDFAEC2B15A8A6006CAE1F /* .gitignore */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
@@ -152,6 +153,7 @@
 		578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContainerViewModel.swift; sourceTree = "<group>"; };
 		57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchSleepTimeState.swift; sourceTree = "<group>"; };
 		57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceLabel.swift; sourceTree = "<group>"; };
+		57BDFAEC2B15A8A6006CAE1F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				57C138482AC5496A00277597 /* Assets.xcassets */,
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
+				57BDFAEC2B15A8A6006CAE1F /* .gitignore */,
 			);
 			path = "A day is no longer 24 hours";
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
+				57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
