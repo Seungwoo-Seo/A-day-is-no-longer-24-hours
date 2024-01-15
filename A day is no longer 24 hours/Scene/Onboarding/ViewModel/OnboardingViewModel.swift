@@ -42,16 +42,16 @@ final class OnboardingViewModel: ViewModelType {
         let scrollToDefaultDivideConfig = PublishRelay<Void>()
         let backScrollToDefaultTimeConfig = PublishRelay<Void>()
 
-        let test = defaultTimeConfigViewModel.scrollToNext
+        let scrollToNext = defaultTimeConfigViewModel.scrollToNext
             .share()
 
-        test
+        scrollToNext
             .bind(with: self) { owner, void in
                 scrollToDefaultDivideConfig.accept(void)
             }
             .disposed(by: disposeBag)
 
-        test
+        scrollToNext
             .withLatestFrom(defaultTimeConfigViewModel.howMuchLivingTime)
             .distinctUntilChanged()
             .bind(with: self) { owner, livingTimeToMinute in
@@ -63,6 +63,12 @@ final class OnboardingViewModel: ViewModelType {
         defaultDivideCofigViewModel.scrollToPrev
             .bind(with: self) { owner, void in
                 backScrollToDefaultTimeConfig.accept(void)
+            }
+            .disposed(by: disposeBag)
+
+        defaultDivideCofigViewModel.goToSchedule
+            .bind(with: self) { owner, _ in
+                owner.todayTomorrowOrTomorrowTomorrow()
             }
             .disposed(by: disposeBag)
 

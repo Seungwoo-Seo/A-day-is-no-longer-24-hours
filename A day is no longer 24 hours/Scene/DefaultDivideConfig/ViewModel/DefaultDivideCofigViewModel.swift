@@ -54,6 +54,7 @@ final class DefaultDivideCofigViewModel: ViewModelType {
 
         input.divideAndStartButtonTapped
             .bind(with: self) { owner, void in
+                // TODO: 저장이 필요한데
                 owner.goToSchedule.accept(void)
             }
             .disposed(by: disposeBag)
