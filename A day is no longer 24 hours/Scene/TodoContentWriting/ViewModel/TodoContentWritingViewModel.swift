@@ -16,21 +16,21 @@ final class TodoContentWritingViewModel {
     // MARK: - bind from TodoContentWritingViewController
     // 현재 detailTodo 갯수 => 즉, 화면에 추가된 textField Cell 갯수 - 옵션
     // 여기선 itemIdentifier를 Class로 사용해야함
-    let detailTodoList: Observable<[DetailTodo]> = Observable([])
+    let detailTodoList: CustomObservable<[DetailTodo]> = CustomObservable([])
     // 카테고리 존재 여부 판단
-    let categoryExists = Observable(false)
+    let categoryExists = CustomObservable(false)
 
     // MARK: - bind from TodoAddContainerViewController
-    let prevButtonTapped = Observable(false)
-    let addButtonTapped = Observable(false)
+    let prevButtonTapped = CustomObservable(false)
+    let addButtonTapped = CustomObservable(false)
 
     // MARK: - bind from TodoAddViewModel
     /// Todo 추가 가능 여부
-    let todoCanBeAdd = Observable(false)
+    let todoCanBeAdd = CustomObservable(false)
 
     // MARK: - Result
-    let todoContent: Observable<TodoContent?> = Observable(nil)
-    let isStandby = Observable(false)
+    let todoContent: CustomObservable<TodoContent?> = CustomObservable(nil)
+    let isStandby = CustomObservable(false)
 
     // MARK: - Init
     init() {

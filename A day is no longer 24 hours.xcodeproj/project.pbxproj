@@ -14,7 +14,7 @@
 		570C37D62AEBB34C009BE9AA /* TinderBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */; };
 		570C37D82AEBB3C5009BE9AA /* TinderBarButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */; };
 		570FE7142AE0AD4100ECE726 /* DayDivideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */; };
-		5714F4A22AC8487900D55041 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* Observable.swift */; };
+		5714F4A22AC8487900D55041 /* CustomObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A12AC8487900D55041 /* CustomObservable.swift */; };
 		5714F4A42AC849B700D55041 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A32AC849B700D55041 /* BaseViewController.swift */; };
 		5714F4A82AC84C0E00D55041 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A72AC84C0E00D55041 /* Constraints.swift */; };
 		5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4A92AC851D400D55041 /* ScheduleViewController.swift */; };
@@ -34,7 +34,7 @@
 		5714F4D92AC90F0E00D55041 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4D82AC90F0E00D55041 /* BaseButton.swift */; };
 		5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DD2AC9142900D55041 /* CircleImageView.swift */; };
 		5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4DF2AC9143F00D55041 /* BaseImageView.swift */; };
-		5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* Identifiable.swift */; };
+		5714F4E42AC9266A00D55041 /* ViewIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */; };
 		5714F4E62AC9BB9900D55041 /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5714F4E52AC9BB9900D55041 /* ExpandButton.swift */; };
 		5724C80D2AE798B400C7B92A /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5724C80C2AE798B400C7B92A /* RealmRepository.swift */; };
 		573490282AE0F40600CA1A9D /* StartStandardTodoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */; };
@@ -50,6 +50,9 @@
 		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
 		578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */; };
 		578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */; };
+		57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */; };
+		57BDFAE92B14BCF5006CAE1F /* AdviceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */; };
+		57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 57BDFAEC2B15A8A6006CAE1F /* .gitignore */; };
 		57C138402AC5496500277597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1383F2AC5496500277597 /* AppDelegate.swift */; };
 		57C138422AC5496500277597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C138412AC5496500277597 /* SceneDelegate.swift */; };
 		57C138492AC5496A00277597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C138482AC5496A00277597 /* Assets.xcassets */; };
@@ -61,13 +64,20 @@
 		57D55AB42AEFD7CB0020C4AF /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */; };
 		57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB52AEFE1740020C4AF /* SettingMainView.swift */; };
 		57D55ABA2AEFF0CC0020C4AF /* TabBarController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D55AB92AEFF0CC0020C4AF /* TabBarController .swift */; };
+		57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA532B14814B00A76420 /* RxCocoa */; };
+		57D5FA562B14814B00A76420 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA552B14814B00A76420 /* RxRelay */; };
+		57D5FA582B14814B00A76420 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57D5FA572B14814B00A76420 /* RxSwift */; };
+		57D5FA5A2B14833400A76420 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA592B14833400A76420 /* Base.swift */; };
+		57D5FA5C2B1484E800A76420 /* SceneTransformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA5B2B1484E800A76420 /* SceneTransformButton.swift */; };
+		57D5FA5E2B1485A100A76420 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA5D2B1485A100A76420 /* DescriptionLabel.swift */; };
+		57D5FA602B1486D500A76420 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA5F2B1486D500A76420 /* ViewModelType.swift */; };
+		57D5FA622B1486EC00A76420 /* DefaultTimeConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5FA612B1486EC00A76420 /* DefaultTimeConfigViewModel.swift */; };
 		57DDC6C32AEBC1A100D902A8 /* TinderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */; };
 		57DDC6C52AEBC20000D902A8 /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */; };
 		57DDC6C72AEBC24000D902A8 /* TinderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DDC6C62AEBC24000D902A8 /* TinderColors.swift */; };
 		57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */; };
 		57ECC6D32AD6B95D009E22BE /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */; };
 		57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */; };
-		57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */; };
 		57EF5B4B2AE25A370059ECC4 /* TodoTimeSettingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B4A2AE25A370059ECC4 /* TodoTimeSettingMainView.swift */; };
 		57EF5B4E2AE2683F0059ECC4 /* TodoAddContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B4D2AE2683E0059ECC4 /* TodoAddContainerViewController.swift */; };
 		57EF5B512AE268FB0059ECC4 /* TodoAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF5B502AE268FB0059ECC4 /* TodoAddViewModel.swift */; };
@@ -105,7 +115,7 @@
 		570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBarButton.swift; sourceTree = "<group>"; };
 		570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBarButtonContainer.swift; sourceTree = "<group>"; };
 		570FE7132AE0AD4100ECE726 /* DayDivideContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContentViewController.swift; sourceTree = "<group>"; };
-		5714F4A12AC8487900D55041 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5714F4A12AC8487900D55041 /* CustomObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomObservable.swift; sourceTree = "<group>"; };
 		5714F4A32AC849B700D55041 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5714F4A72AC84C0E00D55041 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		5714F4A92AC851D400D55041 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +135,7 @@
 		5714F4D82AC90F0E00D55041 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		5714F4DD2AC9142900D55041 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		5714F4DF2AC9143F00D55041 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
-		5714F4E32AC9266A00D55041 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifiable.swift; sourceTree = "<group>"; };
 		5714F4E52AC9BB9900D55041 /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		5724C80C2AE798B400C7B92A /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		573490272AE0F40600CA1A9D /* StartStandardTodoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStandardTodoHeader.swift; sourceTree = "<group>"; };
@@ -141,6 +151,9 @@
 		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
 		578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideCotainerViewController.swift; sourceTree = "<group>"; };
 		578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContainerViewModel.swift; sourceTree = "<group>"; };
+		57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchSleepTimeState.swift; sourceTree = "<group>"; };
+		57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceLabel.swift; sourceTree = "<group>"; };
+		57BDFAEC2B15A8A6006CAE1F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A day is no longer 24 hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C1383F2AC5496500277597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C138412AC5496500277597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,13 +167,17 @@
 		57D55AB32AEFD7CB0020C4AF /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		57D55AB52AEFE1740020C4AF /* SettingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainView.swift; sourceTree = "<group>"; };
 		57D55AB92AEFF0CC0020C4AF /* TabBarController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarController .swift"; sourceTree = "<group>"; };
+		57D5FA592B14833400A76420 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		57D5FA5B2B1484E800A76420 /* SceneTransformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransformButton.swift; sourceTree = "<group>"; };
+		57D5FA5D2B1485A100A76420 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
+		57D5FA5F2B1486D500A76420 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		57D5FA612B1486EC00A76420 /* DefaultTimeConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewModel.swift; sourceTree = "<group>"; };
 		57DDC6C22AEBC1A100D902A8 /* TinderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderBar.swift; sourceTree = "<group>"; };
 		57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolation.swift"; sourceTree = "<group>"; };
 		57DDC6C62AEBC24000D902A8 /* TinderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderColors.swift; sourceTree = "<group>"; };
 		57ECC6D02AD5A917009E22BE /* LabelTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTimePickerView.swift; sourceTree = "<group>"; };
 		57ECC6D22AD6B95D009E22BE /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		57ECC6EA2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewController.swift; sourceTree = "<group>"; };
-		57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTimeConfigViewModel.swift; sourceTree = "<group>"; };
 		57EF5B4A2AE25A370059ECC4 /* TodoTimeSettingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTimeSettingMainView.swift; sourceTree = "<group>"; };
 		57EF5B4D2AE2683E0059ECC4 /* TodoAddContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddContainerViewController.swift; sourceTree = "<group>"; };
 		57EF5B502AE268FB0059ECC4 /* TodoAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddViewModel.swift; sourceTree = "<group>"; };
@@ -191,12 +208,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D5FA562B14814B00A76420 /* RxRelay in Frameworks */,
 				57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */,
+				57D5FA582B14814B00A76420 /* RxSwift in Frameworks */,
 				57F616C22ADC1A4B007C7C4C /* SnapKit in Frameworks */,
 				57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */,
 				57F616C52ADC1A5A007C7C4C /* IQKeyboardManagerSwift in Frameworks */,
 				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
 				57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */,
+				57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */,
 				57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +237,7 @@
 			children = (
 				57F616BA2ADB09C1007C7C4C /* Onboarding */,
 				57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */,
-				57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */,
+				57F616AF2AD8573D007C7C4C /* DefaultDivideConfig */,
 				57D55ABB2AEFF6210020C4AF /* TabBar */,
 				5714F4AB2AC851D900D55041 /* Schedule */,
 				578907AD2ADEABD700FF5274 /* DayDivide */,
@@ -233,7 +253,7 @@
 		5714F4992AC8463A00D55041 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				5714F4A12AC8487900D55041 /* Observable.swift */,
+				5714F4A12AC8487900D55041 /* CustomObservable.swift */,
 				570C37D32AEBB2FF009BE9AA /* TinderBarLayout.swift */,
 				570C37D52AEBB34C009BE9AA /* TinderBarButton.swift */,
 				570C37D72AEBB3C5009BE9AA /* TinderBarButtonContainer.swift */,
@@ -270,16 +290,18 @@
 		5714F49D2AC8474300D55041 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+				57D5FA592B14833400A76420 /* Base.swift */,
+				5714F4D82AC90F0E00D55041 /* BaseButton.swift */,
 				5714F4C52AC8620300D55041 /* BaseCollectionReusableView.swift */,
 				5714F4C72AC8651F00D55041 /* BaseCollectionViewCell.swift */,
+				5714F4DF2AC9143F00D55041 /* BaseImageView.swift */,
+				5714F4D12AC867ED00D55041 /* BaseLabel.swift */,
 				57EF5B582AE4E5F70059ECC4 /* BaseTableViewCell.swift */,
 				57EF5B5A2AE4E6AE0059ECC4 /* BaseTableViewHeaderFooterView.swift */,
 				5714F4CB2AC866A000D55041 /* BaseView.swift */,
-				5714F4D12AC867ED00D55041 /* BaseLabel.swift */,
-				5714F4D82AC90F0E00D55041 /* BaseButton.swift */,
-				5714F4DF2AC9143F00D55041 /* BaseImageView.swift */,
-				5714F4E32AC9266A00D55041 /* Identifiable.swift */,
+				5714F4A32AC849B700D55041 /* BaseViewController.swift */,
+				5714F4E32AC9266A00D55041 /* ViewIdentifiable.swift */,
+				57D5FA5F2B1486D500A76420 /* ViewModelType.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -367,6 +389,8 @@
 		5714F4CD2AC8678700D55041 /* Label */ = {
 			isa = PBXGroup;
 			children = (
+				57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */,
+				57D5FA5D2B1485A100A76420 /* DescriptionLabel.swift */,
 				5714F4CF2AC867E400D55041 /* TimeLabel.swift */,
 				5714F4D32AC86C9E00D55041 /* TitleLabel.swift */,
 			);
@@ -389,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				5714F4D62AC90EF000D55041 /* StateButton.swift */,
+				57D5FA5B2B1484E800A76420 /* SceneTransformButton.swift */,
 				5714F4E52AC9BB9900D55041 /* ExpandButton.swift */,
 			);
 			path = Button;
@@ -513,6 +538,14 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		57BDFAE52B14B680006CAE1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		57C138332AC5496500277597 = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +581,7 @@
 				57C138482AC5496A00277597 /* Assets.xcassets */,
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
+				57BDFAEC2B15A8A6006CAE1F /* .gitignore */,
 			);
 			path = "A day is no longer 24 hours";
 			sourceTree = "<group>";
@@ -622,6 +656,7 @@
 		57ECC6EC2AD7D901009E22BE /* DefaultTimeConfig */ = {
 			isa = PBXGroup;
 			children = (
+				57BDFAE52B14B680006CAE1F /* Model */,
 				57ECC6ED2AD7D90C009E22BE /* View */,
 				57ECC6EE2AD7D913009E22BE /* ViewModel */,
 			);
@@ -640,7 +675,7 @@
 		57ECC6EE2AD7D913009E22BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				57ECC6EF2AD7D922009E22BE /* DefaultTimeConfigViewModel.swift */,
+				57D5FA612B1486EC00A76420 /* DefaultTimeConfigViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -708,13 +743,13 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		57F616AF2AD8573D007C7C4C /* DefaultDivideCofig */ = {
+		57F616AF2AD8573D007C7C4C /* DefaultDivideConfig */ = {
 			isa = PBXGroup;
 			children = (
 				57F616B02AD85743007C7C4C /* View */,
 				57F616B12AD85749007C7C4C /* ViewModel */,
 			);
-			path = DefaultDivideCofig;
+			path = DefaultDivideConfig;
 			sourceTree = "<group>";
 		};
 		57F616B02AD85743007C7C4C /* View */ = {
@@ -793,6 +828,9 @@
 				57F616C72ADC1A8C007C7C4C /* FSCalendar */,
 				57F616CA2ADC1B81007C7C4C /* Realm */,
 				57F616CC2ADC1B81007C7C4C /* RealmSwift */,
+				57D5FA532B14814B00A76420 /* RxCocoa */,
+				57D5FA552B14814B00A76420 /* RxRelay */,
+				57D5FA572B14814B00A76420 /* RxSwift */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -828,6 +866,7 @@
 				57F616C32ADC1A5A007C7C4C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */,
+				57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -844,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
+				57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,7 +940,6 @@
 				5714F4DE2AC9142900D55041 /* CircleImageView.swift in Sources */,
 				57EF5B512AE268FB0059ECC4 /* TodoAddViewModel.swift in Sources */,
 				57F616B52AD9B3E8007C7C4C /* DefaultDayConfiguration.swift in Sources */,
-				57ECC6F02AD7D922009E22BE /* DefaultTimeConfigViewModel.swift in Sources */,
 				5714F4BC2AC85FF700D55041 /* DetailTodoCell.swift in Sources */,
 				570C37D62AEBB34C009BE9AA /* TinderBarButton.swift in Sources */,
 				57EF5B4B2AE25A370059ECC4 /* TodoTimeSettingMainView.swift in Sources */,
@@ -910,10 +949,12 @@
 				57F616AE2AD856F8007C7C4C /* DefaultDivideConfigViewController.swift in Sources */,
 				57F616B72AD9B9D5007C7C4C /* OnboardingTabViewController.swift in Sources */,
 				57C714012AD2D6E400DF57D2 /* DateBranchViewController.swift in Sources */,
+				57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */,
 				57F616B32AD85753007C7C4C /* DefaultDivideCofigViewModel.swift in Sources */,
 				57EF5B662AE533760059ECC4 /* TodoDetailTodoWritingCell.swift in Sources */,
 				57F170CA2ADE6260008B20C7 /* DefaultTimeConfigMainView.swift in Sources */,
 				57EF5B542AE432D30059ECC4 /* TodoContentWritingViewController.swift in Sources */,
+				57D5FA5C2B1484E800A76420 /* SceneTransformButton.swift in Sources */,
 				573C688F2AE163680039217C /* DayDividedSelectViewController.swift in Sources */,
 				57EF5B572AE444950059ECC4 /* TodoContentWritingMainView.swift in Sources */,
 				57DDC6C72AEBC24000D902A8 /* TinderColors.swift in Sources */,
@@ -929,6 +970,8 @@
 				5734902A2AE10C1E00CA1A9D /* EndStandardTodoHeader.swift in Sources */,
 				5714F4C22AC860B000D55041 /* DetailTodoHeader.swift in Sources */,
 				570C37CA2AE7A2AE009BE9AA /* ScheduleMainView.swift in Sources */,
+				57D5FA5A2B14833400A76420 /* Base.swift in Sources */,
+				57D5FA622B1486EC00A76420 /* DefaultTimeConfigViewModel.swift in Sources */,
 				57D55AB62AEFE1740020C4AF /* SettingMainView.swift in Sources */,
 				57ECC6EB2AD7D8EA009E22BE /* DefaultTimeConfigViewController.swift in Sources */,
 				57C138402AC5496500277597 /* AppDelegate.swift in Sources */,
@@ -955,6 +998,8 @@
 				5714F4C02AC8609100D55041 /* SimpleTodoHeader.swift in Sources */,
 				573C68942AE163C30039217C /* DayDividedSelectViewModel.swift in Sources */,
 				5714F4AA2AC851D400D55041 /* ScheduleViewController.swift in Sources */,
+				57D5FA602B1486D500A76420 /* ViewModelType.swift in Sources */,
+				57BDFAE92B14BCF5006CAE1F /* AdviceLabel.swift in Sources */,
 				57EF5B6A2AE533AA0059ECC4 /* TodoDetailTodoWritingAddFooter.swift in Sources */,
 				57ECC6D12AD5A917009E22BE /* LabelTimePickerView.swift in Sources */,
 				5714F4C42AC860E900D55041 /* DetailTodoFooter.swift in Sources */,
@@ -965,9 +1010,10 @@
 				57EF5B712AE6A3D60059ECC4 /* Todo.swift in Sources */,
 				57EF5B682AE533950059ECC4 /* TodoDetailTodoWritingAddHeader.swift in Sources */,
 				57C714062AD2DB3F00DF57D2 /* DateBranchViewModel.swift in Sources */,
-				5714F4A22AC8487900D55041 /* Observable.swift in Sources */,
+				5714F4A22AC8487900D55041 /* CustomObservable.swift in Sources */,
 				57C138422AC5496500277597 /* SceneDelegate.swift in Sources */,
-				5714F4E42AC9266A00D55041 /* Identifiable.swift in Sources */,
+				5714F4E42AC9266A00D55041 /* ViewIdentifiable.swift in Sources */,
+				57D5FA5E2B1485A100A76420 /* DescriptionLabel.swift in Sources */,
 				5724C80D2AE798B400C7B92A /* RealmRepository.swift in Sources */,
 				57EF5B4E2AE2683F0059ECC4 /* TodoAddContainerViewController.swift in Sources */,
 				5714F4E02AC9143F00D55041 /* BaseImageView.swift in Sources */,
@@ -1201,6 +1247,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HamzaGhazouani/HGCircularSlider";
@@ -1244,6 +1298,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		57D5FA532B14814B00A76420 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		57D5FA552B14814B00A76420 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		57D5FA572B14814B00A76420 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		57F616BE2ADC1A28007C7C4C /* HGCircularSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 57F616BD2ADC1A28007C7C4C /* XCRemoteSwiftPackageReference "HGCircularSlider" */;

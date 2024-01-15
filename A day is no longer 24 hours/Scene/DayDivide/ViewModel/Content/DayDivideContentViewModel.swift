@@ -15,7 +15,7 @@ final class DayDivideContentViewModel {
     // 아래 todoListAppended() 메서드 호출되면 걍 런타임 에러되는 듯 개 ㅈ같네 시빯ㅁㅇㅆㅇㅂㅅㅂㅅ
     let dividedDayStruct: DividedDayStruct
 
-    let todoStructList: Observable<[TodoStruct]> = Observable([])
+    let todoStructList: CustomObservable<[TodoStruct]> = CustomObservable([])
 
     // MARK: - Realm
     let task = RealmRepository()

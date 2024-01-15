@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class BaseView: UIView {
+class BaseView: UIView, Base {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +18,7 @@ class BaseView: UIView {
         initialLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

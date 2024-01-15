@@ -2,114 +2,159 @@
 //  DefaultTimeConfigViewModel.swift
 //  A day is no longer 24 hours
 //
-//  Created by 서승우 on 2023/10/12.
+//  Created by 서승우 on 2023/11/27.
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
-final class DefaultTimeConfigViewModel {
-    // MARK: - bind from DefaultDayConfigurationViewController
-    let whenIsBedTimeToString = Observable("오전 01:00")
-    let whenIsWakeUpTimeToString = Observable("오전 07:00")
-    /// 수면 시간을 특정 문자열로 변환한 값
-    let howMuchSleepTimeToString = Observable("6 시간")
-    /// 수면 시간 유효성
-    // 처음에 유효한 시간을 설정해서 보내니까 true
-    // Bool에서 enum으로 변경 가능성 있음 => ex 좋다 4~8시간, 작다 1>, 크다 20<, 좀 많다 9<
-    let howMuchSleepTimeValidity = Observable(true)
+final class DefaultTimeConfigViewModel: ViewModelType {
+    private let disposeBag = DisposeBag()
 
-    // MARK: - bind from OnboardingViewModel
     /// 취침 시각, "분"으로 표현한 값
-    let whenIsBedTime = Observable(60) // 01:00시
+    let whenIsBedTime = BehaviorRelay(value: 60) // 01:00시
     /// 기상 시각, "분"으로 표현한 값
-    let whenIsWakeUpTime = Observable(420) // 07:00시
+    let whenIsWakeUpTime = BehaviorRelay(value: 420) // 07:00시
     /// 수면 시간, "분"으로 변환한 값
-    let howMuchSleepTime = Observable(360) // 6시간
+    let howMuchSleepTime = BehaviorRelay(value: 360) // 6시간
     /// 생활 시간, "분"으로 변환한 값
-    let howMuchLivingTime = Observable(1080) // 18시간
+    let howMuchLivingTime = BehaviorRelay(value: 1080) // 18시간
 
-    // MARK: - Event, bind from OnboardingTabViewController
-    /// "다음으로" 버튼 탭 이벤트
-    let nextButtonTapped = Observable(false)
+    let scrollToNext = PublishRelay<Void>()
+
+    struct Input {
+        let sliderValueChanged: ControlEvent<Void>
+        let pointValueChanged: PublishRelay<(start: CGFloat, end: CGFloat)>
+        let nextButtonTapped: ControlEvent<Void>
+    }
+
+    struct Output {
+        let adjustValue: PublishRelay<Void>
+        let whenIsBedTimeToString: BehaviorRelay<String>
+        let whenIsWakeUpTimeToString: BehaviorRelay<String>
+        let howMuchSleepTimeToString: Observable<String>
+        let howMuchSleepTimeState: BehaviorRelay<HowMuchSleepTimeState>
+    }
+
+    func transform(input: Input) -> Output {
+        let adjustValue = PublishRelay<Void>()
+        let whenIsBedTimeToString = BehaviorRelay(value: "오전 01:00")
+        let whenIsWakeUpTimeToString = BehaviorRelay(value: "오전 07:00")
+        let howMuchSleepTimeToString = howMuchSleepTime
+            .withUnretained(self)
+            .map { (owner, sleepTimeToMinute) in
+                owner.minuteToString(minuteValue: sleepTimeToMinute)
+            }
+        let howMuchSleepTimeState = BehaviorRelay<HowMuchSleepTimeState>(value: .available)
+
+        input.sliderValueChanged
+            .bind(with: self) { owner, void in
+                adjustValue.accept(void)
+            }
+            .disposed(by: disposeBag)
+
+        let timeInterval = input.pointValueChanged
+            .map { (pointValue) -> (whenIsBedTimeInterval: TimeInterval, whenIsWakeUpTimeInterval: TimeInterval, howMuchSleepTimeInterval: TimeInterval) in
+                let whenIsBedTimeInterval = TimeInterval(pointValue.start)
+                let whenIsWakeUpTimeInterval = TimeInterval(pointValue.end)
+                let howMuchSleepTimeInterval = whenIsWakeUpTimeInterval - whenIsBedTimeInterval
+
+                return (
+                    whenIsBedTimeInterval,
+                    whenIsWakeUpTimeInterval,
+                    howMuchSleepTimeInterval
+                )
+            }
+            .map { (timeInterval) -> (whenIsBedTimeToDate: Date, whenIsWakeUpTimeToDate: Date, howMuchSleepTimeDate: Date) in
+                let whenIsBedTimeToDate = Date(
+                    timeIntervalSinceReferenceDate: timeInterval.whenIsBedTimeInterval
+                )
+                let whenIsWakeUpTimeToDate = Date(
+                    timeIntervalSinceReferenceDate: timeInterval.whenIsWakeUpTimeInterval
+                )
+                let howMuchSleepTimeDate = Date(
+                    timeIntervalSinceReferenceDate: timeInterval.howMuchSleepTimeInterval
+                )
+
+                return (
+                    whenIsBedTimeToDate,
+                    whenIsWakeUpTimeToDate,
+                    howMuchSleepTimeDate
+                )
+            }
+            .share()
+
+        timeInterval
+            .bind(with: self) { owner, date in
+                whenIsBedTimeToString.accept(owner.dateFormatter.string(from: date.whenIsBedTimeToDate))
+                whenIsWakeUpTimeToString.accept(owner.dateFormatter.string(from: date.whenIsWakeUpTimeToDate))
+            }
+            .disposed(by: disposeBag)
+
+        timeInterval
+            .withUnretained(self)
+            .map { (owner, date) -> (whenIsBedTime: Int, whenIsWakeUpTime: Int, howMuchSleepTime: Int, howMuchLivingTime: Int) in
+                let whenIsBedTime = owner.toMinute(date.whenIsBedTimeToDate)
+                let whenIsWakeUpTime = owner.toMinute(date.whenIsWakeUpTimeToDate)
+                let howMuchSleepTime = owner.toMinute(date.howMuchSleepTimeDate)
+
+                let dayToMinute = 24 * 60
+                let howMuchLivingTime = dayToMinute - howMuchSleepTime
+
+                return (
+                    whenIsBedTime,
+                    whenIsWakeUpTime,
+                    howMuchSleepTime,
+                    howMuchLivingTime
+                )
+            }
+            .bind(with: self) { owner, time in
+                owner.whenIsBedTime.accept(time.whenIsBedTime)
+                owner.whenIsWakeUpTime.accept(time.whenIsWakeUpTime)
+                owner.howMuchSleepTime.accept(time.howMuchSleepTime)
+                owner.howMuchLivingTime.accept(time.howMuchLivingTime)
+            }
+            .disposed(by: disposeBag)
+
+        // 수면 시간을 계산하고 분으로 바꾼 뒤 해당 값이 1200(=20시간, 최대 수면)분 보다 크거나 60(=1시간, 최소 수면)분보다 작은지 검사
+        howMuchSleepTime
+            .bind(with: self) { owner, sleepTimeToMinute in
+                if sleepTimeToMinute > 1200 {
+                    howMuchSleepTimeState.accept(.unavailable)
+                } else if sleepTimeToMinute < 60 {
+                    howMuchSleepTimeState.accept(.unavailable)
+                } else {
+                    howMuchSleepTimeState.accept(.available)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        // DefaultDivideConfig로 이동
+        input.nextButtonTapped
+            .bind(with: self) { owner, void in
+                owner.scrollToNext.accept(void)
+            }
+            .disposed(by: disposeBag)
+            
+        return Output(
+            adjustValue: adjustValue,
+            whenIsBedTimeToString: whenIsBedTimeToString,
+            whenIsWakeUpTimeToString: whenIsWakeUpTimeToString,
+            howMuchSleepTimeToString: howMuchSleepTimeToString,
+            howMuchSleepTimeState: howMuchSleepTimeState
+        )
+    }
 
 }
 
-// MARK: - RangeCircularSlider
 extension DefaultTimeConfigViewModel {
 
-    // TODO: 1
-//    func valueChangedRangeCircularSlider(
-//        adStartPointValue: inout CGFloat,
-//        adEndPointValue: inout CGFloat,
-//        startPointValue: CGFloat,
-//        endPointValue: CGFloat
-//    ) {
-//        let minutes = adStartPointValue / 60
-//        let adjustedMinutes =  ceil(minutes / 5.0) * 5
-//        adStartPointValue = adjustedMinutes * 60
-//
-//        let minutes1 = adEndPointValue / 60
-//        let adjustedMinutes1 =  ceil(minutes1 / 5.0) * 5
-//        adEndPointValue = adjustedMinutes1 * 60
-//
-//        updateTimes(
-//            startPointValue: startPointValue,
-//            endPointValue: endPointValue
-//        )
-//    }
-
-}
-
-// MARK: - 비즈니스
-extension DefaultTimeConfigViewModel {
-
-    // 라이브러리에 예시보고 적용한거라 다시 공부 필요
     // 5분 단위로만 설정 가능하게 해주는 메소드
-    func adjustValue(value: inout CGFloat) {
+    func adjustValue(value: inout CGFloat) {    // -> inout 때문에 상당히 골치 아프다
         let minutes = value / 60
         let adjustedMinutes =  ceil(minutes / 5.0) * 5
         value = adjustedMinutes * 60
-    }
-
-    // 위치를 시간으로 변환해서 값 변경해주는 메소드
-    func updateTimes(
-        startPointValue: CGFloat,
-        endPointValue: CGFloat
-    ) {
-        // whenIsBedTime
-        let bedTimePointValue = TimeInterval(startPointValue)
-        let bedTimeToDate = Date(timeIntervalSinceReferenceDate: bedTimePointValue)
-        whenIsBedTimeToString.value = dateFormatter.string(from: bedTimeToDate)
-        whenIsBedTime.value = toMinute(bedTimeToDate)
-
-        // whenIsWakeUpTime
-        let wakeUpTimePointValue = TimeInterval(endPointValue)
-        let wakeUpTimeToDate = Date(timeIntervalSinceReferenceDate: wakeUpTimePointValue)
-        whenIsWakeUpTimeToString.value = dateFormatter.string(from: wakeUpTimeToDate)
-        whenIsWakeUpTime.value = toMinute(wakeUpTimeToDate)
-
-        // howMuchSleepTime
-        let sleepTimePointValue = wakeUpTimePointValue - bedTimePointValue
-        let sleepTimeDate = Date(timeIntervalSinceReferenceDate: sleepTimePointValue)
-        let howMuchSleepTime = toMinute(sleepTimeDate)
-        howMuchSleepTimeToString.value = minuteToString(minuteValue: howMuchSleepTime)
-        self.howMuchSleepTime.value = howMuchSleepTime
-
-        // howMuchLivingTime
-        let dayToMinute = 24 * 60
-        let howMuchLivingTime = dayToMinute - howMuchSleepTime
-        self.howMuchLivingTime.value = howMuchLivingTime
-    }
-
-    /// 수면 시간을 계산하고 분으로 바꾼 뒤 해당 값이 1200(=20시간, 최대 수면)분 보다 크거나 60(=1시간, 최소 수면)분보다 작은지 검사
-    func updateHowMuchSleepTimeValidity() {
-        if howMuchSleepTime.value > 1200 {
-            howMuchSleepTimeValidity.value = false
-        } else if howMuchSleepTime.value < 60 {
-            howMuchSleepTimeValidity.value = false
-        } else {
-            howMuchSleepTimeValidity.value = true
-        }
     }
 
 }

@@ -12,31 +12,31 @@ typealias TodoTimeRange = (whenIsStartTime: Int, whenIsEndTime: Int)
 
 final class TodoTimeSettingViewModel {
     // MARK: - bind from self
-    let selectedDividedDay: Observable<DividedDay?> = Observable(nil)
-    let whenIsTodoStartTime: Observable<Time?> = Observable(nil)
-    let howMuchTodoTime: Observable<Time?> = Observable(nil)
+    let selectedDividedDay: CustomObservable<DividedDay?> = CustomObservable(nil)
+    let whenIsTodoStartTime: CustomObservable<Time?> = CustomObservable(nil)
+    let howMuchTodoTime: CustomObservable<Time?> = CustomObservable(nil)
 
     // MARK: - bind from TodoTimeSettingViewController
-    let whenIsUseHourMinuteList: Observable<[(hour: Int, minuteList: [Int])]> = Observable([])
+    let whenIsUseHourMinuteList: CustomObservable<[(hour: Int, minuteList: [Int])]> = CustomObservable([])
     var currentUseHourRow = 0
 
-    let livingHourMinuteList: Observable<[(hour: Int, minuteList: [Int])]> = Observable([])
+    let livingHourMinuteList: CustomObservable<[(hour: Int, minuteList: [Int])]> = CustomObservable([])
     var currentLivingHourRow = 0
 
-    let whenIsStartViewBottomDescriptionText = Observable("")
-    let howMuchTodoViewBottomDescriptionText = Observable("")
+    let whenIsStartViewBottomDescriptionText = CustomObservable("")
+    let howMuchTodoViewBottomDescriptionText = CustomObservable("")
 
     // 사용할 수 있는 시간인지
-    let timeOverFlow = Observable(true)
-    let timeAvailable = Observable(false)
+    let timeOverFlow = CustomObservable(true)
+    let timeAvailable = CustomObservable(false)
 
     // MARK: - bind from TodoAddContainerViewController
-    let prevButtonTapped = Observable(false)
-    let nextButtonTapped = Observable(false)
+    let prevButtonTapped = CustomObservable(false)
+    let nextButtonTapped = CustomObservable(false)
 
     // MARK: - Result, bind from TodoAddViewModel
     // 사용하고 싶은 시간 범위
-    let wantTimeRange: Observable<TodoTimeRange?> = Observable(nil)
+    let wantTimeRange: CustomObservable<TodoTimeRange?> = CustomObservable(nil)
 
     // MARK: - Init
     init() {

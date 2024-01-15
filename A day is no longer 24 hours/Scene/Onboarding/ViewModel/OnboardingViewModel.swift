@@ -5,34 +5,98 @@
 //  Created by 서승우 on 2023/10/14.
 //
 
-import RealmSwift
 import Foundation
+import RealmSwift
+import RxCocoa
+import RxSwift
 
-final class OnboardingViewModel {
+final class OnboardingViewModel: ViewModelType {
+    private let disposeBag = DisposeBag()
+
     // MARK: Sub ViewModel
     let defaultTimeConfigViewModel = DefaultTimeConfigViewModel()
-    let dateDivideViewModel = DefaultDivideCofigViewModel()
+    let defaultDivideCofigViewModel = DefaultDivideCofigViewModel()
+
+    lazy var viewControllers = [
+        DefaultTimeConfigViewController(viewModel: defaultTimeConfigViewModel),
+        DefaultDivideConfigViewController(viewModel: defaultDivideCofigViewModel)
+    ]
 
     // MARK: - Just Scene
     /// createDefaultConfigurationTable 메서드의 유효성
-    let createDefaultDayConfigurationTableValidity = Observable(false)
+    let createDefaultDayConfigurationTableValidity = CustomObservable(false)
 
     // MARK: - Realm
     let realm = try! Realm()
 
+    struct Input {
+
+    }
+
+    struct Output {
+        let scrollToDefaultDivideConfig: PublishRelay<Void>
+        let backScrollToDefaultTimeConfig: PublishRelay<Void>
+    }
+
+    func transform(input: Input) -> Output {
+        let scrollToDefaultDivideConfig = PublishRelay<Void>()
+        let backScrollToDefaultTimeConfig = PublishRelay<Void>()
+
+        let scrollToNext = defaultTimeConfigViewModel.scrollToNext
+            .share()
+
+        scrollToNext
+            .bind(with: self) { owner, void in
+                scrollToDefaultDivideConfig.accept(void)
+            }
+            .disposed(by: disposeBag)
+
+        scrollToNext
+            .withLatestFrom(defaultTimeConfigViewModel.howMuchLivingTime)
+            .distinctUntilChanged()
+            .bind(with: self) { owner, livingTimeToMinute in
+                owner.defaultDivideCofigViewModel.howMuchLivingTime.accept(livingTimeToMinute)
+            }
+            .disposed(by: disposeBag)
+
+
+        defaultDivideCofigViewModel.scrollToPrev
+            .bind(with: self) { owner, void in
+                backScrollToDefaultTimeConfig.accept(void)
+            }
+            .disposed(by: disposeBag)
+
+        defaultDivideCofigViewModel.goToSchedule
+            .bind(with: self) { owner, _ in
+                owner.todayTomorrowOrTomorrowTomorrow()
+            }
+            .disposed(by: disposeBag)
+
+        return Output(
+            scrollToDefaultDivideConfig: scrollToDefaultDivideConfig,
+            backScrollToDefaultTimeConfig: backScrollToDefaultTimeConfig
+        )
+    }
+
     // MARK: - Init
     init() {
-        defaultTimeConfigViewModel.howMuchLivingTime.bind { [weak self] (lifeHourToMinute) in
-            guard let self else {return}
-            self.dateDivideViewModel.howMuchLivingTime.value = lifeHourToMinute
-        }
+//        defaultTimeConfigViewModel.howMuchLivingTime.bind { [weak self] (lifeHourToMinute) in
+//            guard let self else {return}
+//            self.dateDivideViewModel.howMuchLivingTime.value = lifeHourToMinute
+//        }
 
-        dateDivideViewModel.divideAndStartButtonTapped.bind(
-            subscribeNow: false
-        ) { [weak self] _ in
-            guard let self else {return}
-            self.todayTomorrowOrTomorrowTomorrow()
-        }
+//        dateDivideViewModel.divideAndStartButtonTapped.bind(
+//            subscribeNow: false
+//        ) { [weak self] _ in
+//            guard let self else {return}
+//            self.todayTomorrowOrTomorrowTomorrow()
+//        }
+
+        defaultTimeConfigViewModel.scrollToNext
+            .bind(with: self) { owner, void in
+
+            }
+            .disposed(by: disposeBag)
     }
     
 }
@@ -43,8 +107,8 @@ private extension OnboardingViewModel {
         let whenIsBedTime = defaultTimeConfigViewModel.whenIsBedTime.value
         let whenIsWakeUpTime = defaultTimeConfigViewModel.whenIsWakeUpTime.value
         let howMuchSleepTime = defaultTimeConfigViewModel.howMuchSleepTime.value
-        let howMuchLivingTime = dateDivideViewModel.howMuchLivingTime.value
-        let dividedValue = dateDivideViewModel.currentDivideValue.value
+        let howMuchLivingTime = defaultDivideCofigViewModel.howMuchLivingTime.value
+        let dividedValue = defaultDivideCofigViewModel.currentDivideValue.value
 
         // DefaultTimeConfigViewModel에서 24시간을 추가한 계산을 하면 slider 제대로 동작 안될 듯
         // 일단 여기서 해보자

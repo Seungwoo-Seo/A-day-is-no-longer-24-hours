@@ -5,36 +5,35 @@
 //  Created by 서승우 on 2023/10/14.
 //
 
-import Pageboy
 import UIKit
+import Pageboy
+import RxCocoa
+import RxSwift
 
 final class OnboardingTabViewController: PageboyViewController {
-    // MARK: - View
-    private lazy var viewControllers = [
-        DefaultTimeConfigViewController(viewModel: viewModel.defaultTimeConfigViewModel),
-        DefaultDivideConfigViewController(viewModel: viewModel.dateDivideViewModel)
-    ]
 
     // MARK: - ViewModel
+    private let disposeBag = DisposeBag()
     private let viewModel = OnboardingViewModel()
 
     // MARK: - Init
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        viewModel.defaultTimeConfigViewModel.nextButtonTapped.bind(
-            subscribeNow: false
-        ) { [weak self] _ in
-            guard let self else {return}
-            self.scrollToPage(.next, animated: true)
-        }
+        let input = OnboardingViewModel.Input()
+        let output = viewModel.transform(input: input)
 
-        viewModel.dateDivideViewModel.prevButtonTapped.bind(
-            subscribeNow: false
-        ) { [weak self] _ in
-            guard let self else {return}
-            self.scrollToPage(.previous, animated: true)
-        }
+        output.scrollToDefaultDivideConfig
+            .bind(with: self) { owner, void in
+                owner.scrollToPage(.next, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        output.backScrollToDefaultTimeConfig
+            .bind(with: self) { owner, void in
+                owner.scrollToPage(.previous, animated: true)
+            }
+            .disposed(by: disposeBag)
 
         viewModel.createDefaultDayConfigurationTableValidity.bind(
             subscribeNow: false
@@ -81,14 +80,14 @@ extension OnboardingTabViewController: PageboyViewControllerDataSource {
     func numberOfViewControllers(
         in pageboyViewController: PageboyViewController
     ) -> Int {
-        return viewControllers.count
+        return viewModel.viewControllers.count
     }
 
     func viewController(
         for pageboyViewController: PageboyViewController,
         at index: PageboyViewController.PageIndex
     ) -> UIViewController? {
-        return viewControllers[index]
+        return viewModel.viewControllers[index]
     }
 
     func defaultPage(

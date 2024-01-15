@@ -5,10 +5,9 @@
 //  Created by 서승우 on 2023/10/01.
 //
 
-import SnapKit
 import UIKit
 
-class BaseButtton: UIButton {
+class BaseButtton: UIButton, Base {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +17,7 @@ class BaseButtton: UIButton {
         initialLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
