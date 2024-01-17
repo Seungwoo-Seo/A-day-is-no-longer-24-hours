@@ -15,31 +15,33 @@
 
 ## 목차
 
-- [🚀 주요 기능](#-주요-기능) 
+- [🚀 주요 기능](#-주요-기능)
+- [🛠 구현 기술](#-구현-기술) 
 - [💻 기술 스택](#-기술-스택)
 - [📱 서비스](#-서비스)
-- [🛠 트러블 슈팅](#-트러블-슈팅)
+- [🚨 트러블 슈팅](#-트러블-슈팅)
 - [📝 회고](#-회고)
 
 ## 🚀 주요 기능
 
-- HGCircularSlider 라이브러리 기반 수면 시간 계산기 기능 제공
-- Diffable DataSource를 활용해 타임라인 기능 제공
-- FSCalendar 라이브러리 기반 달력 기능 제공
-- 수면 시간 기반으로 Automatic Optimization 분할 기능 제공
-- Todo 추가 가능 여부 기능 제공
-- Detail Todo 추가 기능 제공
+- 취침 시각과 수면 시각 설정
+- 수면 시간 기반으로 하루를 최적회된 일수로 자동 분할
+- Todo 목록 및 상세 Todo 조회 타임라인
+- Todo 추가 가능 여부
+
+## 🛠 구현 기술
+
+- `DiffableDataSource`를 활용해 `Expandable Cell` 구현
+
 
 ## 💻 기술 스택
 
-- Swift
-- MVVM, Singleton
-- UIKit, CodeBase UI, AutoLayout
-- Diffable DataSource, Compositional Layout
-- Realm
-- Observable
-- SPM, CocoaPods
-- SnapKit, FSCalendar, HGCircularSlider, IQKeyboardManager, Tabman
+- `Swift`
+- `MVVM`, `Singleton`
+- `UIKit`
+- `CodeBase UI`, `AutoLayout`, `DiffableDataSource`, `CompositionalLayout`
+- `Observable`
+- `Realm`, `SnapKit`, `FSCalendar`, `HGCircularSlider`, `IQKeyboardManager`, `Tabman`
 
 ## 📱 서비스
 
