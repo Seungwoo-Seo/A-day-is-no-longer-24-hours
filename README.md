@@ -26,13 +26,14 @@
 
 - 취침 시각과 수면 시각 설정
 - 수면 시간 기반으로 하루를 최적회된 일수로 자동 분할
-- Todo 목록 및 상세 Todo 조회 타임라인
+- Todo 목록 및 상세 Todo 조회
 - Todo 추가 가능 여부
 
 ## 🛠 구현 기술
 
-- `DiffableDataSource`를 활용해 `Expandable Cell` 구현
-
+- `Realm`을 활용해 `Todo CRUD` 구현
+- `DiffableDataSource`를 활용해 `타임라인` 구현
+- `DiffableDataSource`를 활용해 `Expandable Section` 구현
 
 ## 💻 기술 스택
 
@@ -49,10 +50,16 @@
 - 개발 인원 : 1인
 - 개발 기간 : 2023년 9월 28일 ~ 2023년 10월 28일 (1개월)
 
-## 🛠 트러블 슈팅
+## 🚨 트러블 슈팅
 
 <!-- 프로젝트 중 발생한 문제와 그 해결 방법에 대한 내용을 기록한다. -->
-### 1. Realm과 Diffable DataSource를 사용했을 때  Diff 알고리즘과 Class 타입 충돌 이슈
+### 1. Realm Object 모델을 Diffable DataSource의 Item으로 직접 사용했을 때 이슈
+- **문제 상황**</br>
+첫 화면에서 Diffable DataSource를 사용해
+~~~swift
+~~~
+
+### 2. TableView에 DiffableDataSource를 사용했을 때 tableViewCell에 textField를 사용했을 
 - **문제 상황**</br>
 - **해결 방법**</br>
 ~~~swift
@@ -69,71 +76,7 @@
 프로젝트를 마무리하면서 몇 가지 느낀 점과 개선할 사항들을 회고로 정리하겠습니다.
 
 👍 **성취한 점**
-1. **Base를 활용한 코드 중복 개선**</br>
-~~~swift
-import Foundation
-import SnapKit
-
-protocol Base {
-    func initialAttributes()
-    func initialHierarchy()
-    func initialLayout()
-}
-~~~
-~~~swift
-import UIKit
-
-class BaseViewController: UIViewController, Base {
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        initialAttributes()
-        initialHierarchy()
-        initialLayout()
-    }
-
-    func initialAttributes() {}
-
-    func initialHierarchy() {}
-
-    func initialLayout() {}
-}
-~~~
-~~~swift
-import UIKit
-
-protocol ViewIdentifiable: AnyObject {
-    static var identifier: String {get}
-}
-
-extension UICollectionReusableView: ViewIdentifiable {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UITableViewCell: ViewIdentifiable {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UITableViewHeaderFooterView : ViewIdentifiable {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-~~~
+1. Observable을 직접 구현배 
 
 🤔 **개선할 점**
 1. ****</br>
