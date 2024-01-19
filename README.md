@@ -40,8 +40,8 @@
 - `Swift`
 - `MVVM`, `Singleton`
 - `UIKit`
-- `CodeBase UI`, `AutoLayout`, `DiffableDataSource`, `CompositionalLayout`
-- `Observable`
+- `CodeBase UI`, `AutoLayout`
+- `Observable`, `DiffableDataSource`, `CompositionalLayout`
 - `Realm`, `SnapKit`, `FSCalendar`, `HGCircularSlider`, `IQKeyboardManager`, `Tabman`
 
 ## 📱 서비스
