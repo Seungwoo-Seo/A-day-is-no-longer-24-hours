@@ -32,8 +32,7 @@
 ## 🛠 구현 기술
 
 - `Realm`을 활용해 `Todo CRUD` 구현
-- `DiffableDataSource`를 활용해 `타임라인` 구현
-- `DiffableDataSource`를 활용해 `Expandable Section` 구현
+- `DiffableDataSource`를 활용해 `Expandable 타임라인` 구현
 
 ## 💻 기술 스택
 
