@@ -16,7 +16,7 @@
 ## 목차
 
 - [🚀 주요 기능](#-주요-기능)
-- [🛠 구현 기술](#-구현-기술) 
+- [🛠 구현 기능](#-구현-기능) 
 - [💻 기술 스택](#-기술-스택)
 - [📱 서비스](#-서비스)
 - [🚨 트러블 슈팅](#-트러블-슈팅)
@@ -25,23 +25,24 @@
 ## 🚀 주요 기능
 
 - 취침 시각과 수면 시각 설정
-- 수면 시간 기반으로 하루를 최적회된 일수로 자동 분할
+- 수면 시간 기반으로 하루를 최적회 된 일수로 자동 분할
 - Todo 목록 및 상세 Todo 조회
-- Todo 추가 가능 여부
+- Todo 추가 가능 여부 검사
 
-## 🛠 구현 기술
+## 🛠 구현 기능
 
-- `Realm`을 활용해 `Todo CRUD` 구현
-- `DiffableDataSource`를 활용해 `Expandable 타임라인` 구현
+- `Realm` DB Table 스키마 구성
+- `DiffableDataSource`를 활용해 `Expandable Timeline` 구현
 
 ## 💻 기술 스택
 
 - `Swift`
-- `MVVM`, `Singleton`
+- `MVVM`, `Repository`, `Singleton`
 - `UIKit`
 - `CodeBase UI`, `AutoLayout`
-- `Observable`, `DiffableDataSource`, `CompositionalLayout`
+- `DiffableDataSource`, `CompositionalLayout`
 - `Realm`, `SnapKit`, `FSCalendar`, `HGCircularSlider`, `IQKeyboardManager`, `Tabman`
+- `CustomObservable`
 
 ## 📱 서비스
 
@@ -72,13 +73,6 @@
 
 ## 📝 회고
 <!-- 프로젝트를 마무리하면서 느낀 소회, 개선점, 다음에 시도해보고 싶은 것 등을 정리한다. -->
-프로젝트를 마무리하면서 몇 가지 느낀 점과 개선할 사항들을 회고로 정리하겠습니다.
-
-👍 **성취한 점**
 1. Observable을 직접 구현배 
-
-🤔 **개선할 점**
-1. ****</br>
-2. ****</br>
-
-
+- MVVM 패턴을 적용
+- 기능이 추가되고 생각보다 복잡했던 로직들로 인해 예상 했던 공수 산정보다 훨씬 더 긴 시간이 소요됐습니다. 프로젝트를 진행함에 있어서 기능을 구현하는 것이 물론 중요하지만 초기 기획이 디테일 할수록 정확한 공수 산정과 생산적인 개발을 가능케 한다라는 것을 경험하게 되었습니다.
