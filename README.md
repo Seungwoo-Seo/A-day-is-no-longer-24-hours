@@ -19,6 +19,7 @@
 - [🛠 구현 기능](#-구현-기능) 
 - [💻 기술 스택](#-기술-스택)
 - [📱 서비스](#-서비스)
+- [🚧 기술적 도전](#-기술적-도전)
 - [🚨 트러블 슈팅](#-트러블-슈팅)
 - [📝 회고](#-회고)
 
@@ -33,6 +34,7 @@
 
 - `Realm` DB Table 스키마 구성
 - `DiffableDataSource`를 활용해 `Expandable Timeline` 구현
+- `데이터 바인딩`을 위한 `Observable` 구현
 
 ## 💻 기술 스택
 
@@ -50,29 +52,55 @@
 - 개발 인원 : 1인
 - 개발 기간 : 2023년 9월 28일 ~ 2023년 10월 28일 (1개월)
 
+## 🚧 기술적 도전
+
+### 1. `데이터 바인딩`을 위한 `Observable` 구현
+- **도전 상황**</br>
+뷰 컨트롤러와 뷰 모델 사이의 의존성을 느슨하게 하기 위해서 `데이터 바인딩`이 필요했고 클로저를 이용한 `Observable`을 도입해 보았습니다.
+
+- **도전 결과**</br>
+~~~swift
+import Foundation
+
+final class CustomObservable<T> {
+    private var listener: ((T) -> ())?
+
+    var value: T {
+        didSet {
+            listener?(value)
+        }
+    }
+
+    init(_ value: T) {
+        self.value = value
+    }
+
+    func bind(
+        subscribeNow: Bool = true,
+        _ closure: @escaping ((T) -> ())
+    ) {
+        if subscribeNow {
+            closure(value)
+        }
+        listener = closure
+    }
+
+}
+~~~
+
+
 ## 🚨 트러블 슈팅
 
 <!-- 프로젝트 중 발생한 문제와 그 해결 방법에 대한 내용을 기록한다. -->
-### 1. Realm Object 모델을 Diffable DataSource의 Item으로 직접 사용했을 때 이슈
-- **문제 상황**</br>
-첫 화면에서 Diffable DataSource를 사용해
-~~~swift
-~~~
 
-### 2. TableView에 DiffableDataSource를 사용했을 때 tableViewCell에 textField를 사용했을 
+### 1. TableView에 DiffableDataSource를 사용했을 때 tableViewCell에 textField를 사용했을 
 - **문제 상황**</br>
 - **해결 방법**</br>
 ~~~swift
 ~~~
 
-### 2. 
-- **문제 상황** </br>
-- **해결 방법** </br>
-~~~swift
-~~~
-
 ## 📝 회고
 <!-- 프로젝트를 마무리하면서 느낀 소회, 개선점, 다음에 시도해보고 싶은 것 등을 정리한다. -->
-1. Observable을 직접 구현배 
+- 출시 플로우 경험
 - MVVM 패턴을 적용
 - 기능이 추가되고 생각보다 복잡했던 로직들로 인해 예상 했던 공수 산정보다 훨씬 더 긴 시간이 소요됐습니다. 프로젝트를 진행함에 있어서 기능을 구현하는 것이 물론 중요하지만 초기 기획이 디테일 할수록 정확한 공수 산정과 생산적인 개발을 가능케 한다라는 것을 경험하게 되었습니다.
