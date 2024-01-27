@@ -93,11 +93,31 @@ final class CustomObservable<T> {
 
 <!-- 프로젝트 중 발생한 문제와 그 해결 방법에 대한 내용을 기록한다. -->
 
-### 1. TableView에 DiffableDataSource를 사용했을 때 tableViewCell에 textField를 사용했을 
+### 1. `textField`를 통해 DiffableDataSource `item`을 업데이트할 때마다 `snapshot`이 변경되는 이슈
 - **문제 상황**</br>
-- **해결 방법**</br>
+아래 사진처럼 자세한 할 일을 추가할 때마다 각 셀에서 사용할 item을 뷰모델에서 배열로 가지고 있고 뷰컨에서는 아래 코드와 같이 item 배열이 변할 때마다 snapshot을 업데이트 해주고 있습니다. 그런데 textField에 입력을 해서 text가 변경될 때마다 snapshot이 변경되어버리는 이슈가 발생했습니다.
+
+<img src="https://github.com/Seungwoo-Seo/ExemplaryRestaurantIB/assets/72753868/7eca1581-a386-48cf-b5ad-660d8e599195" width="200"></br>
 ~~~swift
+override func viewDidLoad() {
+        super.viewDidLoad()
+
+        viewModel.detailTodoList.bind { [weak self] (detailTodoList) in
+            guard let self else {return}
+
+            var snapshot = NSDiffableDataSourceSnapshot<TodoContentWritingTableViewSection, DetailTodo>()
+            snapshot.appendSections(TodoContentWritingTableViewSection.allCases)
+            snapshot.appendItems(detailTodoList, toSection: .detail)
+            self.dataSource.apply(snapshot)
+        }
+}
 ~~~
+
+- **문제 원인**</br>
+textField의 text값을 item의 프로퍼티로 가지고 있는데 item이 `구조체`이기 때문에 text 값을 변경하면 해당 item 또한 변경된 것이기 때문에 snapshot이 업데이트 된 것이였습니다.
+
+- **해결 방법**</br>
+사용할 item을 구조체가 아닌 `클래스`로 변경했습니다. item이 새로 추가, 삭제 될 때만 snapshot을 업데이트하고, text값이 변경될 땐 snapshot이 변경되지 않게 되었습니다.
 
 ## 📝 회고
 <!-- 프로젝트를 마무리하면서 느낀 소회, 개선점, 다음에 시도해보고 싶은 것 등을 정리한다. -->
