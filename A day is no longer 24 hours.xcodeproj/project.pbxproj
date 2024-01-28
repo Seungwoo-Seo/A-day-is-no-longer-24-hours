@@ -50,6 +50,9 @@
 		578907AA2ADE963E00FF5274 /* DefaultDivideConfigMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */; };
 		578907AC2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */; };
 		578907B62ADEAC4900FF5274 /* DayDivideContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */; };
+		5797B7B12B86A74100BEC818 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 5797B7B02B86A74100BEC818 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		5797B7B32B86A74100BEC818 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5797B7B22B86A74100BEC818 /* FirebaseCrashlytics */; };
+		5797B7B52B86A87700BEC818 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5797B7B42B86A87700BEC818 /* GoogleService-Info.plist */; };
 		57BDFAE72B14B68C006CAE1F /* HowMuchSleepTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */; };
 		57BDFAE92B14BCF5006CAE1F /* AdviceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */; };
 		57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 57BDFAEC2B15A8A6006CAE1F /* .gitignore */; };
@@ -151,6 +154,7 @@
 		578907A92ADE963D00FF5274 /* DefaultDivideConfigMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDivideConfigMainView.swift; sourceTree = "<group>"; };
 		578907AB2ADEAB1500FF5274 /* DayDivideCotainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideCotainerViewController.swift; sourceTree = "<group>"; };
 		578907B52ADEAC4900FF5274 /* DayDivideContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDivideContainerViewModel.swift; sourceTree = "<group>"; };
+		5797B7B42B86A87700BEC818 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57BDFAE62B14B68C006CAE1F /* HowMuchSleepTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchSleepTimeState.swift; sourceTree = "<group>"; };
 		57BDFAE82B14BCF5006CAE1F /* AdviceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceLabel.swift; sourceTree = "<group>"; };
 		57BDFAEC2B15A8A6006CAE1F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -212,10 +216,12 @@
 				57F616CB2ADC1B81007C7C4C /* Realm in Frameworks */,
 				57D5FA582B14814B00A76420 /* RxSwift in Frameworks */,
 				57F616C22ADC1A4B007C7C4C /* SnapKit in Frameworks */,
+				5797B7B12B86A74100BEC818 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				57F616CD2ADC1B81007C7C4C /* RealmSwift in Frameworks */,
 				57F616C52ADC1A5A007C7C4C /* IQKeyboardManagerSwift in Frameworks */,
 				925471F8AA058F559FDE2613 /* Pods_A_day_is_no_longer_24_hours.framework in Frameworks */,
 				57F616C82ADC1A8C007C7C4C /* FSCalendar in Frameworks */,
+				5797B7B32B86A74100BEC818 /* FirebaseCrashlytics in Frameworks */,
 				57D5FA542B14814B00A76420 /* RxCocoa in Frameworks */,
 				57F616BF2ADC1A28007C7C4C /* HGCircularSlider in Frameworks */,
 			);
@@ -262,13 +268,6 @@
 				57DDC6C42AEBC20000D902A8 /* UIColor+Interpolation.swift */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		5714F49A2AC8465600D55041 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		5714F49B2AC8467400D55041 /* Constraints */ = {
@@ -570,7 +569,6 @@
 				5714F49D2AC8474300D55041 /* Base */,
 				5714F49B2AC8467400D55041 /* Constraints */,
 				5714F49C2AC8469D00D55041 /* Extension */,
-				5714F49A2AC8465600D55041 /* Network */,
 				5714F49E2AC8474900D55041 /* Repository */,
 				5714F4982AC8463200D55041 /* Scene */,
 				57C714022AD2DAEB00DF57D2 /* DateBranch */,
@@ -582,6 +580,7 @@
 				57C1384A2AC5496A00277597 /* LaunchScreen.storyboard */,
 				57C1384D2AC5496A00277597 /* Info.plist */,
 				57BDFAEC2B15A8A6006CAE1F /* .gitignore */,
+				5797B7B42B86A87700BEC818 /* GoogleService-Info.plist */,
 			);
 			path = "A day is no longer 24 hours";
 			sourceTree = "<group>";
@@ -815,6 +814,7 @@
 				57C138392AC5496500277597 /* Frameworks */,
 				57C1383A2AC5496500277597 /* Resources */,
 				6641AB3A70F8881F092EDE85 /* [CP] Embed Pods Frameworks */,
+				5797B7B62B86A93E00BEC818 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -831,6 +831,8 @@
 				57D5FA532B14814B00A76420 /* RxCocoa */,
 				57D5FA552B14814B00A76420 /* RxRelay */,
 				57D5FA572B14814B00A76420 /* RxSwift */,
+				5797B7B02B86A74100BEC818 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				5797B7B22B86A74100BEC818 /* FirebaseCrashlytics */,
 			);
 			productName = "A day is no longer 24 hours";
 			productReference = 57C1383C2AC5496500277597 /* A day is no longer 24 hours.app */;
@@ -867,6 +869,7 @@
 				57F616C62ADC1A8C007C7C4C /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				57F616C92ADC1B81007C7C4C /* XCRemoteSwiftPackageReference "realm-swift" */,
 				57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				5797B7AF2B86A74100BEC818 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 57C1383D2AC5496500277597 /* Products */;
 			projectDirPath = "";
@@ -883,6 +886,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57C1384C2AC5496A00277597 /* LaunchScreen.storyboard in Resources */,
+				5797B7B52B86A87700BEC818 /* GoogleService-Info.plist in Resources */,
 				57BDFAED2B15A8A6006CAE1F /* .gitignore in Resources */,
 				57C138492AC5496A00277597 /* Assets.xcassets in Resources */,
 			);
@@ -912,6 +916,28 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5797B7B62B86A93E00BEC818 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 		6641AB3A70F8881F092EDE85 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1163,6 +1189,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 86BUJA8T6M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "A day is no longer 24 hours/Info.plist";
@@ -1247,6 +1274,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5797B7AF2B86A74100BEC818 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1298,6 +1333,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5797B7B02B86A74100BEC818 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5797B7AF2B86A74100BEC818 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		5797B7B22B86A74100BEC818 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5797B7AF2B86A74100BEC818 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		57D5FA532B14814B00A76420 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 57D5FA522B14814B00A76420 /* XCRemoteSwiftPackageReference "RxSwift" */;
