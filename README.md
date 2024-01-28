@@ -39,7 +39,7 @@
 ## 💻 기술 스택
 
 - `Swift`
-- `MVVM`, `Repository`, `Singleton`
+- `MVVM`, `Repository Pattern`, `Singleton Pattern`
 - `UIKit`
 - `CodeBase UI`, `AutoLayout`
 - `DiffableDataSource`, `CompositionalLayout`
