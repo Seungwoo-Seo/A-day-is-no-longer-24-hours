@@ -38,13 +38,13 @@
 
 ## 💻 기술 스택
 
-- 데이터 바인딩을 위한 Observable 구현
-- Realm DB Table 스키마 구성
+- 데이터 바인딩을 위한 `Observable` 구현
+- Realm DB Table `스키마 구성`
 - EmbeddedObject를 활용해 Todo , TodoDeatil CRUD 구현
 - 생활시간 기반 분 변환, 약수를 활용해 자동 분할 로직 구현
-- HGCircularSlider 기반 수면 시간 측정 UI 구현
-- DiffableDataSource + CompositionalLayout 을 통한 Expandable Timeline 구현
-- Firebase Crashlytics 을 통한 앱 크래시 모니터링 설정
+- HGCircularSlider 기반 `수면 시간 측정 UI` 구현
+- DiffableDataSource + CompositionalLayout 을 통한 `Expandable Timeline` 구현
+- Firebase Crashlytics 을 통한 `앱 크래시 모니터링` 설정
 
 ## 🚧 기술적 도전
 
